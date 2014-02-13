@@ -9,7 +9,7 @@ describe("doger.js", function() {
 	describe("Main wrapper function. If everything else passes and this fails, something's probably pretty weird.", function() {
 		var url = "http://monks.co";
 		var output = doger(url);
-		it("Should output an element that url's keywords.", function() {
+		it("Should output an element that includes the article's keywords.", function() {
 			var keywords = keywords_from(url);
 			for (var i = keywords.length - 1; i >= 0; i--) {
 				expect(output.html()).to.have.string(keywords[i]);	
@@ -141,6 +141,34 @@ describe("doger.js", function() {
 		it("Should return text in all lowercase.", function() {
 			for (var i = output.length - 1; i >= 0; i--) {
 				expect(output[i]).to.equal(output[i].toLowerCase());
+			};
+		});
+	});
+
+
+	describe("Get the current query string. (One of these will always fail)", function() {
+		var currentQueryString = window.location.href.slice(window.location.href.indexOf('?') + 1)
+		output = get_query_string();
+		it("Should return null if there is no query string", function() {
+			expect(output).to.be.null;
+		});
+		it("Should return a string if there is a query string", function() {
+			expect(output).to.be.a('string');
+		});
+	});
+
+
+	describe("Check whether something is a url", function() {
+		var fakeURLs = [ "hello", "www.example", "http://wwwcom.netmail/", "guacamole/index.html"];
+		var realURLs = [ "http://google.com/", "http://jquery-howto.blogspot.com/2009/09/get-url-parameters-values-with-jquery.html?bageldonut=slash&otherstuff", "monks.co", "arduino.cc/doc" ];
+		it("should return false for nonurl strings", function() {
+			for (var i = fakeURLs.length - 1; i >= 0; i--) {
+				expect(check_for_url( fakeURLs[i] )).to.be.false;
+			};
+		});
+		it("should return true for urls", function() {
+			for (var i = realURLs.length - 1; i >= 0; i--) {
+				expect(check_for_url( realURLs[i] )).to.be.true;
 			};
 		});
 	});

@@ -3,12 +3,22 @@
 // andrew monks 2014
 
 // main function to return a completed doge meme image based on a given article url
-function doger(url) {
-	var image = image_from(url);
-	var keywords = keywords_from(url);
-	var doge_text = keywords_to_doge_text(keywords);
-	var output = make_doge_image(image, doge_text);
-	return output
+function doger(string) {
+	// if the argument isn't a url, try to get a url from the query string
+	var url = string;
+	if ( check_for_url(string) == false ) {
+		// if the query string isn't a url, use a default one
+		if ( check_for_url(get_query_string()) == false ) {
+			var url = 'http://monks.co';
+		} else {
+			var url = get_query_string();
+		};
+	};
+	// var image = image_from(url);
+	// var keywords = keywords_from(url);
+	// var doge_text = keywords_to_doge_text(keywords);
+	// var output = make_doge_image(image, doge_text);
+	return url;
 };
 
 // function to return a completed doge meme image from a given image and array of doge phrases
@@ -50,6 +60,21 @@ function keywords_from(url) {
 	};
 	return output
 };
+
+// function to get the current query string (anything in the location bar after a '?')
+function get_query_string() {
+	if (window.location.href.indexOf('?') == -1) {
+		return null;
+	} else {
+		var queryString = window.location.href.slice(window.location.href.indexOf('?') + 1);
+		return queryString;
+	};
+}
+
+// function to check if a string is a url
+function check_for_url(string) {
+	return true;
+}
 
 // function to return the largest image from a given article url
 // thought: it seems like this is actually hard. maybe I should use actual doge photos instead?
