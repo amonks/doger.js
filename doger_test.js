@@ -138,8 +138,12 @@ describe("doger.js", function() {
 
 
 	describe("Overlay doge keywords onto image.", function() {
-		var image = "http://static.ddmcdn.com/en-us/apl/breedselector/images/breed-selector/dogs/breeds/shiba-inu_01_lg.jpg";
-		var doge_text = [ "much test.", "very units.", "much behavioral.", "amaze."]
+		var image = {
+			url: "http://static.ddmcdn.com/en-us/apl/breedselector/images/breed-selector/dogs/breeds/shiba-inu_01_lg.jpg",
+			width: 622,
+			height: 352
+		};
+		var doge_text = [ "much test.", "very units.", "much behavioral.", "amaze."];
 		var output = make_doge_image(image, doge_text);
 
 		it("Should return an object.", function() {
@@ -147,7 +151,7 @@ describe("doger.js", function() {
 		});
 
 		it("Should contain a div classed .doger", function() {
-			expect($('<div>').append(output.clone()).html()).to.have.string('<div class="doger">')
+			expect($('<div>').append(output.clone()).html()).to.have.string('<div class="doger"')
 			expect($('<div>').append(output.clone()).html()).to.have.string('</div>')
 		})
 

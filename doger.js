@@ -3,17 +3,12 @@
 // andrew monks 2014
 
 // main function to return a completed doge meme image based on a given article url
-function doger(string) {
+function doger(container, string) {
 	// if the argument isn't a url, try to get a url from the query string
 	// note that check_for_url currently always returns true
 	var url = string;
-	if ( check_for_url(string) == false ) {
-		// if the query string isn't a url, use a default one
-		if ( check_for_url(get_query_string()) == false ) {
-			var url = 'http://monks.co';
-		} else {
-			var url = get_query_string();
-		};
+	if ( get_query_string() ) {
+		url = get_query_string();
 	};
 
 	// do the stuff!
@@ -21,7 +16,7 @@ function doger(string) {
 	var keywords = keywords_from(url);
 	var doge_text = keywords_to_doge_text(keywords);
 	var output = make_doge_image(image, doge_text);
-	return output;
+	container.append(output);
 };
 
 // function to return a completed doge meme image from a given image and array of doge phrases
@@ -29,7 +24,18 @@ function doger(string) {
 function make_doge_image(image, doge_text) {
 	// superimpose the text over the image in rainbow comic sans
 	// dummy output until this function is real
-	return $("<div class='doger'><img src='" + image + "' /></div>");
+	var div = $("<div class='doger'><img src='" + image.url + "' /></div>");
+	div.find('img').css({"position":"absolute"});
+	div.css({"font-family":"Comic Sans, Comic Sans MS, cursive", "position":"relative"});
+	for (var i = 0; i <= doge_text.length - 1; i++) {
+		var span = $("<span class='dogetext'>" + doge_text[i] + "</span>");
+		var x = Math.random() * image.width * .75;
+		var y = i * (image.height / doge_text.length);
+		var color = random_color();
+		span.css({"position":"absolute", "top": y, "left": x, "color": color});
+		div.append(span);
+	};
+	return div;
 };
 
 // function to return an array of relevant doge phrases given a long string
@@ -52,7 +58,7 @@ function keywords_from(url) {
 	// get keywords from article
 	// using yahoo content analysis api
 	// see http://developer.yahoo.com/contentanalysis/
-	var query = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20contentanalysis.analyze%20where%20url=%27" + escape(url) + "%27";
+	var query = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20contentanalysis.analyze%20where%20url%3D%22" + escape(url) + "%22&diagnostics=true";
 	var response = $(httpGet(query)); // httpGetdefined below
 	// keywords are listed inside <entity><text></text></entity> within the response
 	// n.b. it also provides a confidence score for each keyword
@@ -83,7 +89,11 @@ function check_for_url(string) {
 // thought: it seems like this is actually hard. maybe I should use actual doge photos instead?
 function image_from(url) {
 	// dummy output
-	return "http://static.ddmcdn.com/en-us/apl/breedselector/images/breed-selector/dogs/breeds/shiba-inu_01_lg.jpg";
+	return {
+		url: "http://static.ddmcdn.com/en-us/apl/breedselector/images/breed-selector/dogs/breeds/shiba-inu_01_lg.jpg",
+		width: 622,
+		height: 352
+	};
 };
 
 // function to GET a url, needed by keywords_from()
@@ -101,3 +111,8 @@ function httpGet(theUrl)
 function random_from_array(array) {
 	return array[Math.floor(Math.random()*array.length)];
 };
+
+// function to return a random hex color, needed by make_doge_image()
+function random_color() {
+	return '#'+Math.floor(Math.random()*16777215).toString(16);
+}
