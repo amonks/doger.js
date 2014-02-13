@@ -20,19 +20,41 @@ given an article url, it should find keywords in the article to use in doge-phra
 
 *	it's hard to find the most important one without making a bunch of requests
 
-*	does it even make sense to use an article image as the background for a doge meme
+*	does it even make sense to use an article image as the background for a doge meme?
 
-*	easy preset text locations to not block key parts of image
+*	it'd be easy to preset text locations to not block key parts of image
 
 ### don't generate an image, overlay text using css
 
 *	generating images on the client side seems like it might be hard(??)
 
-### make server/api 
+### webapp
+
+*	js libraries are no fun. this should be a webapp.
+
+*	need to make an index page that calls `doger()`
+
+*	should have a form for url input
+
+### api 
 
 *	doger.co/[articleurl] should return a page with the finished doge meme
 
 *	maybe allow text input too at doger.co/text/[string]
+
+*	no that's lame. it should be single page and totally client side. use the query string: doger.co?example.com/article.html
+
+### url choosing
+
+*	if `doger()` is run with a url argument, it should use that url no matter what
+
+*	otherwise, if the query string is a url, it should use that
+
+*	if the query string isn't a url, it should use a default url
+
+*	maybe the default should pick a top news story or something equally corny?
+
+*	that way the index page will always be relevant
 
 ## props
 
