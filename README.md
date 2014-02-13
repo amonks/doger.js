@@ -8,7 +8,7 @@ given an article url, it should find keywords in the article to use in doge-phra
 
 ## tests
 
-[the tests](http://amonks.github.io/doger.js)
+[Run the tests!](http://amonks.github.io/doger.js)
 
 ## ideas
 
