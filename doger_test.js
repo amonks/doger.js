@@ -6,17 +6,6 @@ var expect = chai.expect;
 
 describe("doger.js", function() {
 
-	describe("Main wrapper function. If everything else passes and this fails, something's probably pretty weird.", function() {
-		var url = "http://monks.co";
-		var output = doger(url);
-		it("Should output an element that includes the article's keywords.", function() {
-			var keywords = keywords_from(url);
-			for (var i = keywords.length - 1; i >= 0; i--) {
-				expect(output.html()).to.have.string(keywords[i]);	
-			};
-		});
-	});
-
 
 	describe("Make doge image.", function() {
 		var image = "http://static.ddmcdn.com/en-us/apl/breedselector/images/breed-selector/dogs/breeds/shiba-inu_01_lg.jpg";
