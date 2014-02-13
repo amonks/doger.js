@@ -18,7 +18,7 @@ function doger(string) {
 	var keywords = keywords_from(url);
 	var doge_text = keywords_to_doge_text(keywords);
 	var output = make_doge_image(image, doge_text);
-	return url;
+	return output;
 };
 
 // function to return a completed doge meme image from a given image and array of doge phrases
