@@ -2,7 +2,7 @@
 // translate any text into doge
 // andrew monks 2014
 
-var expect = chai.expect;
+chai.should();
 
 describe("doger.js", function() {
 
@@ -12,7 +12,7 @@ describe("doger.js", function() {
 		it("Should output an element that includes the article's keywords.", function() {
 			var keywords = keywords_from(url);
 			for (var i = keywords.length - 1; i >= 0; i--) {
-				expect(output.html()).to.have.string(keywords[i]);	
+				output.html().should.have.string(keywords[i]);	
 			};
 		});
 	});
@@ -24,21 +24,21 @@ describe("doger.js", function() {
 		var output = make_doge_image(image, doge_text);
 
 		it("Should return an object.", function() {
-			expect(output).to.be.a('object');	
+			output.should.be.a('object');	
 		});
 
 		it("Should contain a div classed .doger", function() {
-			expect($('<div>').append(output.clone()).html()).to.have.string('<div class="doger">')
-			expect($('<div>').append(output.clone()).html()).to.have.string('</div>')
+			$('<div>').append(output.clone()).html().should.have.string('<div class="doger">')
+			$('<div>').append(output.clone()).html().should.have.string('</div>')
 		})
 
 		it("Should contain an image within the div.", function() {
-			expect(output.html()).to.have.string('<img');	
+			output.html().should.have.string('<img');	
 		});
 
 		it("Should contain the input text.", function() {
 			for (var i = doge_text.length - 1; i >= 0; i--) {
-				expect(output.html()).to.have.string(doge_text[i]);	
+				output.html().should.have.string(doge_text[i]);	
 			};
 		});
 	});
@@ -51,16 +51,16 @@ describe("doger.js", function() {
 		// it("Should return a url.", function() {
 		// 	// absurdly overcomplicated regex to too-liberally match urls; from https://gist.github.com/gruber/8891611
 		// 	regex = /\b((?:https?:(?:\/{1,3}|[a-z0-9%])|[a-z0-9.\-]+[.](?:com|net|org|edu|gov|mil|aero|asia|biz|cat|coop|info|int|jobs|mobi|museum|name|post|pro|tel|travel|xxx|ac|ad|ae|af|ag|ai|al|am|an|ao|aq|ar|as|at|au|aw|ax|az|ba|bb|bd|be|bf|bg|bh|bi|bj|bm|bn|bo|br|bs|bt|bv|bw|by|bz|ca|cc|cd|cf|cg|ch|ci|ck|cl|cm|cn|co|cr|cs|cu|cv|cx|cy|cz|dd|de|dj|dk|dm|do|dz|ec|ee|eg|eh|er|es|et|eu|fi|fj|fk|fm|fo|fr|ga|gb|gd|ge|gf|gg|gh|gi|gl|gm|gn|gp|gq|gr|gs|gt|gu|gw|gy|hk|hm|hn|hr|ht|hu|id|ie|il|im|in|io|iq|ir|is|it|je|jm|jo|jp|ke|kg|kh|ki|km|kn|kp|kr|kw|ky|kz|la|lb|lc|li|lk|lr|ls|lt|lu|lv|ly|ma|mc|md|me|mg|mh|mk|ml|mm|mn|mo|mp|mq|mr|ms|mt|mu|mv|mw|mx|my|mz|na|nc|ne|nf|ng|ni|nl|no|np|nr|nu|nz|om|pa|pe|pf|pg|ph|pk|pl|pm|pn|pr|ps|pt|pw|py|qa|re|ro|rs|ru|rw|sa|sb|sc|sd|se|sg|sh|si|sj|Ja|sk|sl|sm|sn|so|sr|ss|st|su|sv|sx|sy|sz|tc|td|tf|tg|th|tj|tk|tl|tm|tn|to|tp|tr|tt|tv|tw|tz|ua|ug|uk|us|uy|uz|va|vc|ve|vg|vi|vn|vu|wf|ws|ye|yt|yu|za|zm|zw)\/)(?:[^\s()<>{}\[\]]+|\([^\s()]*?\([^\s()]+\)[^\s()]*?\)|\([^\s]+?\))+(?:\([^\s()]*?\([^\s()]+\)[^\s()]*?\)|\([^\s]+?\)|[^\s`!()\[\]{};:'".,<>?«»“”‘’])|(?:(?<!@)[a-z0-9]+(?:[.\-][a-z0-9]+)*[.](?:com|net|org|edu|gov|mil|aero|asia|biz|cat|coop|info|int|jobs|mobi|museum|name|post|pro|tel|travel|xxx|ac|ad|ae|af|ag|ai|al|am|an|ao|aq|ar|as|at|au|aw|ax|az|ba|bb|bd|be|bf|bg|bh|bi|bj|bm|bn|bo|br|bs|bt|bv|bw|by|bz|ca|cc|cd|cf|cg|ch|ci|ck|cl|cm|cn|co|cr|cs|cu|cv|cx|cy|cz|dd|de|dj|dk|dm|do|dz|ec|ee|eg|eh|er|es|et|eu|fi|fj|fk|fm|fo|fr|ga|gb|gd|ge|gf|gg|gh|gi|gl|gm|gn|gp|gq|gr|gs|gt|gu|gw|gy|hk|hm|hn|hr|ht|hu|id|ie|il|im|in|io|iq|ir|is|it|je|jm|jo|jp|ke|kg|kh|ki|km|kn|kp|kr|kw|ky|kz|la|lb|lc|li|lk|lr|ls|lt|lu|lv|ly|ma|mc|md|me|mg|mh|mk|ml|mm|mn|mo|mp|mq|mr|ms|mt|mu|mv|mw|mx|my|mz|na|nc|ne|nf|ng|ni|nl|no|np|nr|nu|nz|om|pa|pe|pf|pg|ph|pk|pl|pm|pn|pr|ps|pt|pw|py|qa|re|ro|rs|ru|rw|sa|sb|sc|sd|se|sg|sh|si|sj|Ja|sk|sl|sm|sn|so|sr|ss|st|su|sv|sx|sy|sz|tc|td|tf|tg|th|tj|tk|tl|tm|tn|to|tp|tr|tt|tv|tw|tz|ua|ug|uk|us|uy|uz|va|vc|ve|vg|vi|vn|vu|wf|ws|ye|yt|yu|za|zm|zw)\b\/?(?!@))/i;
-		// 	expect(output).to.match(regex);
+		// 	output.should.match(regex);
 		// });
 
 		it("Should return a string.", function() {
-			expect(output).to.be.a('string');	
+			output.should.be.a('string');	
 		});
 
 		it("Should return the largest image on a page.", function() {
 			var correctValue = "http://www.popsci.com/sites/popsci.com/files/styles/article_image_large/public/images/2009/09/Brain_injury_with_herniation_MRI.jpg?itok=Sq_deapY";
-			expect(output).to.equal(correctValue);	
+			output.should.equal(correctValue);	
 		});
 	});
 
@@ -73,13 +73,13 @@ describe("doger.js", function() {
 			var output = keywords_from(url);
 			
 			it("Should return a populated array.", function() {
-				expect(output).to.be.a('array');
-				expect(output).to.have.length.above(0);
+				output.should.be.a('array');
+				output.should.have.length.above(0);
 			});
 
 			it("Should return the correct keywords.", function() {
 				for (var i = correctValue.length - 1; i >= 0; i--) {
-					expect(output[i]).to.equal(correctValue[i]);
+					output[i].should.equal(correctValue[i]);
 				};
 			});
 		});
@@ -89,8 +89,8 @@ describe("doger.js", function() {
 			var output = keywords_from(url);
 			
 			it("Should return a populated array.", function() {
-				expect(output).to.be.a('array');
-				expect(output).to.have.length.above(0);
+				output.should.be.a('array');
+				output.should.have.length.above(0);
 			});
 		});
 
@@ -100,13 +100,13 @@ describe("doger.js", function() {
 			var output = keywords_from(url);
 			
 			it("Should return a populated array.", function() {
-				expect(output).to.be.a('array');
-				expect(output).to.have.length.above(0);
+				output.should.be.a('array');
+				output.should.have.length.above(0);
 			});
 
 			it("Should return the correct keywords.", function() {
 				for (var i = correctValue.length - 1; i >= 0; i--) {
-					expect(output[i]).to.equal(correctValue[i]);
+					output[i].should.equal(correctValue[i]);
 				};
 			});
 		});
@@ -118,29 +118,29 @@ describe("doger.js", function() {
 		var output = keywords_to_doge_text(keywords);
 
 		it("Should return a populated array.", function() {
-			expect(output).to.be.a('array');
-			expect(output).to.have.length.above(0);
+			output.should.be.a('array');
+			output.should.have.length.above(0);
 		});
 
 		it("Should return one string per keyword, plus one.", function() {
-			expect(output.length).to.equal(keywords.length + 1);
+			output.length.should.equal(keywords.length + 1);
 		});
 
 		it("Should return strings that start with doge starting words.", function() {
 			var dogeWords = ["such", "much", "very", "many", "so", "how"];
 			for (var i = output.length - 2; i >= 0; i--) {
-				expect(dogeWords).to.include.members( [ output[i].split(" ")[0] ] );
+				dogeWords.should.include.members( [ output[i].split(" ")[0] ] );
 			};
 		});
 
 		it("Should return a doge ending word as the last string.", function() {
 			var dogeEndWords = ["wow.", "amaze.", "excite."];
-			expect(dogeEndWords).to.include.members( [ output[output.length - 1] ] );
+			dogeEndWords.should.include.members( [ output[output.length - 1] ] );
 		});
 
 		it("Should return text in all lowercase.", function() {
 			for (var i = output.length - 1; i >= 0; i--) {
-				expect(output[i]).to.equal(output[i].toLowerCase());
+				output[i].should.equal(output[i].toLowerCase());
 			};
 		});
 	});
@@ -150,10 +150,10 @@ describe("doger.js", function() {
 		var currentQueryString = window.location.href.slice(window.location.href.indexOf('?') + 1)
 		output = get_query_string();
 		it("Should return null if there is no query string", function() {
-			expect(output).to.be.null;
+			output.should.be.null;
 		});
 		it("Should return a string if there is a query string", function() {
-			expect(output).to.be.a('string');
+			output.should.be.a('string');
 		});
 	});
 
@@ -163,12 +163,12 @@ describe("doger.js", function() {
 		var realURLs = [ "http://google.com/", "http://jquery-howto.blogspot.com/2009/09/get-url-parameters-values-with-jquery.html?bageldonut=slash&otherstuff", "monks.co", "arduino.cc/doc" ];
 		it("should return false for nonurl strings", function() {
 			for (var i = fakeURLs.length - 1; i >= 0; i--) {
-				expect(check_for_url( fakeURLs[i] )).to.be.false;
+				check_for_url( fakeURLs[i] ).should.be.false;
 			};
 		});
 		it("should return true for urls", function() {
 			for (var i = realURLs.length - 1; i >= 0; i--) {
-				expect(check_for_url( realURLs[i] )).to.be.true;
+				check_for_url( realURLs[i] ).should.be.true;
 			};
 		});
 	});
