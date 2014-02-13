@@ -4,7 +4,46 @@
 
 var expect = chai.expect;
 
-describe("doger", function() {
+describe("doger.js", function() {
+
+	describe("Main wrapper function. If everything else passes and this fails, something's probably pretty weird.", function() {
+		var url = "http://monks.co";
+		var output = doger(url);
+		it("Should output an element that url's keywords.", function() {
+			var keywords = keywords_from(url);
+			for (var i = keywords.length - 1; i >= 0; i--) {
+				expect(output.html()).to.have.string(keywords[i]);	
+			};
+		});
+	});
+
+
+	describe("Make doge image.", function() {
+		var image = "http://static.ddmcdn.com/en-us/apl/breedselector/images/breed-selector/dogs/breeds/shiba-inu_01_lg.jpg";
+		var doge_text = [ "much test.", "very units.", "much behavioral.", "amaze."]
+		var output = make_doge_image(image, doge_text);
+
+		it("Should return an object.", function() {
+			expect(output).to.be.a('object');	
+		});
+
+		it("Should contain a div classed .doger", function() {
+			expect($('<div>').append(output.clone()).html()).to.have.string('<div class="doger">')
+			expect($('<div>').append(output.clone()).html()).to.have.string('</div>')
+		})
+
+		it("Should contain an image within the div.", function() {
+			expect(output.html()).to.have.string('<img');	
+		});
+
+		it("Should contain the input text.", function() {
+			for (var i = doge_text.length - 1; i >= 0; i--) {
+				expect(output.html()).to.have.string(doge_text[i]);	
+			};
+		});
+	});
+
+
 	describe("Find the largest image on a page.", function() {
 		var url = "http://www.popsci.com/scitech/article/2009-09/squirt-stem-cell-gel-heals-brain-injuries";
 		var output = image_from(url);
@@ -25,6 +64,8 @@ describe("doger", function() {
 		});
 	});
 
+
+	// *** NEEDS NETWORK CONNECTION TO RUN ***
 	describe("Get the keywords from a webpage.", function() {
 		describe("http://monks.co", function() {
 			var url = "http://monks.co";
@@ -71,6 +112,7 @@ describe("doger", function() {
 		});
 	});
 
+
 	describe("Convert a list of keywords into an array of doge-style strings.", function() {
 		var keywords = ["social physics", "Mr Pentland", "Alex Pentland", "United States", "The Economist"];
 		var output = keywords_to_doge_text(keywords);
@@ -92,12 +134,11 @@ describe("doger", function() {
 		});
 
 		it("Should return a doge ending word as the last string.", function() {
-			var dogeEndWords = ["wow. ", "amaze. ", "excite. "];
+			var dogeEndWords = ["wow.", "amaze.", "excite."];
 			expect(dogeEndWords).to.include.members( [ output[output.length - 1] ] );
 		});
 
 		it("Should return text in all lowercase.", function() {
-			var dogeEndWords = ["wow. ", "amaze. ", "excite. "];
 			for (var i = output.length - 1; i >= 0; i--) {
 				expect(output[i]).to.equal(output[i].toLowerCase());
 			};

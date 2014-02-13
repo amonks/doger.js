@@ -40,7 +40,7 @@ Thanks to linguist Gretchen McCulloch for [explaining](http://the-toast.net/2014
 
 ## original pseudocode
 
-// pseudocode ahead...
+	// pseudocode ahead...
 
 	function doger(url)
 		content = url.get_article_content

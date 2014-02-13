@@ -2,7 +2,7 @@
 // translate any text into doge
 // andrew monks 2014
 
-// function to return a completed doge meme image based on a given article url
+// main function to return a completed doge meme image based on a given article url
 function doger(url) {
 	var image = image_from(url);
 	var keywords = keywords_from(url);
@@ -15,33 +15,35 @@ function doger(url) {
 // thought: perhaps it'd be easier to generate a unique hash url to a page with the text overlayed using css? but then people can't tumbl...
 function make_doge_image(image, doge_text) {
 	// superimpose the text over the image in rainbow comic sans
-
 	// dummy output until this function is real
-	return {
-		image: image,
-		doge_text: doge_text
-	};
+	return $("<div class='doger'><img src='" + image + "' /></div>");
 };
 
 // function to return an array of relevant doge phrases given a long string
 function keywords_to_doge_text(keywords) {
+	// see http://the-toast.net/2014/02/06/linguist-explains-grammar-doge-wow/
 	var dogeWords = ["such", "much", "very", "many", "so", "how"];
 	var dogeEndWords = ["wow", "amaze", "excite"];
 	var output = [];
+	// add keywords
 	for (var i = keywords.length - 1; i >= 0; i--) {
-		output.push( random_from_array(dogeWords) + " " + keywords[i].toLowerCase() + ". " );
+		output.push( random_from_array(dogeWords) + " " + keywords[i].toLowerCase() + "." );
 	};
-	output.push( random_from_array(dogeEndWords) + ". ");
+	// add end word
+	output.push( random_from_array(dogeEndWords) + ".");
 	return output;
 };
 
 // function to return identifying keywords from a given article url
 function keywords_from(url) {
 	// get keywords from article
+	// using yahoo content analysis api
+	// see http://developer.yahoo.com/contentanalysis/
 	var query = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20contentanalysis.analyze%20where%20url=%27" + escape(url) + "%27";
-	var response = httpGet(query);
-	var jresponse = $(response);
-	var keywords = jresponse.find("entity");
+	var response = $(httpGet(query)); // httpGetdefined below
+	// keywords are listed inside <entity><text></text></entity> within the response
+	// n.b. it also provides a confidence score for each keyword
+	var keywords = response.find("entity");
 	var output = []
 	for (var i = keywords.length - 1; i >= 0; i--) {
 		output.push($(keywords[i]).find('text').text());
@@ -52,11 +54,11 @@ function keywords_from(url) {
 // function to return the largest image from a given article url
 // thought: it seems like this is actually hard. maybe I should use actual doge photos instead?
 function image_from(url) {
-	// test output
-	return "http://monks.co/images/andrew-monks.png";
+	// dummy output
+	return "http://static.ddmcdn.com/en-us/apl/breedselector/images/breed-selector/dogs/breeds/shiba-inu_01_lg.jpg";
 };
 
-// function to GET a url
+// function to GET a url, needed by keywords_from()
 function httpGet(theUrl)
 {
     var xmlHttp = null;
@@ -67,7 +69,7 @@ function httpGet(theUrl)
     return xmlHttp.responseText;
 };
 
-// function to return a random member of a given array
+// function to return a random member of a given array, needed by keywords_to_doge_text()
 function random_from_array(array) {
 	return array[Math.floor(Math.random()*array.length)];
 };
