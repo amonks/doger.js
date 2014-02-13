@@ -5,6 +5,7 @@
 // main function to return a completed doge meme image based on a given article url
 function doger(string) {
 	// if the argument isn't a url, try to get a url from the query string
+	// note that check_for_url currently always returns true
 	var url = string;
 	if ( check_for_url(string) == false ) {
 		// if the query string isn't a url, use a default one
