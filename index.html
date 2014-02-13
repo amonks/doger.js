@@ -17,10 +17,10 @@
 
         <script src="doger.js"></script>
         <script>
-            doger($("#dogebox"), "http://monks.co");
+            doger($("#dogebox"));
             function dogeFromForm() {
                 var url = $("#urlform").val();
-                window.location = "http://amonks.github.io/doger.js" + "?" + escape(url);
+                window.location = "http://amonks.github.io/doger.js" + "?" + url;
             }
         </script>
         
