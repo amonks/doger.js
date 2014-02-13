@@ -15,6 +15,8 @@ function doger(string) {
 			var url = get_query_string();
 		};
 	};
+
+	// do the stuff!
 	var image = image_from(url);
 	var keywords = keywords_from(url);
 	var doge_text = keywords_to_doge_text(keywords);
