@@ -12,8 +12,11 @@ function doger(url) {
 };
 
 // function to return a completed doge meme image from a given image and array of doge phrases
+// thought: perhaps it'd be easier to generate a unique hash url to a page with the text overlayed using css? but then people can't tumbl...
 function make_doge_image(image, doge_text) {
 	// superimpose the text over the image in rainbow comic sans
+
+	// dummy output until this function is real
 	return {
 		image: image,
 		doge_text: doge_text
@@ -47,6 +50,7 @@ function keywords_from(url) {
 };
 
 // function to return the largest image from a given article url
+// thought: it seems like this is actually hard. maybe I should use actual doge photos instead?
 function image_from(url) {
 	// test output
 	return "http://monks.co/images/andrew-monks.png";

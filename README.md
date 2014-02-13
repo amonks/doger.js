@@ -6,9 +6,33 @@ doger.js is a javascript thingy to convert online articles into doge meme images
 
 given an article url, it should find keywords in the article to use in doge-phrases, and then superimpose those doge-phrases over the main article image in rainbow comic sans.
 
-## tests / todo
+## tests
 
 [the tests](http://amonks.github.io/doger.js)
+
+## ideas
+
+### don't try to find an image on the page, use a generic doge photo
+
+*	not every article has an image
+
+*	if it does it's often not large enough
+
+*	it's hard to find the most important one without making a bunch of requests
+
+*	does it even make sense to use an article image as the background for a doge meme
+
+### don't generate an image, overlay text using css
+
+*	generating images on the client side seems like it might be hard(??)
+
+### make server/api 
+
+*	doger.co/[articleurl] should return a page with the finished doge meme
+
+*	maybe allow users to drag keywords around image? set their own? save in hashy url? probably overkill.
+
+*	maybe allow text input too at doger.co/text/[string]
 
 ## props
 
