@@ -22,6 +22,8 @@ given an article url, it should find keywords in the article to use in doge-phra
 
 *	does it even make sense to use an article image as the background for a doge meme
 
+*	easy preset text locations to not block key parts of image
+
 ### don't generate an image, overlay text using css
 
 *	generating images on the client side seems like it might be hard(??)
@@ -29,8 +31,6 @@ given an article url, it should find keywords in the article to use in doge-phra
 ### make server/api 
 
 *	doger.co/[articleurl] should return a page with the finished doge meme
-
-*	maybe allow users to drag keywords around image? set their own? save in hashy url? probably overkill.
 
 *	maybe allow text input too at doger.co/text/[string]
 
