@@ -77,7 +77,7 @@
                 };
                 function dogeFromUrlForm() {
                     var url = $("#urlform").val();
-                    if (url.length <= 1) {
+                    if (url == false) {
                         var keywords = ["Dante Pilkington", "realtime video", "music video", "Andrew Monks", "responsive design", "Andrew Zarins", "Facebook", "Oblique Strategies", "Concord Carlisle Regional High School", "Belgian Man Records", "Belgian Man Records"];
                     } else {
                         var keywords = Doger.keywords_from_url(url);
