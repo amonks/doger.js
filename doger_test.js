@@ -134,11 +134,11 @@ describe("doger.js", function() {
 		});
 
 		it("Should include a height.", function() {
-			expect(output.height).to.be.a('integer');	
+			expect(output.height).to.be.a('number');	
 		});
 
 		it("Should include a width.", function() {
-			expect(output.width).to.be.a('integer');	
+			expect(output.width).to.be.a('number');	
 		});
 	});
 
