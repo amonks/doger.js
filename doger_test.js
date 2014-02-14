@@ -59,7 +59,7 @@ describe("doger.js", function() {
 
 		describe("Popular Science article", function() {
 			var url = "http://www.popsci.com/scitech/article/2009-09/squirt-stem-cell-gel-heals-brain-injuries";
-			var output = keywords_from(url);
+			var output = keywords_from_url(url);
 			
 			it("Should return a populated array.", function() {
 				expect(output).to.be.a('array');
@@ -70,7 +70,7 @@ describe("doger.js", function() {
 		describe("The Economist article", function() {
 			var url = "http://www.economist.com/news/books-and-arts/21595883-how-re-engineer-world-measure-man-0";
 			var correctValue = ["social physics", "Mr Pentland", "Alex Pentland", "United States", "The Economist"];
-			var output = keywords_from(url);
+			var output = keywords_from_url(url);
 			
 			it("Should return a populated array.", function() {
 				expect(output).to.be.a('array');
