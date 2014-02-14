@@ -21,16 +21,16 @@
             <div id="dogeformContainer" style="position: relative;">
                 <div id="dogeform" >
                     <div class="dogetype">
-                        <textarea name="keywordform" value="" id="keywordform" ></textarea>
+                        <input type="text" value="" id="keywordform" />
                         <button onclick="dogeFromKeywordForm()">doge comma-separated list of keywords</button>
-                    </div>
-                    <div class="dogetype">
-                        <textarea name="textform" value="" id="textform" ></textarea>
-                        <button onclick="dogeFromTextForm()">doge text</button>
                     </div>
                     <div class="dogetype">
                         <input type="url" name="urlform" value="http://monks.co" id="urlform" />
                         <button onclick="dogeFromUrlForm()">doge url</button>
+                    </div>
+                    <div class="dogetype">
+                        <textarea name="textform" value="" id="textform" ></textarea>
+                        <button onclick="dogeFromTextForm()">doge text</button>
                     </div>
                 </div>
             </div>
