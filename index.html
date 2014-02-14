@@ -17,11 +17,10 @@
 
         <script src="doger.js"></script>
         <script>
-            doger($("#dogebox"));
-            function dogeFromForm() {
-                var text = $("#textform").val().replace(/[^a-zA-Z ]+/g, '');
-                window.location = "http://amonks.github.io/doger.js" + "?" + btoa(text);
-            }
+            if (get_query_string()) {
+                var text = get_query_string();
+                var keywords = keywords_from_text(text);
+            };
         </script>
         
         <div id="dogeform" style="position: absolute; bottom: 0; left: 0">

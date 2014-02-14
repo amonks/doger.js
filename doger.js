@@ -3,14 +3,9 @@
 // andrew monks 2014
 
 // main function to return a completed doge meme image based on a given article url
-function doger(container, string) {
-	// if the argument isn't a url, try to get a url from the query string
-	// note that check_for_url currently always returns true
-	var text = get_query_string();
-
+function doger(container, keywords) {	
 	// do the stuff!
 	var image = doge_image();
-	var keywords = keywords_from_text(text);
 	var doge_text = keywords_to_doge_text(keywords);
 	var output = make_doge_image(image, doge_text);
 	container.append(output);
@@ -85,7 +80,7 @@ function keywords_from_text(text) {
 	return output
 };
 
-// function to get the current query string (anything in the location bar after a '?')
+// function to get the current query string (anything in the location bar after a '?'), and de-base64 it.
 function get_query_string() {
 	if (window.location.href.indexOf('?') == -1) {
 		return null;
