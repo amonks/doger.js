@@ -138,6 +138,18 @@ Doger = {
             width: 461,
             height: 400
         }, {
+            url: "images/shiba-inu-puppies-pictures.jpg",
+            width: 922,
+            height: 922
+        }, {
+            url: "images/001.jpg",
+            width: 1023,
+            height: 1024
+        }, {
+            url: "images/Taisen_Shikaki_Inu.186100552_std.jpg",
+            width: 800,
+            height: 994
+        }, {
             url: "images/shiba_inu.jpg",
             width: 460,
             height: 315
