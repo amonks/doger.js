@@ -146,7 +146,7 @@ Doger = {
             width: 1023,
             height: 1024
         }, {
-            url: "images/Taisen_Shikaki_Inu.186100552_std.jpg",
+            url: "images/Taisen_Shikaki_Inu.jpg",
             width: 800,
             height: 994
         }, {
