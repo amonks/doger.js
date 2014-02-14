@@ -129,19 +129,19 @@ Doger = {
     // function to return an object with a doge image url, a height, and a width
     doge_image: function() {
         doge_images = [{
-            url: "http://static.ddmcdn.com/en-us/apl/breedselector/images/breed-selector/dogs/breeds/shiba-inu_01_lg.jpg",
+            url: "images/shiba-inu_01_lg.jpg",
             width: 622,
             height: 352
         }, {
-            url: "http://wooftown.com/wp-content/uploads/2011/03/Shiba-Inu-Main.jpg",
+            url: "images/Shiba-Inu-Main.jpg",
             width: 461,
             height: 400
         }, {
-            url: "http://images.akc.org/breeds/action_images/shiba_inu.jpg",
+            url: "images/shiba_inu.jpg",
             width: 460,
             height: 315
         }, {
-            url: "http://static.ddmcdn.com/en-us/apl/breedselector/images/breed-selector/dogs/breeds/shiba-inu_04_lg.jpg",
+            url: "images/shiba-inu_04_lg.jpg",
             width: 622,
             height: 352
         }]
