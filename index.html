@@ -19,18 +19,27 @@
         <script>
             if (get_query_string()) {
                 var text = get_query_string();
-                var keywords = keywords_from_text(text);
+                var keywords = text.split(',');
                 doger($("#dogebox"), keywords);
             };
-            function dogeFromForm() {
+            function dogeFromTextForm() {
                 var text = $("#textform").val().replace(/[^a-zA-Z ]+/g, '');
-                window.location = "http://amonks.github.io/doger.js" + "?" + btoa(text);
+                var keywords = keywords_from_text(text);
+                window.location = "http://amonks.github.io/doger.js" + "?" + btoa(keywords);
+            };
+            function dogeFromUrlForm() {
+                var url = $("#urlform").val();
+                var keywords = keywords_from_url(url);
+                window.location = "http://amonks.github.io/doger.js" + "?" + btoa(keywords);
             };
         </script>
         
         <div id="dogeform" style="position: absolute; bottom: 0; left: 0">
             <textarea name="textform" value="" id="textform" ></textarea>
-            <button onclick="dogeFromForm()">doge it</button>
+            <button onclick="dogeFromTextForm()">doge text</button>
+
+            <textarea name="urlform" value="" id="urlform" ></textarea>
+            <button onclick="dogeFromUrlForm()">doge url</button>
         </div>
     </body>
 
