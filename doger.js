@@ -20,13 +20,23 @@ Doger = {
 		var div = $("<div class='doger'><img src='" + image.url + "' /></div>");
 		if (doge_text.length <= 1) {return div};
 		div.find('img').css({"position":"absolute"});
-		div.css({"font-family":"Comic Sans, Comic Sans MS, cursive", "font-weight":"bold"," position":"relative"});
+		div.css({"font-family":"Comic Sans, 
+			Comic Sans MS, cursive", 
+			"font-weight":"bold", 
+			"position":"relative", 
+			"width":image.width, 
+			"height":image.height 
+		});
 		for (var i = 0; i <= doge_text.length - 1; i++) {
 			var span = $("<span class='dogetext'>" + doge_text[i] + "</span>");
 			var x = Math.random() * image.width * .75;
 			var y = i * (image.height / doge_text.length);
 			var color = Doger.random_color();
-			span.css({"position":"absolute", "top": y, "left": x, "color": color});
+			span.css({"position":"absolute",
+				"top": y, 
+				"left": x, 
+				"color": color
+			});
 			div.append(span);
 		};
 		return div;
