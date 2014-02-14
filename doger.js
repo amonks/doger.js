@@ -12,7 +12,7 @@ function doger(container, string) {
 	};
 
 	// do the stuff!
-	var image = image_from(url);
+	var image = doge_image();
 	var keywords = keywords_from(url);
 	var doge_text = keywords_to_doge_text(keywords);
 	var output = make_doge_image(image, doge_text);
