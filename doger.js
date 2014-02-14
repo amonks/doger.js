@@ -32,7 +32,7 @@ Doger = {
             "height": "100%"
         });
         div.css({
-            "font-family": "Comic Sans, Comic Sans MS, cursive",
+            "font-family": "'Comic Sans', 'Comic Sans MS', 'Marker Felt', cursive",
             "font-weight": "bold",
             "font-size": "20px",
             "position": "relative",
