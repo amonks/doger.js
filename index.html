@@ -55,6 +55,7 @@
                     <div class="embed panel">
                         <button class="btn btn-primary" data-toggle="modal" data-target=".embed-modal">Embed code</button>
                         <button class="btn btn-default" data-toggle="modal" data-target=".link-modal">Link</button>
+                        <button class="btn btn-info" data-toggle="modal" data-target=".info-modal">Link</button>
 
                         <div class="modal fade embed-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-sm">
@@ -94,18 +95,33 @@
                             </div>
                         </div>
 
+                        <div class="modal fade info-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-sm">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title" id="myModalLabel">Info</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="panel">
+                                            <p><a href="http://amonks.github.io/doger.js">doger.js</a> is a &ldquo;doge&rdquo; meme generator. It generates scalable, css-based graphics. Given a block of text or a website url, it uses term extraction to pull out important keywords. Then, it uses the linguistic conventions of the popular &ldquo;doge&rdquo; meme to generate phrases based on those keywords.</p>
+                                            <p>doger.js is implemented as a javascript library. It&#8127;s intended to run in the browser, which makes it very portable.</p>
+                                        </div>
+                                        <div class="panel">
+                                            <p>by <a href="http://monks.co/">Andrew Monks</a>, 2014</p>
+                                            <p>source on <a href="http://github.com/amonks/doger.js">github</a></p>
+                                            <p><a href="https://github.com/amonks/doger.js/blob/gh-pages/LICENSE">MIT License</a></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
-                </div>
-                <div class="panel">
-                    <p>
-                        by <a href="http://monks.co/">Andrew Monks</a>, 2014
-                    </p>
-                    <p>
-                        source on <a href="http://github.com/amonks/doger.js">github</a>
-                    </p>
-                    <p>
-                        <a href="https://github.com/amonks/doger.js/blob/gh-pages/LICENSE">MIT License</a>
-                    </p>
                 </div>
             </div>
         </div>
