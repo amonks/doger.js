@@ -38,7 +38,6 @@ Doger = {
             "position": "relative",
             "width": "100%",
             "height": "0",
-            "text-shadow" : "1px 1px" + Doger.random_color(),
             "padding-bottom": "" + (image.height / image.width) * 100 + "%"
         });
         for (var i = 0; i <= doge_text.length - 1; i++) {
@@ -46,10 +45,12 @@ Doger = {
             var x = Math.random() * 100 * .75;
             var y = i * (100 / doge_text.length);
             var color = Doger.random_color();
+            var shadow = Doger.random_color();
             span.css({
                 "position": "absolute",
                 "top": "" + y + "%",
                 "left": "" + x + "%",
+		        "text-shadow" : "1px 1px" + shadow,
                 "color": color
             });
             div.append(span);
