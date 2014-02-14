@@ -43,7 +43,7 @@ describe("doger.js", function() {
 		describe("http://monks.co", function() {
 			var url = "http://monks.co";
 			var correctValue = ["Dante Pilkington", "realtime video", "music video", "Andrew Monks", "responsive design", "Andrew Zarins", "Facebook", "Oblique Strategies", "Concord Carlisle Regional High School", "Belgian Man Records", "Belgian Man Records"];
-			var output = keywords_from(url);
+			var output = keywords_from_url(url);
 			
 			it("Should return a populated array.", function() {
 				expect(output).to.be.a('array');
