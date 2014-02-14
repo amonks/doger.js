@@ -19,7 +19,7 @@
         <script>
             doger($("#dogebox"));
             function dogeFromForm() {
-                var text = $("#textform").val();
+                var text = $("#textform").val().replace(/[^a-zA-Z ]+/g, '');
                 window.location = "http://amonks.github.io/doger.js" + "?" + btoa(text);
             }
         </script>

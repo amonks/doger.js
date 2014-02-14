@@ -73,7 +73,7 @@ function keywords_from_text(text) {
 	// get keywords from article
 	// using yahoo content analysis api
 	// see http://developer.yahoo.com/contentanalysis/
-	var query = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20contentanalysis.analyze%20where%20text%3D%22" + escape(text) + "%22&diagnostics=true";
+	var query = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20contentanalysis.analyze%20where%20text%3D%22" + encodeURI(text) + "%22&diagnostics=true";
 	var response = $(httpGet(query)); // httpGetdefined below
 	// keywords are listed inside <entity><text></text></entity> within the response
 	// n.b. it also provides a confidence score for each keyword
@@ -102,7 +102,7 @@ function check_for_url(string) {
 
 // function to get an article's content with the readability api
 function get_content_from_url(url) {
-	var query = "https://readability.com/api/content/v1/parser?url=" + escape(url) + "&token=2d3cae85509d49fc2d2ec8d1b5fd46aef1dc0130";
+	var query = "https://readability.com/api/content/v1/parser?url=" + encodeURI(url) + "&token=2d3cae85509d49fc2d2ec8d1b5fd46aef1dc0130";
 	var response = httpGet(query);
 	return response;
 }
