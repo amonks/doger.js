@@ -25,6 +25,7 @@ function make_doge_image(image, doge_text) {
 	// superimpose the text over the image in rainbow comic sans
 	// dummy output until this function is real
 	var div = $("<div class='doger'><img src='" + image.url + "' /></div>");
+	if (doge_text.length <= 1) {return div};
 	div.find('img').css({"position":"absolute"});
 	div.css({"font-family":"Comic Sans, Comic Sans MS, cursive", "position":"relative"});
 	for (var i = 0; i <= doge_text.length - 1; i++) {
