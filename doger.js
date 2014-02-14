@@ -20,8 +20,8 @@ Doger = {
 		var div = $("<div class='doger'><img src='" + image.url + "' /></div>");
 		if (doge_text.length <= 1) {return div};
 		div.find('img').css({"position":"absolute"});
-		div.css({"font-family":"Comic Sans, 
-			Comic Sans MS, cursive", 
+		div.css({
+			"font-family":"Comic Sans, Comic Sans MS, cursive", 
 			"font-weight":"bold", 
 			"position":"relative", 
 			"width":image.width, 
@@ -32,7 +32,8 @@ Doger = {
 			var x = Math.random() * image.width * .75;
 			var y = i * (image.height / doge_text.length);
 			var color = Doger.random_color();
-			span.css({"position":"absolute",
+			span.css({
+				"position":"absolute",
 				"top": y, 
 				"left": x, 
 				"color": color
