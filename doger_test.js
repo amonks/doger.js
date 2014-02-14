@@ -10,7 +10,7 @@ describe("doger.js", function() {
 	describe("Correctly respond to the current query string", function() {
 		var currentQueryString = window.location.href.slice(window.location.href.indexOf('?') + 1)
 		output = get_query_string();
-		if( window.location.href.slice(window.location.href.indexOf('?') + 1) === -1 ) {
+		if( window.location.href.indexOf('?') == -1 ) {
 			it("Should return null if there is no query string", function() {
 				expect(output).to.be.null;
 			});
