@@ -38,14 +38,14 @@
             <div id="dogebox" style="position: relative"></div>
 
             <script>
-                if (get_query_string()) {
-                    var text = get_query_string();
+                if (Doger.get_query_string()) {
+                    var text = Doger.get_query_string();
                     var keywords = text.split(',');
-                    doger($("#dogebox"), keywords);
+                    Doger.doger($("#dogebox"), keywords);
                 };
                 function dogeFromTextForm() {
                     var text = $("#textform").val();
-                    var keywords = keywords_from_text(text);
+                    var keywords = Doger.keywords_from_text(text);
                     window.location = "http://amonks.github.io/doger.js" + "?" + btoa(keywords);
                 };
                 function dogeFromKeywordForm() {
@@ -54,7 +54,7 @@
                 };
                 function dogeFromUrlForm() {
                     var url = $("#urlform").val();
-                    var keywords = keywords_from_url(url);
+                    var keywords = Doger.keywords_from_url(url);
                     window.location = "http://amonks.github.io/doger.js" + "?" + btoa(keywords);
                 };
             </script>

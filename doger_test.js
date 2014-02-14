@@ -9,7 +9,7 @@ describe("doger.js", function() {
 
 	describe("Correctly respond to the current query string", function() {
 		var currentQueryString = window.location.href.slice(window.location.href.indexOf('?') + 1)
-		output = get_query_string();
+		output = Doger.get_query_string();
 		if( window.location.href.indexOf('?') == -1 ) {
 			it("Should return null if there is no query string", function() {
 				expect(output).to.be.null;
@@ -27,12 +27,12 @@ describe("doger.js", function() {
 		var realURLs = [ "http://google.com/", "http://jquery-howto.blogspot.com/2009/09/get-url-parameters-values-with-jquery.html?bageldonut=slash&otherstuff", "monks.co", "arduino.cc/doc" ];
 		it("should return false for nonurl strings", function() {
 			for (var i = fakeURLs.length - 1; i >= 0; i--) {
-				expect(check_for_url( fakeURLs[i] )).to.be.false;
+				expect(Doger.check_for_url( fakeURLs[i] )).to.be.false;
 			};
 		});
 		it("should return true for urls", function() {
 			for (var i = realURLs.length - 1; i >= 0; i--) {
-				expect(check_for_url( realURLs[i] )).to.be.true;
+				expect(Doger.check_for_url( realURLs[i] )).to.be.true;
 			};
 		});
 	});
@@ -43,7 +43,7 @@ describe("doger.js", function() {
 		describe("http://monks.co", function() {
 			var url = "http://monks.co";
 			var correctValue = ["Dante Pilkington", "realtime video", "music video", "Andrew Monks", "responsive design", "Andrew Zarins", "Facebook", "Oblique Strategies", "Concord Carlisle Regional High School", "Belgian Man Records", "Belgian Man Records"];
-			var output = keywords_from_url(url);
+			var output = Doger.keywords_from_url(url);
 			
 			it("Should return a populated array.", function() {
 				expect(output).to.be.a('array');
@@ -59,7 +59,7 @@ describe("doger.js", function() {
 
 		describe("Popular Science article", function() {
 			var url = "http://www.popsci.com/scitech/article/2009-09/squirt-stem-cell-gel-heals-brain-injuries";
-			var output = keywords_from_url(url);
+			var output = Doger.keywords_from_url(url);
 			
 			it("Should return a populated array.", function() {
 				expect(output).to.be.a('array');
@@ -70,7 +70,7 @@ describe("doger.js", function() {
 		describe("The Economist article", function() {
 			var url = "http://www.economist.com/news/books-and-arts/21595883-how-re-engineer-world-measure-man-0";
 			var correctValue = ["social physics", "Mr Pentland", "Alex Pentland", "United States", "The Economist"];
-			var output = keywords_from_url(url);
+			var output = Doger.keywords_from_url(url);
 			
 			it("Should return a populated array.", function() {
 				expect(output).to.be.a('array');
@@ -86,10 +86,10 @@ describe("doger.js", function() {
 	});
 
 	describe("Get the keywords from text.", function() {
-		describe("http://monks.co", function() {
-			var url = "http://monks.co";
+		describe("Reptillian blurb", function() {
+			var text = "According to British writer David Icke, 5- to 12-foot (1.5–3.7 m) tall, blood-drinking, shape-shifting reptilian humanoids from the Alpha Draconis star system, now hiding in underground bases, are the force behind a worldwide conspiracy against humanity.[7] He contends that most of the world's leaders are related to these reptilians, including George W. Bush of the United States, and Queen Elizabeth II of the United Kingdom.[8] Icke's conspiracy theories now have supporters in 47 countries and he has given lectures to crowds of up to 6,000.[9][10] American writer Vicki Santillano included it in her list of the 10 most popular conspiracy theories, describing it as the "wackiest theory" she had encountered.[11] A poll of Americans in 2013 by Public Policy Polling showed that 4% of registered voters believed in David Icke's ideas.[12]";
 			var correctValue = ["Dante Pilkington", "realtime video", "music video", "Andrew Monks", "responsive design", "Andrew Zarins", "Facebook", "Oblique Strategies", "Concord Carlisle Regional High School", "Belgian Man Records", "Belgian Man Records"];
-			var output = keywords_from_url(url);
+			var output = Doger.keywords_from_url(url);
 			
 			it("Should return a populated array.", function() {
 				expect(output).to.be.a('array');
@@ -105,7 +105,7 @@ describe("doger.js", function() {
 
 		describe("Popular Science article", function() {
 			var url = "http://www.popsci.com/scitech/article/2009-09/squirt-stem-cell-gel-heals-brain-injuries";
-			var output = keywords_from_url(url);
+			var output = Doger.keywords_from_url(url);
 			
 			it("Should return a populated array.", function() {
 				expect(output).to.be.a('array');
@@ -116,7 +116,7 @@ describe("doger.js", function() {
 		describe("The Economist article", function() {
 			var url = "http://www.economist.com/news/books-and-arts/21595883-how-re-engineer-world-measure-man-0";
 			var correctValue = ["social physics", "Mr Pentland", "Alex Pentland", "United States", "The Economist"];
-			var output = keywords_from_url(url);
+			var output = Doger.keywords_from_url(url);
 			
 			it("Should return a populated array.", function() {
 				expect(output).to.be.a('array');
@@ -134,7 +134,7 @@ describe("doger.js", function() {
 
 	describe("Convert a list of keywords into an array of doge-style strings.", function() {
 		var keywords = ["social physics", "Mr Pentland", "Alex Pentland", "United States", "The Economist"];
-		var output = keywords_to_doge_text(keywords);
+		var output = Doger.keywords_to_doge_text(keywords);
 
 		it("Should return a populated array.", function() {
 			expect(output).to.be.a('array');
@@ -166,7 +166,7 @@ describe("doger.js", function() {
 
 
 	describe("Pick an Image", function() {
-		var output = doge_image();
+		var output = Doger.doge_image();
 
 		// it("Should return a url.", function() {
 		// 	// absurdly overcomplicated regex to too-liberally match urls; from https://gist.github.com/gruber/8891611
@@ -199,7 +199,7 @@ describe("doger.js", function() {
 			height: 352
 		};
 		var doge_text = [ "much test.", "very units.", "much behavioral.", "amaze."];
-		var output = make_doge_image(image, doge_text);
+		var output = Doger.make_doge_image(image, doge_text);
 
 		it("Should return an object.", function() {
 			expect(output).to.be.a('object');	
