@@ -15,7 +15,7 @@
     <body>
         <div class="container" style="padding: 10px;    ">
             <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-
+            <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
             <script src="doger.js"></script>
             <div class="row">
                 <div class="page-header">
@@ -39,6 +39,12 @@
                                 <button class="btn btn-default" onclick="dogeFromTextForm()">doge text</button>
                             </div>
                         </div>
+                        <div class="embed">
+                            <button class="btn btn-primary btn-md" onclick="copyToClipboard()">
+                              Embed code
+                            </button>
+
+                        </div>
                     </div>
                     <p>
                         by <a href="http://monks.co/">Andrew Monks</a>, 2014
@@ -60,10 +66,10 @@
                 if (Doger.get_query_string()) {
                     var text = Doger.get_query_string();
                     var keywords = text.split(',');
-                    Doger.doger($("#dogebox"), keywords);
+                    var embed = Doger.doger($("#dogebox"), keywords, $("#embedcode"));
                 } else {
                     var keywords = ["doge", "term extraction", "memetics", "javascript", "shiba inu", "artificial intelligence", "client-side"];
-                    Doger.doger($("#dogebox"), keywords);
+                    var embed = Doger.doger($("#dogebox"), keywords, $("#embedcode"));
                 };
                 function dogeFromTextForm() {
                     var text = $("#textform").val();
@@ -87,6 +93,9 @@
                     };
                     window.location = "http://amonks.github.io/doger.js" + "?" + btoa(keywords);
                 };
+                function copyToClipboard() {
+                    window.prompt("Copy to clipboard: Ctrl+C, Enter", embed);
+                }
             </script>
         </div>
     </body>
