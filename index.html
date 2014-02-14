@@ -9,8 +9,12 @@
 <head>
     <meta charset="UTF-8" />
     <title>doger</title>
-    <link rel="stylesheet" media="all" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" </head>
+    <link rel="stylesheet" media="all" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .panel {margin-bottom: 30px;}
+    </style>
+</head>
 
     <body>
         <div class="container" style="padding: 10px;    ">
@@ -28,24 +32,25 @@
                 <div class="col-md-4">
                     <div id="dogeformContainer" style="position: relative;">
                         <div id="dogeform">
-                            <div class="form-group">
+                            <div class="form-group panel">
                                 <input type="text" class="form-control" placeholder="doge, term extraction, memetics, javascript, shiba inu, artificial intelligence, client-side" id="keywordform" />
                                 <button class="btn btn-default" onclick="dogeFromKeywordForm()">doge comma-separated list of keywords</button>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group panel">
                                 <input type="url" name="urlform" class="form-control" placeholder="http://monks.co" id="urlform" />
                                 <button class="btn btn-default" onclick="dogeFromUrlForm()">doge url</button>
                                 <span class="label label-warning">maybe works?</span>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group panel">
                                 <textarea name="textform" placeholder="According to British writer David Icke, 5- to 12-foot (1.5–3.7 m) tall, blood-drinking, shape-shifting reptilian humanoids from the Alpha Draconis star system, now hiding in underground bases, are the force behind a worldwide conspiracy against humanity.[7] He contends that most of the world's leaders are related to these reptilians, including George W. Bush of the United States, and Queen Elizabeth II of the United Kingdom.[8] Icke's conspiracy theories now have supporters in 47 countries and he has given lectures to crowds of up to 6,000.[9][10] American writer Vicki Santillano included it in her list of the 10 most popular conspiracy theories, describing it as the 'wackiest theory' she had encountered.[11] A poll of Americans in 2013 by Public Policy Polling showed that 4% of registered voters believed in David Icke's ideas.[12]" class="form-control" rows="4" value="" id="textform"></textarea>
                                 <button class="btn btn-default" onclick="dogeFromTextForm()">doge text</button>
                             </div>
                         </div>
-                        <div class="embed">
-                            <button class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Embed code</button>
+                        <div class="embed panel">
+                            <button class="btn btn-primary" data-toggle="modal" data-target=".embed-modal">Embed code</button>
+                            <button class="btn btn-default" data-toggle="modal" data-target=".link-modal">Link</button>
 
-                            <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                            <div class="modal fade embed-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-sm">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -64,17 +69,38 @@
                                 </div>
                             </div>
 
+                            <div class="modal fade link-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-sm">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title" id="myModalLabel">Link</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <textarea id="permalink" class="form-control" rows="5"></textarea>
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" onclick="selectlink()">Select</button>
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
-                    <p>
-                        by <a href="http://monks.co/">Andrew Monks</a>, 2014
-                    </p>
-                    <p>
-                        source on <a href="http://github.com/amonks/doger.js">github</a>
-                    </p>
-                    <p>
-                        <a href="https://github.com/amonks/doger.js/blob/gh-pages/LICENSE">MIT License</a>
-                    </p>
+                    <div class="panel" >
+                        <p>
+                            by <a href="http://monks.co/">Andrew Monks</a>, 2014
+                        </p>
+                        <p>
+                            source on <a href="http://github.com/amonks/doger.js">github</a>
+                        </p>
+                        <p>
+                            <a href="https://github.com/amonks/doger.js/blob/gh-pages/LICENSE">MIT License</a>
+                        </p>
+                    </div>
                 </div>
 
                 <div class="col-md-8">
@@ -91,6 +117,9 @@
                 var keywords = ["doge", "term extraction", "memetics", "javascript", "shiba inu", "artificial intelligence", "client-side"];
                 var embed = Doger.doger($("#dogebox"), keywords, $("#embedcode"));
             };
+
+
+            $("#permalink").text(document.URL);
 
 
             function dogeFromTextForm() {
@@ -124,6 +153,10 @@
 
             function selectembedcode() {
                 $("#embedcode").select();
+            }
+
+            function selectlink() {
+                $("#permalink").select();
             }
 
             </script>
