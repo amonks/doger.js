@@ -77,6 +77,11 @@
                 };
                 function dogeFromUrlForm() {
                     var url = $("#urlform").val();
+                    if (url.length <= 1) {
+                        var keywords = ["Dante Pilkington", "realtime video", "music video", "Andrew Monks", "responsive design", "Andrew Zarins", "Facebook", "Oblique Strategies", "Concord Carlisle Regional High School", "Belgian Man Records", "Belgian Man Records"];
+                    } else {
+                        var keywords = Doger.keywords_from_url(url);
+                    };
                     var keywords = Doger.keywords_from_url(url);
                     window.location = "http://amonks.github.io/doger.js" + "?" + btoa(keywords);
                 };
