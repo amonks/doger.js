@@ -116,9 +116,8 @@ describe("doger.js", function() {
 	});
 
 
-	describe("Find the largest image on a page.", function() {
-		var url = "http://www.popsci.com/scitech/article/2009-09/squirt-stem-cell-gel-heals-brain-injuries";
-		var output = image_from(url);
+	describe("Pick an Image", function() {
+		var output = doge_image();
 
 		// it("Should return a url.", function() {
 		// 	// absurdly overcomplicated regex to too-liberally match urls; from https://gist.github.com/gruber/8891611
@@ -126,13 +125,20 @@ describe("doger.js", function() {
 		// 	expect(output).to.match(regex);
 		// });
 
-		it("Should return a string.", function() {
-			expect(output).to.be.a('string');	
+		it("Should return an object.", function() {
+			expect(output).to.be.a('object');	
 		});
 
-		it("Should return the largest image on a page.", function() {
-			var correctValue = "http://www.popsci.com/sites/popsci.com/files/styles/article_image_large/public/images/2009/09/Brain_injury_with_herniation_MRI.jpg?itok=Sq_deapY";
-			expect(output).to.equal(correctValue);	
+		it("Should include a url.", function() {
+			expect(output.url).to.be.a('string');	
+		});
+
+		it("Should include a height.", function() {
+			expect(output.height).to.be.a('integer');	
+		});
+
+		it("Should include a width.", function() {
+			expect(output.width).to.be.a('integer');	
 		});
 	});
 

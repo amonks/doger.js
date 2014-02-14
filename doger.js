@@ -86,15 +86,31 @@ function check_for_url(string) {
 	return true;
 }
 
-// function to return the largest image from a given article url
-// thought: it seems like this is actually hard. maybe I should use actual doge photos instead?
-function image_from(url) {
-	// dummy output
-	return {
-		url: "http://static.ddmcdn.com/en-us/apl/breedselector/images/breed-selector/dogs/breeds/shiba-inu_01_lg.jpg",
-		width: 622,
-		height: 352
-	};
+// function to return an object with a doge image url, a height, and a width
+function doge_image() {
+	doge_images = [
+		{
+			url: "http://static.ddmcdn.com/en-us/apl/breedselector/images/breed-selector/dogs/breeds/shiba-inu_01_lg.jpg",
+			width: 622,
+			height: 352
+		},
+		{
+			url: "http://wooftown.com/wp-content/uploads/2011/03/Shiba-Inu-Main.jpg",
+			width: 461,
+			height: 400
+		},
+		{
+			url: "http://images.akc.org/breeds/action_images/shiba_inu.jpg",
+			width: 460,
+			height: 315
+		},
+		{
+			url: "http://static.ddmcdn.com/en-us/apl/breedselector/images/breed-selector/dogs/breeds/shiba-inu_04_lg.jpg",
+			width: 622,
+			height: 352
+		}
+	]
+	return random_from_array(doge_images);
 };
 
 // function to GET a url, needed by keywords_from()
