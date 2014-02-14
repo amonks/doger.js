@@ -6,14 +6,11 @@
 function doger(container, string) {
 	// if the argument isn't a url, try to get a url from the query string
 	// note that check_for_url currently always returns true
-	var url = string;
-	if ( get_query_string() ) {
-		url = get_query_string();
-	};
+	var text = get_query_string();
 
 	// do the stuff!
 	var image = doge_image();
-	var keywords = keywords_from(url);
+	var keywords = keywords_from_text(text);
 	var doge_text = keywords_to_doge_text(keywords);
 	var output = make_doge_image(image, doge_text);
 	container.append(output);
@@ -55,11 +52,28 @@ function keywords_to_doge_text(keywords) {
 };
 
 // function to return identifying keywords from a given article url
-function keywords_from(url) {
+function keywords_from_url(url) {
 	// get keywords from article
 	// using yahoo content analysis api
 	// see http://developer.yahoo.com/contentanalysis/
 	var query = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20contentanalysis.analyze%20where%20url%3D%22" + escape(url) + "%22&diagnostics=true";
+	var response = $(httpGet(query)); // httpGetdefined below
+	// keywords are listed inside <entity><text></text></entity> within the response
+	// n.b. it also provides a confidence score for each keyword
+	var keywords = response.find("entity");
+	var output = []
+	for (var i = keywords.length - 1; i >= 0; i--) {
+		output.push($(keywords[i]).find('text').text());
+	};
+	return output
+};
+
+// function to return identifying keywords from a given article text
+function keywords_from_text(text) {
+	// get keywords from article
+	// using yahoo content analysis api
+	// see http://developer.yahoo.com/contentanalysis/
+	var query = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20contentanalysis.analyze%20where%20text%3D%22" + escape(text) + "%22&diagnostics=true";
 	var response = $(httpGet(query)); // httpGetdefined below
 	// keywords are listed inside <entity><text></text></entity> within the response
 	// n.b. it also provides a confidence score for each keyword
@@ -77,13 +91,20 @@ function get_query_string() {
 		return null;
 	} else {
 		var queryString = window.location.href.slice(window.location.href.indexOf('?') + 1);
-		return queryString;
+		return atob(queryString);
 	};
 }
 
 // function to check if a string is a url
 function check_for_url(string) {
 	return true;
+}
+
+// function to get an article's content with the readability api
+function get_content_from_url(url) {
+	var query = "https://readability.com/api/content/v1/parser?url=" + escape(url) + "&token=2d3cae85509d49fc2d2ec8d1b5fd46aef1dc0130";
+	var response = httpGet(query);
+	return response;
 }
 
 // function to return an object with a doge image url, a height, and a width
@@ -113,7 +134,7 @@ function doge_image() {
 	return random_from_array(doge_images);
 };
 
-// function to GET a url, needed by keywords_from()
+// function to GET a url, needed by keywords_from_url()
 function httpGet(theUrl)
 {
     var xmlHttp = null;
