@@ -7,15 +7,18 @@ var expect = chai.expect;
 describe("doger.js", function() {
 
 
-	describe("Get the current query string. (One of these will always fail)", function() {
+	describe("Correctly respond to the current query string", function() {
 		var currentQueryString = window.location.href.slice(window.location.href.indexOf('?') + 1)
 		output = get_query_string();
-		it("Should return null if there is no query string", function() {
-			expect(output).to.be.null;
-		});
-		it("Should return a string if there is a query string", function() {
-			expect(output).to.be.a('string');
-		});
+		if( window.location.href.slice(window.location.href.indexOf('?') + 1) === -1 ) {
+			it("Should return null if there is no query string", function() {
+				expect(output).to.be.null;
+			});
+		} else {			
+			it("Should return a string if there is a query string", function() {
+				expect(output).to.be.a('string');
+			});
+		};
 	});
 
 
