@@ -89,34 +89,7 @@ describe("doger.js", function() {
 		describe("Reptillian blurb", function() {
 			var text = "According to British writer David Icke, 5- to 12-foot (1.5–3.7 m) tall, blood-drinking, shape-shifting reptilian humanoids from the Alpha Draconis star system, now hiding in underground bases, are the force behind a worldwide conspiracy against humanity.[7] He contends that most of the world's leaders are related to these reptilians, including George W. Bush of the United States, and Queen Elizabeth II of the United Kingdom.[8] Icke's conspiracy theories now have supporters in 47 countries and he has given lectures to crowds of up to 6,000.[9][10] American writer Vicki Santillano included it in her list of the 10 most popular conspiracy theories, describing it as the 'wackiest theory' she had encountered.[11] A poll of Americans in 2013 by Public Policy Polling showed that 4% of registered voters believed in David Icke's ideas.[12]";
 			var correctValue = ["Vicki Santillano", "reptilian humanoids", "British writer David Icke", "underground bases", "Alpha Draconis star system", "David Ickes", "worldwide conspiracy", "George W Bush", "conspiracy theories", "Queen Elizabeth II of the United Kingdom Ickes"];
-			var output = Doger.keywords_from_url(url);
-			
-			it("Should return a populated array.", function() {
-				expect(output).to.be.a('array');
-				expect(output).to.have.length.above(0);
-			});
-
-			it("Should return the correct keywords.", function() {
-				for (var i = correctValue.length - 1; i >= 0; i--) {
-					expect(output[i]).to.equal(correctValue[i]);
-				};
-			});
-		});
-
-		describe("Popular Science article", function() {
-			var url = "http://www.popsci.com/scitech/article/2009-09/squirt-stem-cell-gel-heals-brain-injuries";
-			var output = Doger.keywords_from_url(url);
-			
-			it("Should return a populated array.", function() {
-				expect(output).to.be.a('array');
-				expect(output).to.have.length.above(0);
-			});
-		});
-
-		describe("The Economist article", function() {
-			var url = "http://www.economist.com/news/books-and-arts/21595883-how-re-engineer-world-measure-man-0";
-			var correctValue = ["social physics", "Mr Pentland", "Alex Pentland", "United States", "The Economist"];
-			var output = Doger.keywords_from_url(url);
+			var output = Doger.keywords_from_text(text);
 			
 			it("Should return a populated array.", function() {
 				expect(output).to.be.a('array');
