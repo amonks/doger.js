@@ -20,6 +20,7 @@
             if (get_query_string()) {
                 var text = get_query_string();
                 var keywords = keywords_from_text(text);
+                doger($("#dogebox"), keywords);
             };
             function dogeFromForm() {
                 var text = $("#textform").val().replace(/[^a-zA-Z ]+/g, '');
