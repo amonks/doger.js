@@ -34,6 +34,7 @@ Doger = {
         div.css({
             "font-family": "Comic Sans, Comic Sans MS, cursive",
             "font-weight": "bold",
+            "font-size": "16px",
             "position": "relative",
             "width": "100%",
             "height": "0",
