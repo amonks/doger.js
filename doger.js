@@ -20,7 +20,7 @@ Doger = {
     make_doge_image: function(image, doge_text) {
         // superimpose the text over the image in rainbow comic sans
         // dummy output until this function is real
-        var div = $("<div class='doger'><img src='" + image.url + "' /></div>");
+        var div = $("<div class='doger'><img src='" + image.url + "'class='img-rounded' /></div>");
         if (doge_text.length <= 1) {
             return div
         };
