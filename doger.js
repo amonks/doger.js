@@ -39,7 +39,7 @@ Doger = {
 		var dogeEndWords = ["wow", "amaze", "excite"];
 		var output = [];
 		// add keywords
-		for (var i = keywords.length - 1; i >= 0; i--) {
+		for (var i = 0; i <= keywords.length - 1; i++) {
 			output.push( Doger.random_from_array(dogeWords) + " " + keywords[i].toLowerCase() + "." );
 		};
 		// add end word
