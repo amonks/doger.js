@@ -9,7 +9,7 @@ Doger = {
 		var image = Doger.doge_image();
 		var doge_text = Doger.keywords_to_doge_text(keywords);
 		var output = Doger.make_doge_image(image, doge_text);
-		container.append(output);
+		container.prepend(output);
 	},
 
 	// function to return a completed doge meme image from a given image and array of doge phrases
