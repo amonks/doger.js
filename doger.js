@@ -84,7 +84,7 @@ Doger = {
         // n.b. it also provides a confidence score for each keyword
         var keywords = response.find("entity");
         var output = []
-        for (var i = keywords.length - 1; i >= 0; i--) {
+        for (var i = 0; i <= keywords.length - 1;  i++) {
             output.push($(keywords[i]).find('text').text());
         };
         return output
@@ -106,6 +106,44 @@ Doger = {
         };
         return output
     },
+
+    // // function to return identifying keywords from a given twitter feed
+    // keywords_from_twitter: function(twitterUser) {
+    //     var query = "http://twitter.com/" + twitterUser;
+    //     var twitterFrame = $("<iframe src='" + query + "'></iframe>")
+    //     twitterFrame.css({
+    //         "display":"none",
+    //     });
+    //     var response = $(".tweet-text", window.parent.frames[0].document);
+    //     var text = "";
+    //     for ( var i = 0; i <= response.length - 1; i++) { 
+    //         text = text + $(response[i]).text() 
+    //     }
+    //     text = text.split(" ");
+    //     for (var i = text.length - 1; i >= 0; i--) {
+    //         if ( text[i].match("http://") ) {
+    //             text.splice(i,1);
+    //         } else {
+    //             console.log(text[i]);
+    //         };
+    //     };
+    //     text = text.join(" ");
+    //     console.log(text);
+
+    //     // get keywords from twitter feed
+    //     // using yahoo content analysis api
+    //     // see http://developer.yahoo.com/contentanalysis/
+    //     var query = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20contentanalysis.analyze%20where%20text%3D%22" + encodeURI(text.replace(/[^a-zA-Z ]+/g, '')) + "%22&diagnostics=true";
+    //     var response = $(Doger.httpGet(query)); // httpGetdefined below
+    //     // keywords are listed inside <entity><text></text></entity> within the response
+    //     // n.b. it also provides a confidence score for each keyword
+    //     var keywords = response.find("entity");
+    //     var output = []
+    //     for (var i = keywords.length - 1; i >= 0; i--) {
+    //         output.push($(keywords[i]).find('text').text());
+    //     };
+    //     return output
+    // },
 
     // function to get the current query string (anything in the location bar after a '?'), and de-base64 it.
     get_query_string: function() {
