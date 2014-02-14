@@ -19,23 +19,30 @@ Doger = {
 		// dummy output until this function is real
 		var div = $("<div class='doger'><img src='" + image.url + "' /></div>");
 		if (doge_text.length <= 1) {return div};
-		div.find('img').css({"position":"absolute"});
+		div.find('img').css({
+			"position":"absolute",
+			"top":"0",
+			"left":"0",
+			"width":"100%",
+			"height":"100%"
+		});
 		div.css({
 			"font-family":"Comic Sans, Comic Sans MS, cursive", 
 			"font-weight":"bold", 
 			"position":"relative", 
-			"width":image.width, 
-			"height":image.height 
+			"width":"100%", 
+			"height":"0",
+			"padding-bottom":"" + ( image.height / image.width ) * 100 + "%"
 		});
 		for (var i = 0; i <= doge_text.length - 1; i++) {
 			var span = $("<span class='dogetext'>" + doge_text[i] + "</span>");
-			var x = Math.random() * image.width * .75;
-			var y = i * (image.height / doge_text.length);
+			var x = Math.random() * 100 * .75;
+			var y = i * (100 / doge_text.length);
 			var color = Doger.random_color();
 			span.css({
 				"position":"absolute",
-				"top": y, 
-				"left": x, 
+				"top": "" + y + "%", 
+				"left": "" + x + "%", 
 				"color": color
 			});
 			div.append(span);
