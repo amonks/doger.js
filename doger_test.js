@@ -85,6 +85,52 @@ describe("doger.js", function() {
 		});
 	});
 
+	describe("Get the keywords from text.", function() {
+		describe("http://monks.co", function() {
+			var url = "http://monks.co";
+			var correctValue = ["Dante Pilkington", "realtime video", "music video", "Andrew Monks", "responsive design", "Andrew Zarins", "Facebook", "Oblique Strategies", "Concord Carlisle Regional High School", "Belgian Man Records", "Belgian Man Records"];
+			var output = keywords_from_url(url);
+			
+			it("Should return a populated array.", function() {
+				expect(output).to.be.a('array');
+				expect(output).to.have.length.above(0);
+			});
+
+			it("Should return the correct keywords.", function() {
+				for (var i = correctValue.length - 1; i >= 0; i--) {
+					expect(output[i]).to.equal(correctValue[i]);
+				};
+			});
+		});
+
+		describe("Popular Science article", function() {
+			var url = "http://www.popsci.com/scitech/article/2009-09/squirt-stem-cell-gel-heals-brain-injuries";
+			var output = keywords_from_url(url);
+			
+			it("Should return a populated array.", function() {
+				expect(output).to.be.a('array');
+				expect(output).to.have.length.above(0);
+			});
+		});
+
+		describe("The Economist article", function() {
+			var url = "http://www.economist.com/news/books-and-arts/21595883-how-re-engineer-world-measure-man-0";
+			var correctValue = ["social physics", "Mr Pentland", "Alex Pentland", "United States", "The Economist"];
+			var output = keywords_from_url(url);
+			
+			it("Should return a populated array.", function() {
+				expect(output).to.be.a('array');
+				expect(output).to.have.length.above(0);
+			});
+
+			it("Should return the correct keywords.", function() {
+				for (var i = correctValue.length - 1; i >= 0; i--) {
+					expect(output[i]).to.equal(correctValue[i]);
+				};
+			});
+		});
+	});
+
 
 	describe("Convert a list of keywords into an array of doge-style strings.", function() {
 		var keywords = ["social physics", "Mr Pentland", "Alex Pentland", "United States", "The Economist"];

@@ -68,7 +68,7 @@ function keywords_from_text(text) {
 	// get keywords from article
 	// using yahoo content analysis api
 	// see http://developer.yahoo.com/contentanalysis/
-	var query = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20contentanalysis.analyze%20where%20text%3D%22" + encodeURI(text) + "%22&diagnostics=true";
+	var query = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20contentanalysis.analyze%20where%20text%3D%22" + encodeURI(text.replace(/[^a-zA-Z ]+/g, '')) + "%22&diagnostics=true";
 	var response = $(httpGet(query)); // httpGetdefined below
 	// keywords are listed inside <entity><text></text></entity> within the response
 	// n.b. it also provides a confidence score for each keyword

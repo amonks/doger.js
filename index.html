@@ -44,7 +44,7 @@
                     doger($("#dogebox"), keywords);
                 };
                 function dogeFromTextForm() {
-                    var text = $("#textform").val().replace(/[^a-zA-Z ]+/g, '');
+                    var text = $("#textform").val();
                     var keywords = keywords_from_text(text);
                     window.location = "http://amonks.github.io/doger.js" + "?" + btoa(keywords);
                 };
