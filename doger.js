@@ -38,6 +38,7 @@ Doger = {
             "position": "relative",
             "width": "100%",
             "height": "0",
+            "text-shadow" : "2px 2px #ffffff",
             "padding-bottom": "" + (image.height / image.width) * 100 + "%"
         });
         for (var i = 0; i <= doge_text.length - 1; i++) {
