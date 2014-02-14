@@ -14,10 +14,29 @@
 
     <body>
         <div class="container">
-            <div id="dogebox"></div>
             <script src="vendor/jquery.min.js"></script>
 
             <script src="doger.js"></script>
+            
+            <div id="dogeformContainer" style="position: relative;">
+                <div id="dogeform" >
+                    <div class="dogetype">
+                        <textarea name="keywordform" value="" id="keywordform" ></textarea>
+                        <button onclick="dogeFromKeywordForm()">doge comma-separated list of keywords</button>
+                    </div>
+                    <div class="dogetype">
+                        <textarea name="textform" value="" id="textform" ></textarea>
+                        <button onclick="dogeFromTextForm()">doge text</button>
+                    </div>
+                    <div class="dogetype">
+                        <input type="url" name="urlform" value="http://monks.co" id="urlform" />
+                        <button onclick="dogeFromUrlForm()">doge url</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="dogebox" style="position: relative"></div>
+
             <script>
                 if (get_query_string()) {
                     var text = get_query_string();
@@ -29,23 +48,16 @@
                     var keywords = keywords_from_text(text);
                     window.location = "http://amonks.github.io/doger.js" + "?" + btoa(keywords);
                 };
+                function dogeFromKeywordForm() {
+                    var keywords = $("#keywordform").val().split(',');
+                    window.location = "http://amonks.github.io/doger.js" + "?" + btoa(keywords);
+                };
                 function dogeFromUrlForm() {
                     var url = $("#urlform").val();
                     var keywords = keywords_from_url(url);
                     window.location = "http://amonks.github.io/doger.js" + "?" + btoa(keywords);
                 };
             </script>
-            
-            <div id="dogeform" style="position: absolute; bottom: 0; left: 0">
-                <div class="dogetype">
-                    <textarea name="textform" value="" id="textform" ></textarea>
-                    <button onclick="dogeFromTextForm()">doge text</button>
-                </div>
-                <div class="dogetype">
-                    <input type="url" name="urlform" value="http://monks.co" id="urlform" />
-                    <button onclick="dogeFromUrlForm()">doge url</button>
-                </div>
-            </div>
         </div>
     </body>
 
