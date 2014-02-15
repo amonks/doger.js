@@ -41,7 +41,7 @@
                     <div class="embed panel">
                         <button class="btn btn-default" data-toggle="modal" data-target=".embed-modal">Embed Code</button>
                         <button class="btn btn-default" data-toggle="modal" data-target=".link-modal">Permalink</button>
-                        <a href="#" id="imageLink"><button class="btn btn-default">Save Image</button></a>
+                        <button class="btn btn-default" onclick="saveImageButton()">Save Image</button>
                     </div>
                     <div id="dogeform">
                         <div class="form-group panel keyword-panel">
@@ -162,16 +162,17 @@
         if (Doger.get_query_string()) {
             var text = Doger.get_query_string();
             var keywords = text.split(',');
-            var imageLink = Doger.doger($("#dogebox"), keywords, $("#embedcode"));
+            var dogeparams = Doger.doger($("#dogebox"), keywords, $("#embedcode"));
         } else {
             var keywords = ["doge", "term extraction", "memetics", "javascript", "shiba inu", "artificial intelligence", "client-side"];
-            var imageLink = Doger.doger($("#dogebox"), keywords, $("#embedcode"));
+            var dogeparams = Doger.doger($("#dogebox"), keywords, $("#embedcode"));
         };
-        $("#imageLink").attr('href', imageLink);
-
-
+        
         $("#permalink").text(document.URL);
 
+        function saveImageButton() {
+            window.location = Doger.make_doge_canvas(dogeparams.image, dogeparams.doge_text);
+        }
 
         function dogeFromTextForm() {
             $('#textform').tooltip('destroy');

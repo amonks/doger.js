@@ -12,13 +12,12 @@ Doger = {
                 var image = Doger.doge_image();
                 var doge_text = Doger.keywords_to_doge_text(keywords);
                 var output = Doger.make_doge_image(image, doge_text);
-                var imgurl = Doger.make_doge_canvas(image, doge_text);
                 output.clone().appendTo(container);
                 var embed = $('<div>').append(output.clone()).html()
                 if (embedcontainer) {
                     embedcontainer.text(embed);
                 };
-                return imgurl;
+                return {image: image, doge_text: doge_text};
             },
 
         // function to return an array of relevant doge phrases given a long string
