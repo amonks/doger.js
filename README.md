@@ -86,9 +86,8 @@ There are three endpoints available:
 
 ### example
 
-`var keywords = ["API", "endpoints", "query", "base64", "javascript"];`
-
-`var encoded = btoa(keywords);`
+	var keywords = ["API", "endpoints", "query", "base64", "javascript"];
+	var encoded = btoa(keywords);
 
 [`'http://doge.needsyourhelp.org/?' + encoded`](http://doge.needsyourhelp.org/?QVBJLGVuZHBvaW50cyxxdWVyeSxiYXNlNjQsamF2YXNjcmlwdA==)
 
