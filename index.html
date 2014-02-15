@@ -172,13 +172,23 @@
 
 
         function dogeFromTextForm() {
+            $('#textform').tooltip('destroy');
+            $('#urlform').tooltip('destroy');
             var text = $("#textform").val();
-            if (text.length <= 1) {
-                var keywords = ["Vicki Santillano", "reptilian humanoids", "British writer David Icke", "underground bases", "Alpha Draconis star system", "David Ickes", "worldwide conspiracy", "George W Bush", "conspiracy theories", "Queen Elizabeth II of the United Kingdom Ickes"];
-            } else {
+            if (text.length > 0) {
                 var keywords = Doger.keywords_from_text(text);
-            };
-            window.location = "http://doge.needsyourhelp.org?" + btoa(keywords);
+                if (keywords.length > 0) {
+                    $('.text-panel').addClass('has-success');                        
+                    window.location = "http://doge.needsyourhelp.org?" + btoa(keywords);
+                } else {
+                    $('.text-panel').addClass('has-warning');
+                    $('#textform').tooltip({title: "no keywords found"});
+                    $('#textform').tooltip('show');
+                };
+            } else {
+                var keywords = ["Vicki Santillano", "reptilian humanoids", "British writer David Icke", "underground bases", "Alpha Draconis star system", "David Ickes", "worldwide conspiracy", "George W Bush", "conspiracy theories", "Queen Elizabeth II of the United Kingdom Ickes"];
+                window.location = "http://doge.needsyourhelp.org?" + btoa(keywords);
+            }
         };
 
         function dogeFromKeywordForm() {
@@ -188,6 +198,7 @@
 
         function dogeFromUrlForm() {
             $('#urlform').tooltip('destroy');
+            $('#textform').tooltip('destroy');
             var url = $("#urlform").val();
             if (url.length > 0) {
                 if (Doger.check_for_url(url) == false) {
