@@ -59,7 +59,7 @@
                     </div>
                     <div class="info panel">
                         <button class="btn btn-info" data-toggle="modal" data-target=".info-modal">Information</button>
-                        <button class="btn btn-default" style="display: none;" data-toggle="modal" data-target=".bookmarklet-modal">Bookmarklet</button>
+                        <button class="btn btn-default" data-toggle="modal" data-target=".bookmarklet-modal">Bookmarklet</button>
                     </div>
 
 
@@ -136,12 +136,9 @@
                                     <p>
                                         The doger bookmarklet gets the currently selected text, and generates a doge image from it.
                                     </p>
-                                    <a href='javascript: var a = document.createElement("script"); a.setAttribute("src", "http://doge.needsyourhelp.org/doger.js"); document.body.appendChild(a); Doger.bookmarklet();'>Bookmarklet</a>
+                                    <a href='javascript:(function(){ var a = document.createElement("script"); a.setAttribute("src", "http://doge.needsyourhelp.org/doger.js"); document.body.appendChild(a); Doger.bookmarklet(); })();'>Bookmarklet</a>
                                     <textarea id="bookmarklet" class="form-control" rows="5">
-                                        javascript: var a = document.createElement("script");
-                                        a.setAttribute("src", "http://doge.needsyourhelp.org/doger.js");
-                                        document.body.appendChild(a);
-                                        Doger.bookmarklet();
+                                        javascript:(function(){ var a = document.createElement("script"); a.setAttribute("src", "http://doge.needsyourhelp.org/doger.js"); document.body.appendChild(a); Doger.bookmarklet(); })();
                                     </textarea>
                                 </div>
 
