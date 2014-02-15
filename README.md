@@ -39,22 +39,21 @@ doger.js provides a number of functions. The main one for doge-generation is `Do
 
 ### doge generator functions
 
-#### `Doger.doger(container, keywords, embedcontainer)`
+#### Doger.doger(container, keywords, embedcontainer)
 
 This is the main wrapper function, and the only one you'll need to generate doge images. It takes as input a `$('<div>')` to put the doge into, an array of keywords, and an optional `$('<div>')` to put a properly escaped embed code into. It returns html.
 
-#### `Doger.keywords_to_doge_text(keywords)`
+#### Doger.keywords_to_doge_text(keywords)
 
 This function takes an array of keywords (`['Term extraction', 'Memetics', 'JavaScript']`), and returns an array of doge text (`['much term extraction.', 'very memetics.', 'how javascript.', 'wow.']`)
 
-#### `Doger.make_doge_image(image, doge_text)`
+#### Doger.make_doge_image(image, doge_text)
 
 This function takes an image object (`{ url: "http://doge.needsyourhelp.org/images/shiba_inu.jpg", width: 460, height: 315 }`) and an array of doge text (`['much term extraction.', 'very memetics.', 'how javascript.', 'wow.']`) and it returns a `$('<div>')` with a doger meme image in it.
 
-#### `Doger.doge_image()`
+#### Doger.doge_image()
 
 This function chooses one of a pre-populated array of Shiba Inu image objects (`{ url: "http://doge.needsyourhelp.org/images/shiba_inu.jpg", width: 460, height: 315 }`)
-
 
 ### keyword extractors
 
@@ -94,7 +93,6 @@ There are three endpoints available:
 [`'http://doge.needsyourhelp.org/image.html?' + encoded`](http://doge.needsyourhelp.org/image.html?QVBJLGVuZHBvaW50cyxxdWVyeSxiYXNlNjQsamF2YXNjcmlwdA==)
 
 [`'http://doge.needsyourhelp.org/embed.html?' + encoded`](http://doge.needsyourhelp.org/embed.html?QVBJLGVuZHBvaW50cyxxdWVyeSxiYXNlNjQsamF2YXNjcmlwdA==)
-
 
 ## original pseudocode #nostalgia
 
