@@ -44,7 +44,7 @@
             var blob = Doger.make_blob(dataURI);
             var tempUrl = URL.createObjectURL(blob);
             $('<a href="' + tempUrl +'" download="much doge.png">' ).get(0).click();
-            close();
+            window.close();
         });
 
         (function(i, s, o, g, r, a, m) {
