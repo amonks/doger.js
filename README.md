@@ -1,18 +1,14 @@
 #	doger.js
 
-##	convert any article into a doge image
+## Description
 
-doger.js is a javascript thingy to convert online articles into doge meme images.
+## Credits
 
-given an article url, it should find keywords in the article to use in doge-phrases, and then superimpose those doge-phrases over the main article image in rainbow comic sans.
+Thanks to linguist Gretchen McCulloch for [explaining](http://the-toast.net/2014/02/06/linguist-explains-grammar-doge-wow/) doge grammar
 
 ## tests
 
 [Run the tests!](http://amonks.github.io/doger.js/test.html)
-
-## props
-
-Thanks to linguist Gretchen McCulloch for [explaining](http://the-toast.net/2014/02/06/linguist-explains-grammar-doge-wow/) doge grammar
 
 ## functions
 
@@ -49,6 +45,13 @@ This function finds keywords on a webpage based on a url string.
 
 This function finds keywords in a text string.
 
+## API
+
+The [http://amonks.github.io/doger.js/](website) looks at the query string for a base64 encoded array of keywords to generate an image from. 
+
+*javascript:*
+
+	"http://amonks.github.io/doger.js?" + btoa('["keyword1", "keyword2", "keyword3"]');
 
 ## original pseudocode #nostalgia
 
