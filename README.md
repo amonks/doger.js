@@ -2,7 +2,7 @@
 
 ## Description
 
-[doger.js](http://amonks.github.io/doger.js/) is a “doge” meme generator. It generates scalable, css-based graphics. Given a block of text or a website url, it uses term extraction to pull out important keywords. Then, it uses the linguistic conventions of the popular “doge” meme to generate phrases based on those keywords.
+[doger.js](http://doge.needsyourhelp.org/) is a “doge” meme generator. It generates scalable, css-based graphics. Given a block of text or a website url, it uses term extraction to pull out important keywords. Then, it uses the linguistic conventions of the popular “doge” meme to generate phrases based on those keywords.
 
 doger.js is implemented as a javascript library. It᾿s intended to run in the browser, which makes it very portable.
 
@@ -16,7 +16,7 @@ Released under the [MIT License](http://github.com/amonks/doger.js/blob/gh-pages
 
 ## Tests
 
-[Run the tests!](http://amonks.github.io/doger.js/test.html)
+[Run the tests!](http://doge.needsyourhelp.org/test.html)
 
 ## Example
 
@@ -25,7 +25,7 @@ Released under the [MIT License](http://github.com/amonks/doger.js/blob/gh-pages
 	<textarea id="embedcode"></textarea>
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-	<script src="http://amonks.github.io/doger.js/doger.js"></script>
+	<script src="http://doge.needsyourhelp.org/doger.js"></script>
 
 	<script>
 		var url = "http://cnn.com"
@@ -49,11 +49,11 @@ This function takes an array of keywords (`['Term extraction', 'Memetics', 'Java
 
 *	`Doger.make_doge_image(image, doge_text)`
 
-This function takes an image object (`{ url: "http://amonks.github.io/doger.js/images/shiba_inu.jpg", width: 460, height: 315 }`) and an array of doge text (`['much term extraction.', 'very memetics.', 'how javascript.', 'wow.']`) and it returns a `$('<div>')` with a doger meme image in it.
+This function takes an image object (`{ url: "http://doge.needsyourhelp.org/images/shiba_inu.jpg", width: 460, height: 315 }`) and an array of doge text (`['much term extraction.', 'very memetics.', 'how javascript.', 'wow.']`) and it returns a `$('<div>')` with a doger meme image in it.
 
 *	`Doger.doge_image()`
 
-This function chooses one of a pre-populated array of Shiba Inu image objects (`{ url: "http://amonks.github.io/doger.js/images/shiba_inu.jpg", width: 460, height: 315 }`)
+This function chooses one of a pre-populated array of Shiba Inu image objects (`{ url: "http://doge.needsyourhelp.org/images/shiba_inu.jpg", width: 460, height: 315 }`)
 
 
 ### keyword extractors
@@ -70,11 +70,11 @@ This function finds keywords in a text string.
 
 ## API
 
-The [http://amonks.github.io/doger.js/](website) looks at the query string for a base64 encoded array of keywords to generate an image from. 
+The [http://doge.needsyourhelp.org/](website) looks at the query string for a base64 encoded array of keywords to generate an image from. 
 
 *javascript:*
 
-	"http://amonks.github.io/doger.js?" + btoa('["keyword1", "keyword2", "keyword3"]');
+	"http://doge.needsyourhelp.org?" + btoa('["keyword1", "keyword2", "keyword3"]');
 
 ## original pseudocode #nostalgia
 

@@ -79,31 +79,31 @@ Doger = {
         // function to return an object with a doge image url, a height, and a width
             doge_image: function() {
                 doge_images = [{
-                    url: "http://amonks.github.io/doger.js/images/shiba-inu_01_lg.jpg",
+                    url: "http://doge.needsyourhelp.org/images/shiba-inu_01_lg.jpg",
                     width: 622,
                     height: 352
                 }, {
-                    url: "http://amonks.github.io/doger.js/images/Shiba-Inu-Main.jpg",
+                    url: "http://doge.needsyourhelp.org/images/Shiba-Inu-Main.jpg",
                     width: 461,
                     height: 400
                 }, {
-                    url: "http://amonks.github.io/doger.js/images/shiba-inu-puppies-pictures.jpg",
+                    url: "http://doge.needsyourhelp.org/images/shiba-inu-puppies-pictures.jpg",
                     width: 922,
                     height: 922
                 }, {
-                    url: "http://amonks.github.io/doger.js/images/001.jpg",
+                    url: "http://doge.needsyourhelp.org/images/001.jpg",
                     width: 1023,
                     height: 1024
                 }, {
-                    url: "http://amonks.github.io/doger.js/images/Taisen_Shikaki_Inu.jpg",
+                    url: "http://doge.needsyourhelp.org/images/Taisen_Shikaki_Inu.jpg",
                     width: 800,
                     height: 994
                 }, {
-                    url: "http://amonks.github.io/doger.js/images/shiba_inu.jpg",
+                    url: "http://doge.needsyourhelp.org/images/shiba_inu.jpg",
                     width: 460,
                     height: 315
                 }, {
-                    url: "http://amonks.github.io/doger.js/images/shiba-inu_04_lg.jpg",
+                    url: "http://doge.needsyourhelp.org/images/shiba-inu_04_lg.jpg",
                     width: 622,
                     height: 352
                 }]
