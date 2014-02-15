@@ -41,7 +41,7 @@
                     <div class="embed panel">
                         <button class="btn btn-default" data-toggle="modal" data-target=".embed-modal">Embed Code</button>
                         <button class="btn btn-default" data-toggle="modal" data-target=".link-modal">Permalink</button>
-                        <button class="btn btn-warning" id="saveImage" onclick="saveImageButton()">Save Image</button>
+                        <button class="btn btn-default" id="saveImage" onclick="saveImageButton()">Save Image</button>
                     </div>
                     <div id="dogeform">
                         <div class="form-group panel keyword-panel">
@@ -168,9 +168,6 @@
         };
         
         $("#permalink").text(document.URL);
-
-
-        $('#saveImage').tooltip({title: "Breaks Chrome? Try Safari"});
 
         function saveImageButton() {
             window.location = "http://doge.needsyourhelp.org/image.html?" + btoa(keywords);
