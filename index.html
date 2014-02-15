@@ -170,7 +170,8 @@
         $("#permalink").text(document.URL);
 
         function saveImageButton() {
-            window.location = "http://doge.needsyourhelp.org/image.html?" + btoa(keywords);
+            var query = "http://doge.needsyourhelp.org/image.html?" + btoa(keywords);
+            $('<a href="' + query +'" target="_blank" download="much doge.png">' ).get(0).click();
         }
 
         function dogeFromTextForm() {
