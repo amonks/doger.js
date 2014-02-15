@@ -2,15 +2,38 @@
 
 ## Description
 
+[doger.js](http://amonks.github.io/doger.js/) is a “doge” meme generator. It generates scalable, css-based graphics. Given a block of text or a website url, it uses term extraction to pull out important keywords. Then, it uses the linguistic conventions of the popular “doge” meme to generate phrases based on those keywords.
+
+doger.js is implemented as a javascript library. It᾿s intended to run in the browser, which makes it very portable.
+
 ## Credits
 
 Thanks to linguist Gretchen McCulloch for [explaining](http://the-toast.net/2014/02/06/linguist-explains-grammar-doge-wow/) doge grammar
 
-## tests
+Code by [Andrew Monks](http://monks.co)
+
+Released under the [MIT License](http://github.com/amonks/doger.js/blob/gh-pages/LICENSE)
+
+## Tests
 
 [Run the tests!](http://amonks.github.io/doger.js/test.html)
 
-## functions
+## Example
+
+	<div id="dogebox"></div>
+	
+	<textarea id="embedcode"></textarea>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="http://amonks.github.io/doger.js/doger.js"></script>
+
+	<script>
+		var url = "http://cnn.com"
+		var keywords = Doger.keywords_from_url(url);
+		Doger.doger( $("#dogebox"), keywords, $("#embedcode") )
+	</script>
+
+## Functions
 
 doger.js provides a number of functions. The main one for doge-generation is `Doger.doger()`, which you'll need to supply a list of keywords. Doger.js also provides some keyword extraction functions for generating these lists of keywords.
 
