@@ -184,7 +184,7 @@ describe("doger.js", function() {
 
 
 		describe("Check whether something is a url", function() {
-			var fakeURLs = [ "hello.com", "http://wwwcom,netmail/", "guacamole/index.html"];
+			var fakeURLs = [ "hello.com", "breadcam/five.com", "guacamole/index.html"];
 			var realURLs = [ "http://google.com/", "http://jquery-howto.blogspot.com/2009/09/get-url-parameters-values-with-jquery.html?bageldonut=slash&otherstuff", "http://monks.co", "http://arduino.cc/doc" ];
 			it("should return false for nonurl strings", function() {
 				for (var i = fakeURLs.length - 1; i >= 0; i--) {
