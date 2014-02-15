@@ -67,9 +67,6 @@
                     <div class="info panel">
                         <button class="btn btn-info" data-toggle="modal" data-target=".info-modal"><span class="glyphicon glyphicon-heart-empty"></span> Information</button>
                     </div>
-                    <div class="bookmarklet panel">
-                        <button class="btn btn-success" data-toggle="modal" data-target=".bookmarklet-modal"><span class="glyphicon glyphicon-pushpin"></span> Bookmarklet</button>
-                    </div>
 
 
                     <div class="modal fade embed-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
@@ -103,6 +100,16 @@
                                         <p><a href="http://doge.needsyourhelp.org">doger.js</a> is a &ldquo;doge&rdquo; meme generator. It generates scalable, css-based graphics. Given a block of text or a website url, it uses term extraction to pull out important keywords. Then, it uses the linguistic conventions of the popular &ldquo;doge&rdquo; meme to generate phrases based on those keywords.</p>
                                         <p>doger.js is implemented as a javascript library. It&#8127;s intended to run in the browser, which makes it very portable.</p>
                                     </div>
+                                    <div class="panel">
+                                        <p>
+                                            The doger bookmarklet gets the currently selected text, and generates a doge image from it. Drag the button below to your bookmarks bar.
+                                        </p>
+                                        <p>                                    
+                                            <a href='javascript:(function(){function e(e,t){var n=document.getElementsByTagName("body")[0];var r=document.createElement("script");r.src=e;var i=false;r.onload=r.onreadystatechange=function(){if(!i&amp;&amp;(!this.readyState||this.readyState=="loaded"||this.readyState=="complete")){i=true;t();r.onload=r.onreadystatechange=null;n.removeChild(r)}};n.appendChild(r)}e("http://doge.needsyourhelp.org/doger.min.js",function(){Doger.bookmarklet()})})()'>
+                                                <button type="button" class="btn btn-success"><span class="glyphicon glyphicon-pushpin"></span> Doge This!</button>
+                                            </a>
+                                        </p>
+                                    </div>
                                     <p>by <a href="http://monks.co/">Andrew Monks</a>, 2014</p>
                                     <p>source, library, credits, and API documentation are available on <a href="http://github.com/amonks/doger.js">GitHub</a></p>
                                     <p><a href="https://github.com/amonks/doger.js/blob/gh-pages/LICENSE">MIT License</a></p>
@@ -114,34 +121,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="modal fade bookmarklet-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-sm">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                    <h4 class="modal-title" id="myModalLabel">Bookmarklet</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <p>
-                                        The doger bookmarklet gets the currently selected text, and generates a doge image from it. Drag the button below to your bookmarks bar.
-                                    </p>
-                                    <p>                                    
-                                        <a href='javascript:(function(){function e(e,t){var n=document.getElementsByTagName("body")[0];var r=document.createElement("script");r.src=e;var i=false;r.onload=r.onreadystatechange=function(){if(!i&amp;&amp;(!this.readyState||this.readyState=="loaded"||this.readyState=="complete")){i=true;t();r.onload=r.onreadystatechange=null;n.removeChild(r)}};n.appendChild(r)}e("http://doge.needsyourhelp.org/doger.min.js",function(){Doger.bookmarklet()})})()'>
-                                            <button type="button" class="btn btn-success">Doge This!</button>
-                                        </a>
-
-                                    </p>
-                                </div>
-
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
 
                 </div>
             </div>
