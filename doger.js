@@ -80,7 +80,7 @@ Doger = {
             make_doge_canvas: function(image, doge_text) {
                 // superimpose the text over the image in rainbow comic sans
                 var image = $("<img src='" + image.url + "'class='img-rounded' />")
-                var canvas = $("<canvas width='"+ image.width +"' height='"+ image.height +"'></canvas>");
+                var canvas = $("<canvas width='"+ image.width +"' height='"+ image.height +"'></canvas>").get(0);
                 var context = canvas.getContext("2d");
                 context.drawImage(image, 0, 0);
                 if (doge_text.length <= 1) {
