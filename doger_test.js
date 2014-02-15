@@ -29,7 +29,7 @@ describe("doger.js", function() {
 			});
 
 			it("should return a doge ending word as the last string", function() {
-				var dogeEndWords = ["wow.", "amaze.", "excite."];
+				var dogeEndWords = ["wow", "amaze", "excite"];
 				expect(dogeEndWords).to.include.members( [ output[output.length - 1] ] );
 			});
 
