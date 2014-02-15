@@ -348,7 +348,7 @@ Doger = {
                         // Handle memory leak in IE
                         script.onload = script.onreadystatechange = null;
                         head.removeChild( script );
-                    }
+                    };
                 };
 
                 head.appendChild(script);
