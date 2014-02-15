@@ -91,6 +91,8 @@ Doger = {
                     var x = Math.random() * image.width * .75;
                     var y = i * (image.height / doge_text.length) + (image.height / doge_text.length) / 2;
                     context.fillStyle = Doger.random_color();
+                    context.fillText(doge_text[i], x + 2, y + 2)
+                    context.fillStyle = Doger.random_color();
                     context.fillText(doge_text[i], x, y)
                 };
                 return canvas.toDataURL("image/png");
