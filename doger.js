@@ -188,7 +188,7 @@ Doger = {
         // bookmarklet function
             bookmarklet: function() {
                 var text = Doger.get_selected_text();
-                var keywords = keywords_from_text(text);
+                var keywords = Doger.keywords_from_text(text);
                 window.location = "http://doge.needsyourhelp.org" + "?" + btoa(keywords);
             },
 
