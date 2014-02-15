@@ -86,7 +86,7 @@ Doger = {
                 if (doge_text.length <= 1) {
                     return canvas.toDataUrl("image/png");
                 };
-                context.font = "bold 36px 'Comic Sans', 'Comic Sans MS', 'Marker Felt', cursive";
+                context.font = "bold 28px 'Comic Sans', 'Comic Sans MS', 'Marker Felt', cursive";
                 for (var i = 0; i <= doge_text.length - 1; i++) {
                     var x = Math.random() * image.width * .75;
                     var y = i * (image.height / doge_text.length);
