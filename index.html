@@ -169,9 +169,30 @@
         
         $("#permalink").text(document.URL);
 
-        function saveImageButton() {
-            var query = "http://doge.needsyourhelp.org/image.html?" + btoa(keywords);
-            $('<a href="' + query +'" target="_blank">' ).get(0).click();
+        function saveImageButton() { 
+            var image = Doger.doge_image();
+
+            function loadSprite(src, callback) {
+                var sprite = new Image();
+                sprite.onload = callback;
+                sprite.src = src;
+            };
+
+            loadSprite(image.url, function() {
+                if (Doger.get_query_string()) {
+                    var text = Doger.get_query_string();
+                    var keywords = text.split(',');
+                } else {
+                    var keywords = ["doge", "term extraction", "memetics", "javascript", "shiba inu", "artificial intelligence", "client-side"];
+                };
+                var doge_text = Doger.keywords_to_doge_text(keywords);
+                var dataURI = Doger.make_doge_canvas(image, doge_text);
+                var blob = Doger.make_blob(dataURI);
+                var tempUrl = URL.createObjectURL(blob);
+                var link = $('<a href="' + tempUrl +'" id="download" download="much doge.png" target="_blank">*</a>' );
+                $("body").append(link);
+                $("#download").get(0).click();
+            });
         }
 
         function dogeFromTextForm() {

@@ -43,7 +43,7 @@
             var dataURI = Doger.make_doge_canvas(image, doge_text);
             var blob = Doger.make_blob(dataURI);
             var tempUrl = URL.createObjectURL(blob);
-            $("body").append($('<a href="' + tempUrl +'" id="download" download="much doge.png" target="_blank">' ))
+            $("body").append($('<a href="' + tempUrl +'" id="download" download="much doge.png" target="_blank">' ));
             $("#download").click();
             close();
         });
