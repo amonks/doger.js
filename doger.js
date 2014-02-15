@@ -382,6 +382,6 @@ Doger = {
     // other stuff
 
         // doge 
-            dogeWords: ["such", "much", "very", "many", "so", "how"],
-            dogeEndWords: ["wow", "amaze", "excite"],
+            doge_words: ["such", "much", "very", "many", "so", "how"],
+            doge_end_words: ["wow", "amaze", "excite"],
 }
