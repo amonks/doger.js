@@ -187,13 +187,15 @@ Doger = {
     // Utilities
         // bookmarklet function
             bookmarklet: function() {
-                var text = Doger.get_selected_text();
-                var keywords = Doger.keywords_from_text(text);
-                if (keywords.length > 0) {
-                    window.location = "http://doge.needsyourhelp.org" + "?" + btoa(keywords);                    
-                } else {
-                    alert("no keywords found");
-                }
+                loadScript("http://code.jquery.com/jquery-latest.js", function() {
+                    var text = Doger.get_selected_text();
+                    var keywords = Doger.keywords_from_text(text);
+                    if (keywords.length > 0) {
+                        window.location = "http://doge.needsyourhelp.org" + "?" + btoa(keywords);                    
+                    } else {
+                        alert("no keywords found");
+                    }
+                });  
             },
 
         // function to get the currently selected text on a page
@@ -241,4 +243,32 @@ Doger = {
             random_color: function() {
                 return '#' + Math.floor(Math.random() * 16777215).toString(16);
             },
+
+        // function to load a script
+            function loadScript(url, callback) {
+                var head = document.getElementsByTagName("head")[0];
+                var script = document.createElement("script");
+                script.src = url;
+
+                // Attach handlers for all browsers
+                var done = false;
+                script.onload = script.onreadystatechange = function()
+                {
+                    if( !done && ( !this.readyState 
+                                || this.readyState == "loaded" 
+                                || this.readyState == "complete") )
+                    {
+                        done = true;
+
+                        // Continue your code
+                        callback();
+
+                        // Handle memory leak in IE
+                        script.onload = script.onreadystatechange = null;
+                        head.removeChild( script );
+                    }
+                };
+
+                head.appendChild(script);
+            }
 }
