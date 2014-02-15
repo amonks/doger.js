@@ -79,21 +79,21 @@ Doger = {
         // function to return a completed doge meme image from a given image and array of doge phrases
             make_doge_canvas: function(image, doge_text) {
                 // superimpose the text over the image in rainbow comic sans
-                var image = $("<img src='" + image.url + "'class='img-rounded' />")
+                var imageElement = $("<img src='" + image.url + "'class='img-rounded' />").get(0);
                 var canvas = $("<canvas width='"+ image.width +"' height='"+ image.height +"'></canvas>").get(0);
                 var context = canvas.getContext("2d");
-                context.drawImage(image, 0, 0);
+                context.drawImage(imageElement, 0, 0);
                 if (doge_text.length <= 1) {
                     return canvas
                 };
-                context.font = "bold 20px 'Comic Sans', 'Comic Sans MS', 'Marker Felt', cursive"
+                context.font = "bold 20px 'Comic Sans', 'Comic Sans MS', 'Marker Felt', cursive";
                 for (var i = 0; i <= doge_text.length - 1; i++) {
                     var x = Math.random() * image.width * .75;
                     var y = i * (image.height / doge_text.length);
                     context.fillStyle = Doger.random_color();
                     context.fillText(doge_text[i], x, y)
                 };
-                return canvas;
+                return canvas.toDataURL("image/png");
             },
 
         // function to return an object with a doge image url, a height, and a width
