@@ -42,7 +42,8 @@
             var doge_text = Doger.keywords_to_doge_text(keywords);
             var dataURI = Doger.make_doge_canvas(image, doge_text);
             var blob = Doger.make_blob(dataURI);
-            window.location = URL.createObjectURL(blob);
+            var tempUrl = URL.createObjectURL(blob);
+            $('<a href="' + tempUrl +'" download="much doge.png">' ).get(0).click();
         });
 
         (function(i, s, o, g, r, a, m) {
