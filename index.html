@@ -191,6 +191,7 @@
             if (url.length > 0) {
                 if (Doger.check_for_url(url) == false) {
                     $('.url-panel').addClass('has-error');
+                    return null;
                 } else {
                     var keywords = Doger.keywords_from_url(url);
                     window.location = "http://doge.needsyourhelp.org?" + btoa(keywords);
