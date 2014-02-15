@@ -29,7 +29,7 @@
 	}
 
 
-	loadScript("http://doge.needsyourhelp.org/doger.js", function()
+	loadScript("http://doge.needsyourhelp.org/doger.min.js", function()
 	{
 		Doger.bookmarklet();
 	});
