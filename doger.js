@@ -32,6 +32,7 @@ Doger = {
                 };
                 // add end word
                 output.push(Doger.random_from_array(dogeEndWords));
+                output = Doger.shuffle_array(output);
                 return output;
             },
 
@@ -324,6 +325,25 @@ Doger = {
         // function to return a random member of a given array, needed by keywords_to_doge_text()
             random_from_array: function(array) {
                 return array[Math.floor(Math.random() * array.length)];
+            },
+
+            shuffle_array: function(array) {
+                var currentIndex = array.length, temporaryValue, randomIndex;
+
+                // While there remain elements to shuffle...
+                while (0 !== currentIndex) {
+
+                    // Pick a remaining element...
+                    randomIndex = Math.floor(Math.random() * currentIndex);
+                    currentIndex -= 1;
+
+                    // And swap it with the current element.
+                    temporaryValue = array[currentIndex];
+                    array[currentIndex] = array[randomIndex];
+                    array[randomIndex] = temporaryValue;
+                }
+
+                return array;
             },
 
         // function to return a random hex color, needed by make_doge_image()
