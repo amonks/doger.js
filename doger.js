@@ -222,7 +222,7 @@ Doger = {
 
         // function to check if a string is a url
             check_for_url: function(string) {
-                 return url.match(/^(ht|f)tps?:\/\/[a-z0-9-\.]+\.[a-z]{2,4}\/?([^\s<>\#%"\,\{\}\\|\\\^\[\]`]+)?$/);
+                 return string.match(/^(ht|f)tps?:\/\/[a-z0-9-\.]+\.[a-z]{2,4}\/?([^\s<>\#%"\,\{\}\\|\\\^\[\]`]+)?$/);
             },
 
         // function to GET a url, needed by keywords_from_url()
