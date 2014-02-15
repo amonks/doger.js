@@ -35,7 +35,8 @@
                 window.location = Doger.make_doge_canvas(image, keywords);
             } else {
                 var keywords = ["doge", "term extraction", "memetics", "javascript", "shiba inu", "artificial intelligence", "client-side"];
-                window.location = Doger.make_doge_canvas(image, keywords);
+                var doge_text = Doger.keywords_to_doge_text(keywords);
+                window.location = Doger.make_doge_canvas(image, doge_text);
             };
         }
 
