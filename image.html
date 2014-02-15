@@ -36,12 +36,11 @@
             if (Doger.get_query_string()) {
                 var text = Doger.get_query_string();
                 var keywords = text.split(',');
-                window.location = Doger.make_doge_canvas(image, keywords);
             } else {
                 var keywords = ["doge", "term extraction", "memetics", "javascript", "shiba inu", "artificial intelligence", "client-side"];
-                var doge_text = Doger.keywords_to_doge_text(keywords);
-                window.location = Doger.make_doge_canvas(image, doge_text);
             };
+            var doge_text = Doger.keywords_to_doge_text(keywords);
+            window.location = Doger.make_doge_canvas(image, keywords);
         });
 
         (function(i, s, o, g, r, a, m) {
