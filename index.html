@@ -173,7 +173,7 @@
         $('#saveImage').tooltip({title: "Sometimes breaks"});
 
         function saveImageButton() {
-            window.location = Doger.make_doge_canvas(dogeparams.image, dogeparams.doge_text);
+            window.location = "http://doge.needsyourhelp.org/image.html?" + btoa(keywords);
         }
 
         function dogeFromTextForm() {
