@@ -60,7 +60,7 @@ Doger = {
                 });
                 for (var i = 0; i <= doge_text.length - 1; i++) {
                     var span = $("<span class='dogetext'>" + doge_text[i] + "</span>");
-                    var x = Math.random() * 100 * .75;
+                    var x = Math.random() * 100 * .6;
                     var y = i * (100 / doge_text.length);
                     var color = Doger.random_color();
                     var shadow = Doger.random_color();
