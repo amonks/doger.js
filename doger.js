@@ -192,7 +192,7 @@ Doger = {
                     var keywords = Doger.keywords_from_text(text);
                     if (keywords.length > 0) {
                         var url = "http://doge.needsyourhelp.org" + "?" + btoa(keywords);                    
-                        window.open(url);
+                        window.location = url;
                     } else {
                         alert("no keywords found");
                     }
