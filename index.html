@@ -176,7 +176,7 @@
                 var blob = Doger.make_blob(dataURI);
                 var tempUrl = URL.createObjectURL(blob);
                 var fileName = '' + Doger.random_from_array(Doger.doge_words) + ' ' + Doger.random_from_array(keywords) + ' ' + Doger.random_from_array(Doger.doge_end_words) +'.png'
-                var fileName = fileName.split(' ').join('-');
+                var fileName = fileName.split(' ').join('-').toLowerCase();
                 var link = $('<a href="' + tempUrl +'" id="download" download="' + fileName + '" target="_blank">*</a>' );
                 $("body").append(link);
                 $("#download").get(0).click();
