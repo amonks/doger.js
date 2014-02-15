@@ -189,7 +189,7 @@
         function dogeFromUrlForm() {
             var url = $("#urlform").val();
             if (url == true) {
-                if (Doger.check_for_url(url) = false) {
+                if (Doger.check_for_url(url) == false) {
                     $('.url-panel').addClass('has-error');
                 } else {
                     var keywords = Doger.keywords_from_url(url);
