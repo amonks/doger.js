@@ -14,6 +14,26 @@ given an article url, it should find keywords in the article to use in doge-phra
 
 Thanks to linguist Gretchen McCulloch for [explaining](http://the-toast.net/2014/02/06/linguist-explains-grammar-doge-wow/) doge grammar
 
+## functions
+
+doger.js provides a number of functions. The main one for doge-generation is `Doger.doger()`, which you'll need to supply a list of keywords. Doger.js also provides some keyword extraction functions for generating these lists of keywords.
+
+### doge generator functions
+
+	Doger.doger(container, keywords, embedcontainer)
+
+	Doger.keywords_to_doge_text(keywords)
+
+	Doger.make_doge_image(image, doge_text)
+
+	Doger.doge_image()
+
+### keyword extractors
+
+	Doger.keywords_from_url(url)
+
+	Doger.keywords_from_text(text)
+
 ## original pseudocode #nostalgia
 
 	// pseudocode ahead...

@@ -11,7 +11,9 @@ Doger = {
         var output = Doger.make_doge_image(image, doge_text);
         output.clone().appendTo(container);
         var embed = $('<div>').append(output.clone()).html()
-        embedcontainer.text(embed); 
+        if (embedcontainer) {
+            embedcontainer.text(embed);
+        };
         return embed;
     },
 
@@ -158,13 +160,6 @@ Doger = {
     // function to check if a string is a url
     check_for_url: function(string) {
         return true;
-    },
-
-    // function to get an article's content with the readability api
-    get_content_from_url: function(url) {
-        var query = "https://readability.com/api/content/v1/parser?url=" + encodeURI(url) + "&token=2d3cae85509d49fc2d2ec8d1b5fd46aef1dc0130";
-        var response = Doger.httpGet(query);
-        return response;
     },
 
     // function to return an object with a doge image url, a height, and a width
