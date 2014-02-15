@@ -187,10 +187,13 @@
         };
 
         function dogeFromUrlForm() {
+            $('#urlform').tooltip('destroy');
             var url = $("#urlform").val();
             if (url.length > 0) {
                 if (Doger.check_for_url(url) == false) {
                     $('.url-panel').addClass('has-error');
+                    $('#urlform').tooltip({title: "not a url"});
+                    $('#urlform').tooltip('show');
                     return null;
                 } else {
                     var keywords = Doger.keywords_from_url(url);
