@@ -40,7 +40,6 @@
                 <div id="dogeformContainer" style="position: relative;">
                     <div class="embed panel">
                         <button class="btn btn-default" data-toggle="modal" data-target=".embed-modal"><span class="glyphicon glyphicon-share-alt"></span> Embed Code</button>
-                        <button class="btn btn-default" data-toggle="modal" data-target=".link-modal"> <span class="glyphicon glyphicon-link"></span> Permalink</button>
                         <button class="btn btn-default" id="saveImage" onclick="saveImageButton()"><span class="glyphicon glyphicon-download-alt"></span> Save Image</button>
                     </div>
                     <div id="dogeform">
@@ -58,8 +57,8 @@
                         </div>
                     </div>
                     <div class="info panel">
-                        <button class="btn btn-info" data-toggle="modal" data-target=".info-modal">Information</button>
-                        <button class="btn btn-default" data-toggle="modal" data-target=".bookmarklet-modal">Bookmarklet</button>
+                        <button class="btn btn-info" data-toggle="modal" data-target=".info-modal"><span class="glyphicon glyphicon-heart-empty"></span> Information</button>
+                        <button class="btn btn-default" data-toggle="modal" data-target=".bookmarklet-modal"><span class="glyphicon glyphicon-pushpin"></span> Bookmarklet</button>
                     </div>
 
 
@@ -76,25 +75,6 @@
 
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" onclick="selectText('#embedcode')">Select</button>
-                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="modal fade link-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-sm">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                    <h4 class="modal-title" id="myModalLabel">Link</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <textarea id="permalink" class="form-control" rows="5"></textarea>
-                                </div>
-
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" onclick="selectText('#permalink')">Select</button>
                                     <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
                                 </div>
                             </div>
