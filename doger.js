@@ -28,10 +28,10 @@ Doger = {
                 var output = [];
                 // add keywords
                 for (var i = 0; i <= keywords.length - 1; i++) {
-                    output.push(Doger.random_from_array(dogeWords) + " " + keywords[i].toLowerCase() + ".");
+                    output.push(Doger.random_from_array(dogeWords) + " " + keywords[i].toLowerCase());
                 };
                 // add end word
-                output.push(Doger.random_from_array(dogeEndWords) + ".");
+                output.push(Doger.random_from_array(dogeEndWords));
                 return output;
             },
 
