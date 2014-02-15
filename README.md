@@ -60,11 +60,11 @@ This function chooses one of a pre-populated array of Shiba Inu image objects (`
 
 These functions return arrays of keywords (`['Term extraction', 'Memetics', 'JavaScript']`), sorted with the highest-confidence keywords first.
 
-#### `Doger.keywords_from_url(url)`
+#### Doger.keywords_from_url(url)
 
 This function finds keywords on a webpage based on a url string.
 
-#### `Doger.keywords_from_text(text)`
+#### Doger.keywords_from_text(text)
 
 This function finds keywords in a text string.
 
