@@ -20,19 +20,21 @@ doger.js provides a number of functions. The main one for doge-generation is `Do
 
 ### doge generator functions
 
-	Doger.doger(container, keywords, embedcontainer)
+*	`Doger.doger(container, keywords, embedcontainer)`
 
-	Doger.keywords_to_doge_text(keywords)
+*	`Doger.keywords_to_doge_text(keywords)`
 
-	Doger.make_doge_image(image, doge_text)
+*	`Doger.make_doge_image(image, doge_text)`
 
-	Doger.doge_image()
+*	`Doger.doge_image()`
+
 
 ### keyword extractors
 
-	Doger.keywords_from_url(url)
+*	`Doger.keywords_from_url(url)`
 
-	Doger.keywords_from_text(text)
+*	`Doger.keywords_from_text(text)`
+
 
 ## original pseudocode #nostalgia
 
