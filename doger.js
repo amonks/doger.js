@@ -237,6 +237,9 @@ Doger = {
 
         // function to GET a url, needed by keywords_from_url()
             httpGet: function(theUrl) {
+                if (!check_for_url(theUrl)) {
+                    return null;
+                };
                 var xmlHttp = null;
 
                 xmlHttp = new XMLHttpRequest();
