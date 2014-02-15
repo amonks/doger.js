@@ -175,8 +175,7 @@
                 var dataURI = Doger.make_doge_canvas(image, doge_text);
                 var blob = Doger.make_blob(dataURI);
                 var tempUrl = URL.createObjectURL(blob);
-                var dogeWords = ["such", "much", "very", "many", "so", "how"];
-                var fileName = '' + Doger.random_from_array(dogeWords) + ' ' + Doger.random_from_array(keywords) +'.png'
+                var fileName = '' + Doger.random_from_array(Doger.doge_words) + ' ' + Doger.random_from_array(keywords) + ' ' + Doger.random_from_array(Doger.doge_end_words) +'.png'
                 var fileName = fileName.split(' ').join('-');
                 var link = $('<a href="' + tempUrl +'" id="download" download="' + fileName + '" target="_blank">*</a>' );
                 $("body").append(link);

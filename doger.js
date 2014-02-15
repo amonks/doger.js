@@ -24,15 +24,13 @@ Doger = {
             keywords_to_doge_text: function(keywords) {
                 keywords = Doger.shuffle_array(keywords);
                 // see http://the-toast.net/2014/02/06/linguist-explains-grammar-doge-wow/
-                var dogeWords = ["such", "much", "very", "many", "so", "how"];
-                var dogeEndWords = ["wow", "amaze", "excite"];
                 var output = [];
                 // add keywords
                 for (var i = 0; i <= keywords.length - 1; i++) {
-                    output.push(Doger.random_from_array(dogeWords) + " " + keywords[i].toLowerCase());
+                    output.push(Doger.random_from_array(Doger.doge_words) + " " + keywords[i].toLowerCase());
                 };
                 // add end word
-                output.push(Doger.random_from_array(dogeEndWords));
+                output.push(Doger.random_from_array(Doger.doge_end_words));
                 return output;
             },
 
