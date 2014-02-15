@@ -151,6 +151,11 @@ Doger = {
                         width: 1024,
                         height: 768
                     }, 
+                    {
+                        url: "http://doge.needsyourhelp.org/images/c09.jpg",
+                        width: 1280,
+                        height: 960
+                    }, 
                     // {
                     //     url: "http://doge.needsyourhelp.org/images/shiba-inu_04_lg.jpg",
                     //     width: 622,
