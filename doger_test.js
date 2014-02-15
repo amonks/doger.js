@@ -103,7 +103,7 @@ describe("doger.js", function() {
 		describe("Get the keywords from a webpage", function() {
 			describe("http://monks.co", function() {
 				var url = "http://monks.co";
-				var correctValue = ["Belgian Man Records", "Belgian Man Records", "Concord Carlisle Regional High School", "Oblique Strategies", "Facebook", "Andrew Zarins", "responsive design", "Andrew Monks", "music video", "realtime video", "Dante Pilkington"];
+				var correctValue = ["Belgian Man Records", "Belgian Man Records", "Concord Carlisle Regional High School", "Oblique Strategies", "Facebook", "Facebook", "responsive design", "Andrew Monks", "music video", "realtime video"];
 				var output = Doger.keywords_from_url(url);
 				
 				it("should return a populated array", function() {
