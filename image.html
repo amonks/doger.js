@@ -25,10 +25,14 @@
 
         <script>
         var image = Doger.doge_image();
-        var dogeImage = new Image();
-        dogeImage.src = image.url;
 
-        dogeImage.onload = function() {
+        function loadSprite(src, callback) {
+            var sprite = new Image();
+            sprite.onload = callback;
+            sprite.src = src;
+        }
+
+        loadSprite(image.url, function() {
             if (Doger.get_query_string()) {
                 var text = Doger.get_query_string();
                 var keywords = text.split(',');
@@ -38,7 +42,7 @@
                 var doge_text = Doger.keywords_to_doge_text(keywords);
                 window.location = Doger.make_doge_canvas(image, doge_text);
             };
-        }
+        });
 
         (function(i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r;
