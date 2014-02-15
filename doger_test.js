@@ -130,7 +130,7 @@ describe("doger.js", function() {
 
 			describe("The Economist article", function() {
 				var url = "http://www.economist.com/news/books-and-arts/21595883-how-re-engineer-world-measure-man-0";
-				var correctValue = ["Alex Pentland", "The Economist", "The Economist", "Mr Pentland", "social physics", "Social Physics"];
+				var correctValue = ["The Economist", "United States", "Alex Pentland", "Mr Pentland", "social physics"];
 				var output = Doger.keywords_from_url(url);
 				
 				it("should return a populated array", function() {
