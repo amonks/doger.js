@@ -241,7 +241,7 @@ Doger = {
     // Utilities
         // bookmarklet function
             bookmarklet: function() {
-                Doger.loadScript("http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js", function() {
+                Doger.load_script("http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js", function() {
                     var text = Doger.get_selected_text();
                     var keywords = Doger.keywords_from_text(text);
                     if (keywords.length > 0) {
@@ -350,7 +350,7 @@ Doger = {
             },
 
         // function to load a script
-            loadScript: function(url, callback) {
+            load_script: function(url, callback) {
                 var head = document.getElementsByTagName("head")[0];
                 var script = document.createElement("script");
                 script.src = url;
@@ -375,6 +375,22 @@ Doger = {
                 };
 
                 head.appendChild(script);
+            },
+
+        // function to load an image and hit a callback when it's done
+            load_image: function(src, callback) {
+                var sprite = new Image();
+                sprite.onload = callback;
+                sprite.src = src;
+            },
+
+        // function to force-download a data uri as a filename
+            download_data_uri: function(dataURI, fileName) {
+                var blob = Doger.make_blob(dataURI);
+                var tempUrl = URL.createObjectURL(blob);
+                var link = $('<a href="' + tempUrl +'" id="download" download="' + fileName + '" target="_blank"> </a>' );
+                $("body").append(link);
+                $("#download").get(0).click();
             },
 
     // other stuff

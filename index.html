@@ -20,8 +20,7 @@
 
 <body>
     <div class="container" style="padding: 10px;    ">
-        <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->.
-        <script src="vendor/jquery.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>.
         <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
         <script src="doger.js"></script>
         <div class="row">
@@ -47,7 +46,7 @@
                         <div class="panel-heading"><h3 class="panel-title">Generate A Doge</h3></div>
                         <div class="panel-body">
                             <div class="form-group keyword-panel">
-                                <label for="keywordform">From a list of keywords.</label>
+                                <label for="keywordform">From a List of Keywords</label>
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="doge, term extraction, memetics, javascript, shiba inu, artificial intelligence, client-side" id="keywordform" />
                                     <div class="input-group-btn">
@@ -56,7 +55,7 @@
                                 </div>
                             </div>
                             <div class="form-group url-panel">
-                                <label for="urlform">From a URL.</label>
+                                <label for="urlform">From a URL</label>
                                 <div class="input-group">
                                     <input type="url" name="urlform" class="form-control" placeholder="http://monks.co" id="urlform" />
                                     <div class="input-group-btn">
@@ -65,7 +64,7 @@
                                 </div>
                             </div>
                             <div class="form-group text-panel">
-                                <label for="textform">From a block of text.</label>
+                                <label for="textform">From a Block of Text</label>
                                 <textarea name="textform" placeholder="According to British writer David Icke, 5- to 12-foot (1.5–3.7 m) tall, blood-drinking, shape-shifting reptilian humanoids from the Alpha Draconis star system, now hiding in underground bases, are the force behind a worldwide conspiracy against humanity.[7] He contends that most of the world's leaders are related to these reptilians, including George W. Bush of the United States, and Queen Elizabeth II of the United Kingdom.[8] Icke's conspiracy theories now have supporters in 47 countries and he has given lectures to crowds of up to 6,000.[9][10] American writer Vicki Santillano included it in her list of the 10 most popular conspiracy theories, describing it as the 'wackiest theory' she had encountered.[11] A poll of Americans in 2013 by Public Policy Polling showed that 4% of registered voters believed in David Icke's ideas.[12]" class="form-control" rows="4" value="" id="textform"></textarea>
                                 <button class="btn btn-primary btn-block" onclick="dogeFromTextForm()">Doge!</button>
                             </div>
@@ -158,28 +157,25 @@
         function saveImageButton() { 
             var image = Doger.doge_image();
 
-            function loadSprite(src, callback) {
-                var sprite = new Image();
-                sprite.onload = callback;
-                sprite.src = src;
-            };
-
-            loadSprite(image.url, function() {
+            Doger.load_image(image.url, function() {
+                // get keywords
                 if (Doger.get_query_string()) {
                     var text = Doger.get_query_string();
                     var keywords = text.split(',');
                 } else {
                     var keywords = ["doge", "term extraction", "memetics", "javascript", "shiba inu", "artificial intelligence", "client-side"];
                 };
+
+                // generate image
                 var doge_text = Doger.keywords_to_doge_text(keywords);
                 var dataURI = Doger.make_doge_canvas(image, doge_text);
-                var blob = Doger.make_blob(dataURI);
-                var tempUrl = URL.createObjectURL(blob);
+
+                // generate filename
                 var fileName = '' + Doger.random_from_array(Doger.doge_words) + ' ' + Doger.random_from_array(keywords) + ' ' + Doger.random_from_array(Doger.doge_end_words) +'.png'
                 var fileName = fileName.split(' ').join('-').toLowerCase();
-                var link = $('<a href="' + tempUrl +'" id="download" download="' + fileName + '" target="_blank">*</a>' );
-                $("body").append(link);
-                $("#download").get(0).click();
+
+                // force download
+                Doger.download_data_uri(dataURI, fileName);
             });
         }
 
