@@ -377,5 +377,11 @@ Doger = {
                 };
 
                 head.appendChild(script);
-            }
+            },
+
+    // other stuff
+
+        // doge 
+            dogeWords: ["such", "much", "very", "many", "so", "how"],
+            dogeEndWords: ["wow", "amaze", "excite"],
 }

@@ -27,7 +27,7 @@
         <div class="row">
             <div class="page-header">
                 <h1>doge meme generator
-                    <small>such doge.</small>
+                    <small id="tagline">such doge.</small>
                 </h1>
             </div>
         </div>
@@ -141,6 +141,9 @@
         </div>
 
         <script>
+
+        $("#tagline").text(Doger.random_from_array(Doger.doge_words) + " doge. " + Doger.random_from_array(Doger.doge_end_words) + ".");
+
         if (Doger.get_query_string()) {
             var text = Doger.get_query_string();
             var keywords = text.split(',');
