@@ -185,6 +185,23 @@ Doger = {
         //     },
 
     // Utilities
+        // bookmarklet function
+            bookmarklet: function() {
+                var text = get_selected_text();
+                var keywords = keywords_from_text(text);
+                window.location = "http://doge.needsyourhelp.org" + "?" + btoa(keywords);
+            },
+
+        // function to get the currently selected text on a page
+            get_selected_text: function() {
+                var text = "";
+                if (window.getSelection) {
+                    text = window.getSelection().toString();
+                } else if (document.selection && document.selection.type != "Control") {
+                    text = document.selection.createRange().text;
+                }
+                return text;
+            },
 
         // function to get the current query string (anything in the location bar after a '?'), and de-base64 it.
             get_query_string: function() {

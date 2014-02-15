@@ -20,7 +20,8 @@
 
 <body>
     <div class="container" style="padding: 10px;    ">
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->.
+        <script src="vendor/jquery.min.js"></script>
         <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
         <script src="doger.js"></script>
         <div class="row">
@@ -37,6 +38,10 @@
             </div>
             <div class="col-md-4">
                 <div id="dogeformContainer" style="position: relative;">
+                    <div class="embed panel">
+                        <button class="btn btn-default" data-toggle="modal" data-target=".embed-modal">Embed Code</button>
+                        <button class="btn btn-default" data-toggle="modal" data-target=".link-modal">Permalink</button>
+                    </div>
                     <div id="dogeform">
                         <div class="form-group panel">
                             <input type="text" class="form-control" placeholder="doge, term extraction, memetics, javascript, shiba inu, artificial intelligence, client-side" id="keywordform" />
@@ -52,73 +57,104 @@
                             <button class="btn btn-default" onclick="dogeFromTextForm()">doge from text</button>
                         </div>
                     </div>
-                    <div class="embed panel">
-                        <button class="btn btn-default" data-toggle="modal" data-target=".embed-modal">Embed Code</button>
-                        <button class="btn btn-default" data-toggle="modal" data-target=".link-modal">Permalink</button>
+                    <div class="info panel">
                         <button class="btn btn-info" data-toggle="modal" data-target=".info-modal">Information</button>
+                        <button class="btn btn-default" style="display: none;" data-toggle="modal" data-target=".bookmarklet-modal">Bookmarklet</button>
+                    </div>
 
-                        <div class="modal fade embed-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-sm">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                        <h4 class="modal-title" id="myModalLabel">Embed code</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <textarea id="embedcode" class="form-control" rows="10"></textarea>
-                                    </div>
 
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" onclick="selectembedcode()">Select</button>
-                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                                    </div>
+                    <div class="modal fade embed-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-sm">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title" id="myModalLabel">Embed code</h4>
                                 </div>
-                            </div>
-                        </div>
-
-                        <div class="modal fade link-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-sm">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                        <h4 class="modal-title" id="myModalLabel">Link</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <textarea id="permalink" class="form-control" rows="5"></textarea>
-                                    </div>
-
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" onclick="selectlink()">Select</button>
-                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                                    </div>
+                                <div class="modal-body">
+                                    <textarea id="embedcode" class="form-control" rows="10"></textarea>
                                 </div>
-                            </div>
-                        </div>
 
-                        <div class="modal fade info-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-md">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                        <h4 class="modal-title" id="myModalLabel">Info</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="panel">
-                                            <p><a href="http://doge.needsyourhelp.org">doger.js</a> is a &ldquo;doge&rdquo; meme generator. It generates scalable, css-based graphics. Given a block of text or a website url, it uses term extraction to pull out important keywords. Then, it uses the linguistic conventions of the popular &ldquo;doge&rdquo; meme to generate phrases based on those keywords.</p>
-                                            <p>doger.js is implemented as a javascript library. It&#8127;s intended to run in the browser, which makes it very portable.</p>
-                                        </div>
-                                        <p>by <a href="http://monks.co/">Andrew Monks</a>, 2014</p>
-                                        <p>source, library, credits, and API documentation are available on <a href="http://github.com/amonks/doger.js">GitHub</a></p>
-                                        <p><a href="https://github.com/amonks/doger.js/blob/gh-pages/LICENSE">MIT License</a></p>
-                                    </div>
-
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                                    </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" onclick="selectText('#embedcode')">Select</button>
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <div class="modal fade link-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-sm">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title" id="myModalLabel">Link</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <textarea id="permalink" class="form-control" rows="5"></textarea>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" onclick="selectText('#permalink')">Select</button>
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade info-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-md">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title" id="myModalLabel">Info</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="panel">
+                                        <p><a href="http://doge.needsyourhelp.org">doger.js</a> is a &ldquo;doge&rdquo; meme generator. It generates scalable, css-based graphics. Given a block of text or a website url, it uses term extraction to pull out important keywords. Then, it uses the linguistic conventions of the popular &ldquo;doge&rdquo; meme to generate phrases based on those keywords.</p>
+                                        <p>doger.js is implemented as a javascript library. It&#8127;s intended to run in the browser, which makes it very portable.</p>
+                                    </div>
+                                    <p>by <a href="http://monks.co/">Andrew Monks</a>, 2014</p>
+                                    <p>source, library, credits, and API documentation are available on <a href="http://github.com/amonks/doger.js">GitHub</a></p>
+                                    <p><a href="https://github.com/amonks/doger.js/blob/gh-pages/LICENSE">MIT License</a></p>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade bookmarklet-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-sm">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title" id="myModalLabel">Bookmarklet</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>
+                                        The doger bookmarklet gets the currently selected text, and generates a doge image from it.
+                                    </p>
+                                    <a href='javascript: var a = document.createElement("script"); a.setAttribute("src", "http://doge.needsyourhelp.org/doger.js"); document.body.appendChild(a); Doger.bookmarklet();'>Bookmarklet</a>
+                                    <textarea id="bookmarklet" class="form-control" rows="5">
+                                        javascript: var a = document.createElement("script");
+                                        a.setAttribute("src", "http://doge.needsyourhelp.org/doger.js");
+                                        document.body.appendChild(a);
+                                        Doger.bookmarklet();
+                                    </textarea>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" onclick="selectText('#bookmarklet')">Select</button>
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
                 </div>
             </div>
         </div>
@@ -159,18 +195,13 @@
             } else {
                 var keywords = Doger.keywords_from_url(url);
             };
-            window.location = "http://doge.needsyourhelp.org" + "?" + btoa(keywords);
+            window.location = "http://doge.needsyourhelp.org?" + btoa(keywords);
         };
 
-        function selectembedcode() {
-            $("#embedcode").select();
+        function selectText(query) {
+            $(query).select();
         }
 
-        function selectlink() {
-            $("#permalink").select();
-        }
-        </script>
-        <script>
         (function(i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r;
             i[r] = i[r] || function() {
