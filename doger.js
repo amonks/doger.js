@@ -60,7 +60,7 @@ Doger = {
                 });
                 for (var i = 0; i <= doge_text.length - 1; i++) {
                     var span = $("<span class='dogetext'>" + doge_text[i] + "</span>");
-                    var x = Math.random() * 100 * .6;
+                    var x = Math.random() * 100 * .75;
                     var y = i * (100 / doge_text.length);
                     var color = Doger.random_color();
                     var shadow = Doger.random_color();
@@ -297,11 +297,11 @@ Doger = {
                 var ia = new Uint8Array(ab);
                 for (var i = 0; i < byteString.length; i++) {
                     ia[i] = byteString.charCodeAt(i);
-                }
+                };
 
                 // write the ArrayBuffer to a blob, and you're done
                 return new Blob([ab],{type: mimeString});
-            }
+            },
 
         // function to GET a url, needed by keywords_from_url()
             httpGet: function(theUrl) {
