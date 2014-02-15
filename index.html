@@ -142,13 +142,9 @@
                                         </a>
 
                                     </p>
-                                    <textarea id="bookmarklet" class="form-control" rows="5">
-                                        javascript:(function(){function e(e,t){var n=document.getElementsByTagName("body")[0];var r=document.createElement("script");r.src=e;var i=false;r.onload=r.onreadystatechange=function(){if(!i&amp;&amp;(!this.readyState||this.readyState=="loaded"||this.readyState=="complete")){i=true;t();r.onload=r.onreadystatechange=null;n.removeChild(r)}};n.appendChild(r)}e("http://doge.needsyourhelp.org/doger.js",function(){Doger.bookmarklet()})})()
-                                    </textarea>
                                 </div>
 
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" onclick="selectText('#bookmarklet')">Select</button>
                                     <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
                                 </div>
                             </div>
