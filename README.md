@@ -70,11 +70,32 @@ This function finds keywords in a text string.
 
 ## API
 
-The [http://doge.needsyourhelp.org/](website) looks at the query string for a base64 encoded array of keywords to generate an image from. 
+### encoding
 
-*javascript:*
+The [http://doge.needsyourhelp.org/](website/api) looks at the query string for a base64 encoded array of keywords to generate an image from. Generate a proper query string using `btoa('["keyword1", "keyword2", "keyword3"]');`
 
-	"http://doge.needsyourhelp.org?" + btoa('["keyword1", "keyword2", "keyword3"]');
+### endpoints
+
+There are three endpoints available:
+
+*	`http://doge.needsyourhelp.org/?`: standard generator page with info
+
+*	`http://doge.needsyourhelp.org/image.html?`: redirects to generated png image
+
+*	`http://doge.needsyourhelp.org/embed.html?`: full-width scalable embed
+
+### example
+
+`var keywords = ["API", "endpoints", "query", "base64", "javascript"];`
+
+`var encoded = btoa(keywords);`
+
+[`'http://doge.needsyourhelp.org/?' + encoded`](http://doge.needsyourhelp.org/?QVBJLGVuZHBvaW50cyxxdWVyeSxiYXNlNjQsamF2YXNjcmlwdA==)
+
+[`'http://doge.needsyourhelp.org/image.html?' + encoded`](http://doge.needsyourhelp.org/image.html?QVBJLGVuZHBvaW50cyxxdWVyeSxiYXNlNjQsamF2YXNjcmlwdA==)
+
+[`'http://doge.needsyourhelp.org/embed.html?' + encoded`](http://doge.needsyourhelp.org/embed.html?QVBJLGVuZHBvaW50cyxxdWVyeSxiYXNlNjQsamF2YXNjcmlwdA==)
+
 
 ## original pseudocode #nostalgia
 
