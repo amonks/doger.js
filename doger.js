@@ -22,6 +22,7 @@ Doger = {
 
         // function to return an array of relevant doge phrases given a long string
             keywords_to_doge_text: function(keywords) {
+                keywords = Doge.shuffle_array(keywords);
                 // see http://the-toast.net/2014/02/06/linguist-explains-grammar-doge-wow/
                 var dogeWords = ["such", "much", "very", "many", "so", "how"];
                 var dogeEndWords = ["wow", "amaze", "excite"];
@@ -32,7 +33,6 @@ Doger = {
                 };
                 // add end word
                 output.push(Doger.random_from_array(dogeEndWords));
-                output = Doger.shuffle_array(output);
                 return output;
             },
 
