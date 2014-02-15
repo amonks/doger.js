@@ -163,7 +163,8 @@
                 var dataURI = Doger.make_doge_canvas(image, doge_text);
                 var blob = Doger.make_blob(dataURI);
                 var tempUrl = URL.createObjectURL(blob);
-                var link = $('<a href="' + tempUrl +'" id="download" download="much doge.png" target="_blank">*</a>' );
+                var dogeWords = ["such", "much", "very", "many", "so", "how"];
+                var link = $('<a href="' + tempUrl +'" id="download" download="' + Doger.random_from_array(dogeWords) + ' ' + Doger.random_from_array(keywords) +'.png" target="_blank">*</a>' );
                 $("body").append(link);
                 $("#download").get(0).click();
             });
