@@ -1,6 +1,6 @@
 #	doger.js
 
-!(much doge)[http://doge.needsyourhelp.org/images/logo.png]
+![ much doge ](http://doge.needsyourhelp.org/images/logo.png "much doge")
 
 ## Description
 
