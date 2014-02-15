@@ -84,7 +84,7 @@ Doger = {
                 var context = canvas.getContext("2d");
                 context.drawImage(imageElement, 0, 0);
                 if (doge_text.length <= 1) {
-                    return canvas
+                    return canvas.toDataUrl("image/png");
                 };
                 context.font = "bold 20px 'Comic Sans', 'Comic Sans MS', 'Marker Felt', cursive";
                 for (var i = 0; i <= doge_text.length - 1; i++) {
