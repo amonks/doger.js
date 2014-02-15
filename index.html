@@ -59,7 +59,7 @@
                     </div>
                     <div class="info panel">
                         <button class="btn btn-info" data-toggle="modal" data-target=".info-modal">Information</button>
-                        <button class="btn btn-default" style="display: none;" data-toggle="modal" data-target=".bookmarklet-modal">Bookmarklet</button>
+                        <button class="btn btn-default" data-toggle="modal" data-target=".bookmarklet-modal">Bookmarklet</button>
                     </div>
 
 
@@ -134,11 +134,16 @@
                                 </div>
                                 <div class="modal-body">
                                     <p>
-                                        The doger bookmarklet gets the currently selected text, and generates a doge image from it.
+                                        The doger bookmarklet gets the currently selected text, and generates a doge image from it. Drag the button below to your bookmarks bar.
                                     </p>
-                                    <a href='javascript:(function(){ var a = document.createElement("script"); a.setAttribute("src", "http://doge.needsyourhelp.org/doger.js"); document.body.appendChild(a); Doger.bookmarklet(); })();'>Bookmarklet</a>
+                                    <p>                                    
+                                        <a href='javascript:(function(){function e(e,t){var n=document.getElementsByTagName("body")[0];var r=document.createElement("script");r.src=e;var i=false;r.onload=r.onreadystatechange=function(){if(!i&amp;&amp;(!this.readyState||this.readyState=="loaded"||this.readyState=="complete")){i=true;t();r.onload=r.onreadystatechange=null;n.removeChild(r)}};n.appendChild(r)}e("http://doge.needsyourhelp.org/doger.js",function(){Doger.bookmarklet()})})()'>
+                                            <button type="button" class="btn btn-success">Doge This!</button>
+                                        </a>
+
+                                    </p>
                                     <textarea id="bookmarklet" class="form-control" rows="5">
-                                        javascript:(function(){ var a = document.createElement("script"); a.setAttribute("src", "http://doge.needsyourhelp.org/doger.js"); document.body.appendChild(a); Doger.bookmarklet(); })();
+                                        javascript:(function(){function e(e,t){var n=document.getElementsByTagName("body")[0];var r=document.createElement("script");r.src=e;var i=false;r.onload=r.onreadystatechange=function(){if(!i&amp;&amp;(!this.readyState||this.readyState=="loaded"||this.readyState=="complete")){i=true;t();r.onload=r.onreadystatechange=null;n.removeChild(r)}};n.appendChild(r)}e("http://doge.needsyourhelp.org/doger.js",function(){Doger.bookmarklet()})})()
                                     </textarea>
                                 </div>
 
