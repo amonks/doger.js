@@ -98,35 +98,63 @@ Doger = {
 
         // function to return an object with a doge image url, a height, and a width
             doge_image: function() {
-                doge_images = [{
-                    url: "http://doge.needsyourhelp.org/images/shiba-inu_01_lg.jpg",
-                    width: 622,
-                    height: 352
-                }, {
-                    url: "http://doge.needsyourhelp.org/images/Shiba-Inu-Main.jpg",
-                    width: 461,
-                    height: 400
-                }, {
-                    url: "http://doge.needsyourhelp.org/images/shiba-inu-puppies-pictures.jpg",
-                    width: 922,
-                    height: 922
-                }, {
-                    url: "http://doge.needsyourhelp.org/images/001.jpg",
-                    width: 1023,
-                    height: 1024
-                }, {
-                    url: "http://doge.needsyourhelp.org/images/Taisen_Shikaki_Inu.jpg",
-                    width: 800,
-                    height: 994
-                }, {
-                    url: "http://doge.needsyourhelp.org/images/shiba_inu.jpg",
-                    width: 460,
-                    height: 315
-                }, {
-                    url: "http://doge.needsyourhelp.org/images/shiba-inu_04_lg.jpg",
-                    width: 622,
-                    height: 352
-                }]
+                doge_images = [
+                    // {
+                    //     url: "http://doge.needsyourhelp.org/images/shiba-inu_01_lg.jpg",
+                    //     width: 622,
+                    //     height: 352
+                    // }, 
+                    // {
+                    //     url: "http://doge.needsyourhelp.org/images/Shiba-Inu-Main.jpg",
+                    //     width: 461,
+                    //     height: 400
+                    // }, 
+                    {
+                        url: "http://doge.needsyourhelp.org/images/shiba-inu-puppies-pictures.jpg",
+                        width: 922,
+                        height: 922
+                    }, 
+                    {
+                        url: "http://doge.needsyourhelp.org/images/001.jpg",
+                        width: 1023,
+                        height: 1024
+                    }, 
+                    {
+                        url: "http://doge.needsyourhelp.org/images/Taisen_Shikaki_Inu.jpg",
+                        width: 800,
+                        height: 994
+                    }, 
+                    {
+                        url: "http://doge.needsyourhelp.org/images/running-shiba-inu-dog-photo.jpg",
+                        width: 1440,
+                        height: 934
+                    }, 
+                    {
+                        url: "http://doge.needsyourhelp.org/images/12_11_10-031.jpg",
+                        width: 1600,
+                        height: 1200
+                    }, 
+                    {
+                        url: "http://doge.needsyourhelp.org/images/shiba-inu-21.jpg",
+                        width: 1000,
+                        height: 1000
+                    }, 
+                    {
+                        url: "http://doge.needsyourhelp.org/images/Japanese_shiba_inu__shiba_dog__by_MogamiJ.jpg",
+                        width: 1024,
+                        height: 768
+                    }, 
+                    {
+                        url: "http://doge.needsyourhelp.org/images/1024px-Taka_Shiba.jpg",
+                        width: 1024,
+                        height: 768
+                    }, 
+                    // {
+                    //     url: "http://doge.needsyourhelp.org/images/shiba-inu_04_lg.jpg",
+                    //     width: 622,
+                    //     height: 352
+                    // }
+                ]
                 return Doger.random_from_array(doge_images);
             },
 
