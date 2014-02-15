@@ -194,7 +194,14 @@
                     return null;
                 } else {
                     var keywords = Doger.keywords_from_url(url);
-                    window.location = "http://doge.needsyourhelp.org?" + btoa(keywords);
+                    if (keywords.length > 0) {
+                        $('.url-panel').addClass('has-success');                        
+                        window.location = "http://doge.needsyourhelp.org?" + btoa(keywords);
+                    } else {
+                        $('.url-panel').addClass('has-warning');
+                        $('#urlform').tooltip(title: "no keywords found");
+                        $('#urlform').tooltip('show');
+                    }
                 }
             } else {
                 var keywords = ["Dante Pilkington", "realtime video", "music video", "Andrew Monks", "responsive design", "Andrew Zarins", "Facebook", "Oblique Strategies", "Concord Carlisle Regional High School", "Belgian Man Records", "Belgian Man Records"];
