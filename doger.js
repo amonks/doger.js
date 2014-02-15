@@ -187,7 +187,7 @@ Doger = {
     // Utilities
         // bookmarklet function
             bookmarklet: function() {
-                loadScript("http://code.jquery.com/jquery-latest.js", function() {
+                Doger.loadScript("http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js", function() {
                     var text = Doger.get_selected_text();
                     var keywords = Doger.keywords_from_text(text);
                     if (keywords.length > 0) {
@@ -245,7 +245,7 @@ Doger = {
             },
 
         // function to load a script
-            function loadScript(url, callback) {
+            loadScript: function(url, callback) {
                 var head = document.getElementsByTagName("head")[0];
                 var script = document.createElement("script");
                 script.src = url;
