@@ -4,6 +4,8 @@
 
 ## Description
 
+`http://doge.needsyourhelp.org/js/doger.min.js`
+
 [doger.js](http://doge.needsyourhelp.org/) is a “doge” meme generator. It generates scalable, css-based graphics. Given a block of text or a website url, it uses term extraction to pull out important keywords. Then, it uses the linguistic conventions of the popular “doge” meme to generate phrases based on those keywords.
 
 doger.js is implemented as a javascript library. It᾿s intended to run in the browser, which makes it very portable.
@@ -61,7 +63,7 @@ Released under the [MIT License](http://github.com/amonks/doger.js/blob/gh-pages
 	<textarea id="embedcode"></textarea>
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-	<script src="http://doge.needsyourhelp.org/doger.js"></script>
+	<script src="http://doge.needsyourhelp.org/js/doger.min.js"></script>
 
 	<script>
 		var url = "http://cnn.com"
