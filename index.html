@@ -200,7 +200,7 @@
         };
 
         function dogeFromKeywordForm() {
-            var keywords = $("#keywordform").val().split(',');
+            var keywords = $("#keywordform").val().replace(', ', ',').split(',');
             window.location = "http://doge.needsyourhelp.org?" + btoa(keywords);
         };
 
