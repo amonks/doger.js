@@ -221,9 +221,9 @@
                             window.location = "http://doge.needsyourhelp.org?" + btoa(keywords);
                         } else {
                             // if not, show warnings.
-                            $('.url-panel').addClass('has-warning');
-                            $('#urlform').tooltip({title: "no keywords found"});
-                            $('#urlform').tooltip('show');
+                            $('.keyword-panel').addClass('has-warning');
+                            $('#keywordform').tooltip({title: "Separate keywords with a comma"});
+                            $('#keywordform').tooltip('show');
                         }
                 // b64 + redirect!
             // if there's no text, run the placeholder text
