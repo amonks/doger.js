@@ -319,11 +319,10 @@ Doger = {
         // function to decode a base-64 encoded array of keywords in a query string
         // accept an optional backup argument to return if there are no keywords, otherwise return null
             get_keywords_from_query_string: function() {
-                var query_string = Doger.get_query_string;
+                var query_string = Doger.get_query_string();
                 if (query_string !== null) {
                     // if there's a query, use it
-                    var text = Doger.get_query_string();
-                    var keywords = text.split(',');
+                    var keywords = query_string.split(',');
                     return keywords;
                 } else {
                     if (arguments.length > 0){

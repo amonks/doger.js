@@ -165,7 +165,7 @@
 
                 // generate filename
                 var fileName = '' + Doger.random_from_array(Doger.doge_words) + ' ' + Doger.random_from_array(keywords) + ' ' + Doger.random_from_array(Doger.doge_end_words) +'.png'
-                var fileName = fileName.split(' ').join('-').toLowerCase();
+                fileName = fileName.split(' ').join('-').toLowerCase();
 
                 // force download with filename
                 Doger.download_data_uri(dataURI, fileName);
