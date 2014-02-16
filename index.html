@@ -176,6 +176,7 @@
         function dogeFromTextForm() {
             // get rid of warnings from other forms
             $('#textform').tooltip('destroy');
+            $('#keywordform').tooltip('destroy');
             $('#urlform').tooltip('destroy');
             // get form value
             var text = $("#textform").val();
@@ -254,6 +255,7 @@
         function dogeFromUrlForm() {
             // get rid of warnings from other forms
             $('#urlform').tooltip('destroy');
+            $('#keywordform').tooltip('destroy');
             $('#textform').tooltip('destroy');
             // get form value
             var url = $("#urlform").val();
