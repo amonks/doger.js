@@ -47,7 +47,7 @@ describe("doger.js", function() {
 				height: 352
 			};
 			var doge_text = [ "much test", "very units", "much behavioral", "amaze"];
-			var output = Doger.make_doge_image(image, doge_text);
+			var output = Doger.make_doge_html(image, doge_text);
 
 			it("should return an object", function() {
 				expect(output).to.be.a('object');	
