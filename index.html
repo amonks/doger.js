@@ -201,6 +201,13 @@
                 window.location = "http://doge.needsyourhelp.org?" + btoa(keywords);
             }
         };
+        // respond to enter key (I'm not using <form>s)
+        $("#textform").keypress(function(event) {
+            if (event.which == 13) {
+                event.preventDefault();
+                dogeFromTextForm();
+            }
+        });
 
         // function to get a list of terms from the keyword input, and generate a url to redirect to.
         function dogeFromKeywordForm() {
@@ -212,6 +219,13 @@
             // b64 + redirect!
             window.location = "http://doge.needsyourhelp.org?" + btoa(keywords);
         };
+        // respond to enter key (I'm not using <form>s)
+        $("#keywordform").keypress(function(event) {
+            if (event.which == 13) {
+                event.preventDefault();
+                dogeFromKeywordForm();
+            }
+        });
 
         // function to get run the keyword extractor on a url from the url input, and generate a url to redirect to.
         function dogeFromUrlForm() {
@@ -253,6 +267,13 @@
                 window.location = "http://doge.needsyourhelp.org?" + btoa(keywords);
             }
         };
+        // respond to enter key (I'm not using <form>s)
+        $("#urlform").keypress(function(event) {
+            if (event.which == 13) {
+                event.preventDefault();
+                dogeFromUrlForm();
+            }
+        });
 
         // function to select the contents of an html element from a jquery query. 
         // used in embed code modal
