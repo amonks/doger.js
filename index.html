@@ -201,13 +201,6 @@
                 window.location = "http://doge.needsyourhelp.org?" + btoa(keywords);
             }
         };
-        // respond to enter key
-        $("#textform").keypress(function(event) {
-            if (event.which == 13) {
-                event.preventDefault();
-                dogeFromTextForm();
-            }
-        });
 
         // function to get a list of terms from the keyword input, and generate a url to redirect to.
         function dogeFromKeywordForm() {
@@ -267,6 +260,13 @@
                 window.location = "http://doge.needsyourhelp.org?" + btoa(keywords);
             }
         };
+        // respond to enter key
+        $("#urlform").keypress(function(event) {
+            if (event.which == 13) {
+                event.preventDefault();
+                dogeFromUrlForm();
+            }
+        });
 
         // function to select the contents of an html element from a jquery query. 
         // used in embed code modal
