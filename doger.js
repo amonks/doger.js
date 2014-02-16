@@ -309,18 +309,20 @@ Doger = {
                 if (window.location.href.indexOf('?') == -1) {
                     // if there's no '?', there's no query string...
                     return null;
-                } else if {
-                    // otherwise get everything after it.
-                    var queryString = window.location.href.slice(window.location.href.indexOf('?') + 1);
-                    return atob(queryString);
                 };
+                // otherwise get everything after it.
+                var queryString = window.location.href.slice(window.location.href.indexOf('?') + 1);
+                if (queryString.length <= 1) {
+                    return null;
+                }
+                return atob(queryString);
             },
 
         // function to decode a base-64 encoded array of keywords in a query string
         // accept an optional backup argument to return if there are no keywords, otherwise return null
             get_keywords_from_query_string: function() {
                 var query_string = Doger.get_query_string();
-                if (query_string.length > 1) {
+                if (query_string !== null) {
                     // if there's a query, use it
                     var keywords = query_string.split(',');
                     return keywords;
