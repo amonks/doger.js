@@ -115,7 +115,7 @@
                                             The doger bookmarklet gets the currently selected text, and generates a doge image from it. Drag the button below to your bookmarks bar, select some text on a webpage, and click on it!
                                         </p>
                                         <p>                                    
-                                            <a href='javascript:(function(){function e(e,t){var n=document.getElementsByTagName("body")[0];var r=document.createElement("script");r.src=e;var i=false;r.onload=r.onreadystatechange=function(){if(!i&amp;&amp;(!this.readyState||this.readyState=="loaded"||this.readyState=="complete")){i=true;t();r.onload=r.onreadystatechange=null;n.removeChild(r)}};n.appendChild(r)}e("http://doge.needsyourhelp.org/js/doger.min.js",function(){Doger.bookmarklet()})})()'>
+                                            <a href='javascript:!function(){function e(e,t){var o=document.getElementsByTagName("body")[0],a=document.createElement("script");a.src=e;var n=!1;a.onload=a.onreadystatechange=function(){n||this.readyState&amp;&amp;"loaded"!=this.readyState&amp;&amp;"complete"!=this.readyState||(n=!0,t(),a.onload=a.onreadystatechange=null,o.removeChild(a))},o.appendChild(a)}e("http://doge.needsyourhelp.org/js/doger.min.js",function(){Doger.bookmarklet()})}();'>
                                                 <button type="button" class="btn btn-success"><span class="glyphicon glyphicon-pushpin"></span> Doge This!</button>
                                             </a>
                                         </p>
