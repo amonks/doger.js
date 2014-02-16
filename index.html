@@ -243,12 +243,17 @@
                 window.location = "http://doge.needsyourhelp.org?"
             }
         };
-
         // respond to enter key
         $("#keywordform").keypress(function(event) {
             if (event.which == 13) {
                 event.preventDefault();
                 dogeFromKeywordForm();
+            }
+        });
+        // check for comma
+        $("#keywordform").keypress(function(event) {
+            if (event.which == 188) {
+                $('#keywordbutton').text("Doge!");
             }
         });
 
