@@ -205,11 +205,6 @@ describe("doger.js", function() {
 				var out = Doger.http_get(query);
 				expect(out).to.be.a("string");
 			});
-			it("should successfully get a normal webpage request", function() {
-				var query = "http://monks.co";
-				var out = Doger.http_get(query);
-				expect(out).to.be.a("string");
-			});
 			it("should return null for a non-url", function() {
 				var query = "bogusString";
 				var out = Doger.http_get(query);
