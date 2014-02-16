@@ -228,12 +228,13 @@
                                 $('.url-panel').addClass('has-success');                        
                                 // b64 + redirect!
                                 window.location = "http://doge.needsyourhelp.org?" + btoa(keywords);    
+                            } else {
+                                // otherwise warn comma
+                                $('.keyword-panel').addClass('has-warning');
+                                $('#keywordform').tooltip({title: "If you'd like, you can enter multiple keywords separated by commas."});
+                                $('#keywordform').tooltip('show');
+                                $('#keywordbutton').text("I mean it!");
                             }
-                            // otherwise warn comma
-                            $('.keyword-panel').addClass('has-warning');
-                            $('#keywordform').tooltip({title: "If you'd like, you can enter multiple keywords separated by commas."});
-                            $('#keywordform').tooltip('show');
-                            $('#keywordbutton').text("I mean it!");
                         }
                 // b64 + redirect!
             // if there's no text, run the placeholder text
