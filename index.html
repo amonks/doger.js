@@ -50,7 +50,7 @@
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="doge, term extraction, memetics, javascript, shiba inu, artificial intelligence, client-side" id="keywordform" />
                                     <div class="input-group-btn">
-                                        <button class="btn btn-primary" onclick="dogeFromKeywordForm()">Doge!</button>
+                                        <button class="btn btn-primary" id="keywordbutton" onclick="dogeFromKeywordForm()">Doge!</button>
                                     </div>
                                 </div>
                             </form>
@@ -231,8 +231,9 @@
                             }
                             // otherwise warn comma
                             $('.keyword-panel').addClass('has-warning');
-                            $('#keywordform').tooltip({title: "Separate keywords with a comma"});
+                            $('#keywordform').tooltip({title: "If you'd like, you can enter multiple keywords separated by commas."});
                             $('#keywordform').tooltip('show');
+                            $('#keywordbutton').text("I mean it!");
                         }
                 // b64 + redirect!
             // if there's no text, run the placeholder text
