@@ -207,6 +207,7 @@
             // get rid of warnings from other forms
             $('#urlform').tooltip('destroy');
             $('#textform').tooltip('destroy');
+            $('#keywordform').tooltip('destroy');
             // get form value
             var text = $("#keywordform").val();
             // if there's text use it
@@ -220,7 +221,14 @@
                             // b64 + redirect!
                             window.location = "http://doge.needsyourhelp.org?" + btoa(keywords);
                         } else {
-                            // if not, show warnings.
+                            // if not, check if this is the first time
+                            if ('.keyword-panel').hasClass('has-warning')) {
+                                // if not, go!
+                                $('.url-panel').addClass('has-success');                        
+                                // b64 + redirect!
+                                window.location = "http://doge.needsyourhelp.org?" + btoa(keywords);    
+                            }
+                            // otherwise warn comma
                             $('.keyword-panel').addClass('has-warning');
                             $('#keywordform').tooltip({title: "Separate keywords with a comma"});
                             $('#keywordform').tooltip('show');
