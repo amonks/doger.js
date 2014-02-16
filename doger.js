@@ -7,25 +7,35 @@ Doger = {
     // Doge generator functions
 
         // main function to return a completed doge meme image based on a given article url
-            doger: function(container, keywords, embedcontainer) {
+        // accepts a container for the embed code as an optional third argument
+            doger: function(container, keywords) {
                 // do the stuff!
+                // choose a shiba inu
                 var image = Doger.doge_image();
+                // generate doge phrases from the keywords
                 var doge_text = Doger.keywords_to_doge_text(keywords);
-                var output = Doger.make_doge_image(image, doge_text);
+                // generate a divdoge
+                var output = Doger.make_doge_html(image, doge_text);
+                // add it to the given container
                 output.clone().appendTo(container);
-                var embed = $('<div>').append(output.clone()).html()
-                if (embedcontainer) {
-                    embedcontainer.text(embed);
+                // check for optional embed code argument
+                if (arguments.length >= 3) {
+                    // generate an embed code
+                    var embed = $('<div>').append(output.clone()).html()
+                    arguments[2].text(embed);
                 };
+                // return the image and the doge_text (since they're unique to this doge)
                 return {image: image, doge_text: doge_text};
             },
 
         // function to return an array of relevant doge phrases given a long string
+        // see http://the-toast.net/2014/02/06/linguist-explains-grammar-doge-wow/
             keywords_to_doge_text: function(keywords) {
+                // shuffle the keywords
                 keywords = Doger.shuffle_array(keywords);
-                // see http://the-toast.net/2014/02/06/linguist-explains-grammar-doge-wow/
+                // create an output array
                 var output = [];
-                // add keywords
+                // add keywords to it
                 for (var i = 0; i <= keywords.length - 1; i++) {
                     output.push(Doger.random_from_array(Doger.doge_words) + " " + keywords[i].toLowerCase());
                 };
@@ -34,13 +44,14 @@ Doger = {
                 return output;
             },
 
-        // function to return a completed doge meme image from a given image and array of doge phrases
-            make_doge_image: function(image, doge_text) {
-                // superimpose the text over the image in rainbow comic sans
+        // function to return a completed scalable html doge meme from a given image and array of doge phrases
+        // superimpose the text over the image in rainbow comic sans <span> tags
+            make_doge_html: function(image, doge_text) {
+                // start with the basics, container + background image
                 var div = $("<div class='doger'><img src='" + image.url + "'class='img-rounded' /></div>");
-                if (doge_text.length <= 1) {
-                    return div
-                };
+                // otherwise add css
+                // div responsively preserves image aspect ratio
+                // there's an a list apart article about this, for reference
                 div.find('img').css({
                     "position": "absolute",
                     "top": "0",
@@ -55,14 +66,25 @@ Doger = {
                     "position": "relative",
                     "width": "100%",
                     "height": "0",
+                    // here's where the aspect ratio magic happens
                     "padding-bottom": "" + (image.height / image.width) * 100 + "%"
                 });
+                // if there's no text, stop there
+                if (doge_text.length <= 1) {
+                    return div
+                };
+                // otherwise add the text
                 for (var i = 0; i <= doge_text.length - 1; i++) {
+                    // in spans!
                     var span = $("<span class='dogetext'>" + doge_text[i] + "</span>");
+                    // at random x percentages!
                     var x = Math.random() * 100 * .75;
+                    // and evenly dispersed y percentages!
                     var y = i * (100 / doge_text.length);
+                    // generate text colors
                     var color = Doger.random_color();
                     var shadow = Doger.random_color();
+                    // apply css
                     span.css({
                         "position": "absolute",
                         "top": "" + y + "%",
@@ -70,27 +92,37 @@ Doger = {
                         "text-shadow" : "1px 1px" + shadow,
                         "color": color
                     });
+                    // add our span to the div
                     div.append(span);
                 };
                 return div;
             },
 
         // function to return a completed doge meme image from a given image and array of doge phrases
-            make_doge_canvas: function(image, doge_text) {
-                // superimpose the text over the image in rainbow comic sans
+        // superimpose the text over the image in rainbow comic sans
+            make_doge_image: function(image, doge_text) {
+                // I ought to load the image here properly with a callback, but intsead I'm assuming that'll happen before this is called...
+                // start with the image
                 var imageElement = $("<img src='" + image.url + "'class='img-rounded' />").get(0);
+                // then make an image-shaped canvas
                 var canvas = $("<canvas width='"+ image.width +"' height='"+ image.height +"'></canvas>").get(0);
                 var context = canvas.getContext("2d");
+                // draw the image to it
                 context.drawImage(imageElement, 0, 0);
+                // and if there's no text, we're good.
                 if (doge_text.length <= 1) {
-                    return canvas.toDataUrl("image/png");
+                    return canvas.toDataURL("image/png");
                 };
+                // if there is text, add it.
                 context.font = "bold 28px 'Comic Sans', 'Comic Sans MS', 'Marker Felt', cursive";
                 for (var i = 0; i <= doge_text.length - 1; i++) {
+                    // here we position with pixels rather than percents cuz nonresponsive :(
                     var x = Math.random() * image.width * .75;
                     var y = i * (image.height / doge_text.length) + (image.height / doge_text.length) / 2;
+                    // write the shadow
                     context.fillStyle = Doger.random_color();
                     context.fillText(doge_text[i], x + 2, y + 2)
+                    // then the text over it
                     context.fillStyle = Doger.random_color();
                     context.fillText(doge_text[i], x, y)
                 };
@@ -172,7 +204,7 @@ Doger = {
                 // using yahoo content analysis api
                 // see http://developer.yahoo.com/contentanalysis/
                 var query = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20contentanalysis.analyze%20where%20url%3D%22" + escape(url) + "%22&diagnostics=true";
-                var response = $(Doger.httpGet(query)); // httpGetdefined below
+                var response = $(Doger.http_get(query)); // http_getdefined below
                 // keywords are listed inside <entity><text></text></entity> within the response
                 // n.b. it also provides a confidence score for each keyword
                 var keywords = response.find("entity");
@@ -189,7 +221,7 @@ Doger = {
                 // using yahoo content analysis api
                 // see http://developer.yahoo.com/contentanalysis/
                 var query = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20contentanalysis.analyze%20where%20text%3D%22" + encodeURI(text.replace(/[^a-zA-Z ]+/g, '')) + "%22&diagnostics=true";
-                var response = $(Doger.httpGet(query)); // httpGetdefined below
+                var response = $(Doger.http_get(query)); // http_getdefined below
                 // keywords are listed inside <entity><text></text></entity> within the response
                 // n.b. it also provides a confidence score for each keyword
                 var keywords = response.find("entity");
@@ -227,7 +259,7 @@ Doger = {
         //         // using yahoo content analysis api
         //         // see http://developer.yahoo.com/contentanalysis/
         //         var query = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20contentanalysis.analyze%20where%20text%3D%22" + encodeURI(text.replace(/[^a-zA-Z ]+/g, '')) + "%22&diagnostics=true";
-        //         var response = $(Doger.httpGet(query)); // httpGetdefined below
+        //         var response = $(Doger.http_get(query)); // http_getdefined below
         //         // keywords are listed inside <entity><text></text></entity> within the response
         //         // n.b. it also provides a confidence score for each keyword
         //         var keywords = response.find("entity");
@@ -240,20 +272,28 @@ Doger = {
 
     // Utilities
         // bookmarklet function
+        // the bookmarklet loads doger.js, and then calls this function. This is where its functionality lives.
             bookmarklet: function() {
+                // load jquery
+                // I should check and see if it's loaded first...
                 Doger.load_script("http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js", function() {
+                    // get selected text on page
                     var text = Doger.get_selected_text();
+                    // find keywords
                     var keywords = Doger.keywords_from_text(text);
                     if (keywords.length > 0) {
+                        // if there are some, do the thing
                         var url = "http://doge.needsyourhelp.org" + "?" + btoa(keywords);                    
                         window.location = url;
                     } else {
+                        // otherwise complain
                         alert("no keywords found");
                     }
                 });  
             },
 
         // function to get the currently selected text on a page
+        // from stackoverflow
             get_selected_text: function() {
                 var text = "";
                 if (window.getSelection) {
@@ -267,15 +307,38 @@ Doger = {
         // function to get the current query string (anything in the location bar after a '?'), and de-base64 it.
             get_query_string: function() {
                 if (window.location.href.indexOf('?') == -1) {
+                    // if there's no '?', there's no query string...
                     return null;
                 } else {
+                    // otherwise get everything after it.
                     var queryString = window.location.href.slice(window.location.href.indexOf('?') + 1);
                     return atob(queryString);
                 };
             },
 
+        // function to decode a base-64 encoded array of keywords in a query string
+        // accept an optional backup argument to return if there are no keywords, otherwise return null
+            get_keywords_from_query_string: function() {
+                var query_string = Doger.get_query_string;
+                if (query_string !== null) {
+                    // if there's a query, use it
+                    var text = Doger.get_query_string();
+                    var keywords = text.split(',');
+                    return keywords;
+                } else {
+                    if (arguments.length > 0){
+                        // if there's a backup, use that
+                        return arguments[0];
+                    } else {
+                        // otherwise return null
+                        return null;
+                    };
+                };
+            },
+
         // function to check if a string is a url
             check_for_url: function(string) {
+                // only matches for "http://" which is pretty minimal.
                 var pattern = new RegExp('^(https?:\\/\\/)','i'); // fragment locator
                 if(!pattern.test(string)) {
                     return false;
@@ -284,31 +347,10 @@ Doger = {
                 }
             },
 
-        // function to convert a datauri to a blob
-            make_blob: function(dataURI) {
-                // convert base64 to raw binary data held in a string
-                // doesn't handle URLEncoded DataURIs
-                var byteString;
-                if (dataURI.split(',')[0].indexOf('base64') >= 0)
-                    byteString = atob(dataURI.split(',')[1]);
-                else
-                    byteString = unescape(dataURI.split(',')[1]);
-                // separate out the mime component
-                var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
-
-                // write the bytes of the string to an ArrayBuffer
-                var ab = new ArrayBuffer(byteString.length);
-                var ia = new Uint8Array(ab);
-                for (var i = 0; i < byteString.length; i++) {
-                    ia[i] = byteString.charCodeAt(i);
-                };
-
-                // write the ArrayBuffer to a blob, and you're done
-                return new Blob([ab],{type: mimeString});
-            },
-
-        // function to GET a url, needed by keywords_from_url()
-            httpGet: function(theUrl) {
+        // function to GET a url
+        // this ALMOST NEVER works in real life
+        // see http://en.wikipedia.org/wiki/Same-origin_policy
+            http_get: function(theUrl) {
                 if (Doger.check_for_url(theUrl) == false) {
                     return null;
                 };
@@ -320,11 +362,13 @@ Doger = {
                 return xmlHttp.responseText;
             },
 
-        // function to return a random member of a given array, needed by keywords_to_doge_text()
+        // function to return a random member of a given array
             random_from_array: function(array) {
                 return array[Math.floor(Math.random() * array.length)];
             },
 
+        // classic fisher-yates shuffle
+        // from stackoverflow
             shuffle_array: function(array) {
                 var currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -344,12 +388,14 @@ Doger = {
                 return array;
             },
 
-        // function to return a random hex color, needed by make_doge_image()
+        // function to return a random hex color, needed by make_doge_html()
+        // classic elegant solution from http://paulirish.com/2009/random-hex-color-code-snippets/
             random_color: function() {
                 return '#' + Math.floor(Math.random() * 16777215).toString(16);
             },
 
-        // function to load a script
+        // function to load a script and hit a callback when done
+        // from stackoverflow
             load_script: function(url, callback) {
                 var head = document.getElementsByTagName("head")[0];
                 var script = document.createElement("script");
@@ -384,16 +430,49 @@ Doger = {
                 sprite.src = src;
             },
 
-        // function to force-download a data uri as a filename
+        // function to force-download from a data uri as a filename
+        // nb the download="filename" attribute isn't yet supported by safari
             download_data_uri: function(dataURI, fileName) {
-                var blob = Doger.make_blob(dataURI);
-                var tempUrl = URL.createObjectURL(blob);
+                var tempUrl = Doger.make_url_from_data;
                 var link = $('<a href="' + tempUrl +'" id="download" download="' + fileName + '" target="_blank"> </a>' );
                 $("body").append(link);
                 $("#download").get(0).click();
             },
 
-    // other stuff
+        // function to generate a temporary browser index url for a datauri
+        // if a data-uri is larger than 2mb, chrome's address bar can't handle it.
+        // fortunately, you can blob it and then use a temporary blob url
+            make_url_from_data: function(dataURI) {
+                var blob = Doger.make_blob(dataURI);
+                var tempUrl = URL.createObjectURL(blob);
+                return tempUrl;
+            },
+
+        // function to convert a datauri to a blob
+        // I'm not totally sure what a blob is, but apparantly they can hold binary data and generate temporary urls.
+            make_blob: function(dataURI) {
+                // convert base64 to raw binary data held in a string
+                // doesn't handle URLEncoded DataURIs
+                var byteString;
+                if (dataURI.split(',')[0].indexOf('base64') >= 0)
+                    byteString = atob(dataURI.split(',')[1]);
+                else
+                    byteString = unescape(dataURI.split(',')[1]);
+                // separate out the mime component
+                var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+
+                // write the bytes of the string to an ArrayBuffer
+                var ab = new ArrayBuffer(byteString.length);
+                var ia = new Uint8Array(ab);
+                for (var i = 0; i < byteString.length; i++) {
+                    ia[i] = byteString.charCodeAt(i);
+                };
+
+                // write the ArrayBuffer to a blob, and you're done
+                return new Blob([ab],{type: mimeString});
+            },
+
+    // non-function objects
 
         // doge 
             doge_words: ["such", "much", "very", "many", "so", "how"],

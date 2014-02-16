@@ -16,19 +16,20 @@
         <script src="doger.min.js"></script>
 
         <script>
+        // choose a background image
         var image = Doger.doge_image();
-
+        // wait for it to load, and then...
         Doger.load_image(image.url, function() {
-            if (Doger.get_query_string()) {
-                var text = Doger.get_query_string();
-                var keywords = text.split(',');
-            } else {
-                var keywords = ["doge", "term extraction", "memetics", "javascript", "shiba inu", "artificial intelligence", "client-side"];
-            };
+            // ...run this callback
+            // get keywords from url if there are any, specify fallbacks if not.
+            var keywords = Doger.get_keywords_from_query_string(["doge", "term extraction", "memetics", "javascript", "shiba inu", "artificial intelligence", "client-side"]);
+            // generate text
             var doge_text = Doger.keywords_to_doge_text(keywords);
-            var dataURI = Doger.make_doge_canvas(image, doge_text);
-            var blob = Doger.make_blob(dataURI);
-            var tempUrl = URL.createObjectURL(blob);
+            // generate base64-uri-encoded image
+            var outputImage = Doger.make_doge_image(image, doge_text)
+            // get a shorter temporary alias url
+            var tempUrl = Doger.make_url_from_data(outputImage);
+            // redirect to it
             window.location = tempUrl;
         });
 

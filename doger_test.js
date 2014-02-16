@@ -202,17 +202,17 @@ describe("doger.js", function() {
 		describe("Make a GET request", function() {
 			it("should successfully GET a YQL request", function() {
 				var query = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20contentanalysis.analyze%20where%20url%3D%22http%3A//monks.co%22&diagnostics=true";
-				var out = Doger.httpGet(query);
+				var out = Doger.http_get(query);
 				expect(out).to.be.a("string");
 			});
 			it("should successfully get a normal webpage request", function() {
 				var query = "http://monks.co";
-				var out = Doger.httpGet(query);
+				var out = Doger.http_get(query);
 				expect(out).to.be.a("string");
 			});
 			it("should return null for a non-url", function() {
 				var query = "bogusString";
-				var out = Doger.httpGet(query);
+				var out = Doger.http_get(query);
 				expect(out).to.be.null;
 			});
 		});

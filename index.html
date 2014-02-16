@@ -22,7 +22,7 @@
     <div class="container" style="padding: 10px;    ">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>.
         <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-        <script src="doger.js"></script>
+        <script src="doger.min.js"></script>
         <div class="row">
             <div class="page-header">
                 <h1>doge meme generator
@@ -140,97 +140,122 @@
         </div>
 
         <script>
-
+        // populate randomly-generated page header tagline
         $("#tagline").text(Doger.random_from_array(Doger.doge_words) + " doge. " + Doger.random_from_array(Doger.doge_end_words) + ".");
 
-        if (Doger.get_query_string()) {
-            var text = Doger.get_query_string();
-            var keywords = text.split(',');
-            var dogeparams = Doger.doger($("#dogebox"), keywords, $("#embedcode"));
-        } else {
-            var keywords = ["doge", "term extraction", "memetics", "javascript", "shiba inu", "artificial intelligence", "client-side"];
-            var dogeparams = Doger.doger($("#dogebox"), keywords, $("#embedcode"));
-        };
+        // get keywords from url if there are any, specify fallbacks if not.
+        var keywords = Doger.get_keywords_from_query_string(["doge", "term extraction", "memetics", "javascript", "shiba inu", "artificial intelligence", "client-side"]);
+
+        // generate an html doge! place it in #dogebox, and put the embed code in #embedcode
+        Doger.doger($("#dogebox"), keywords, $("#embedcode"));
         
         $("#permalink").text(document.URL);
 
+        // runs when the Save Image button is clicked
         function saveImageButton() { 
             var image = Doger.doge_image();
 
             Doger.load_image(image.url, function() {
-                // get keywords
-                if (Doger.get_query_string()) {
-                    var text = Doger.get_query_string();
-                    var keywords = text.split(',');
-                } else {
-                    var keywords = ["doge", "term extraction", "memetics", "javascript", "shiba inu", "artificial intelligence", "client-side"];
-                };
-
-                // generate image
+                // get keywords from url if there are any, specify fallbacks if not.
+                var keywords = Doger.get_keywords_from_query_string(["doge", "term extraction", "memetics", "javascript", "shiba inu", "artificial intelligence", "client-side"]);
+                // generate text
                 var doge_text = Doger.keywords_to_doge_text(keywords);
-                var dataURI = Doger.make_doge_canvas(image, doge_text);
+                // generate base64-uri-encoded image
+                var outputImage = Doger.make_doge_image(image, doge_text)
 
                 // generate filename
                 var fileName = '' + Doger.random_from_array(Doger.doge_words) + ' ' + Doger.random_from_array(keywords) + ' ' + Doger.random_from_array(Doger.doge_end_words) +'.png'
                 var fileName = fileName.split(' ').join('-').toLowerCase();
 
-                // force download
+                // force download with filename
                 Doger.download_data_uri(dataURI, fileName);
             });
         }
 
+        // function to get run the keyword extractor on the textarea, and generate a url to redirect to.
         function dogeFromTextForm() {
+            // get rid of warnings from other forms
             $('#textform').tooltip('destroy');
             $('#urlform').tooltip('destroy');
+            // get form value
             var text = $("#textform").val();
+            // if there's text use it
             if (text.length > 0) {
                 var keywords = Doger.keywords_from_text(text);
                 if (keywords.length > 0) {
+                    // color the form while it's loading
                     $('.text-panel').addClass('has-success');                        
+                    // b64 + redirect!
                     window.location = "http://doge.needsyourhelp.org?" + btoa(keywords);
                 } else {
+                    // if there's no keywords make some warnings
                     $('.text-panel').addClass('has-warning');
                     $('#textform').tooltip({title: "no keywords found"});
                     $('#textform').tooltip('show');
                 };
+            // if there's no text, run the placeholder text
             } else {
+                // these are the keywords the placeholder text would generate
                 var keywords = ["Vicki Santillano", "reptilian humanoids", "British writer David Icke", "underground bases", "Alpha Draconis star system", "David Ickes", "worldwide conspiracy", "George W Bush", "conspiracy theories", "Queen Elizabeth II of the United Kingdom Ickes"];
+                // b64 + redirect!
                 window.location = "http://doge.needsyourhelp.org?" + btoa(keywords);
             }
         };
 
+        // function to get a list of terms from the keyword input, and generate a url to redirect to.
         function dogeFromKeywordForm() {
-            var keywords = $("#keywordform").val().replace(', ', ',').split(',');
+            // get form value
+            var text = $("#keywordform").val();
+            // keywordtize it
+            var keywords = text.replace(', ', ',').split(',');
+            // if there's no keywords, we don't need to supply a placeholder because the placeholder text generates the default page
+            // b64 + redirect!
             window.location = "http://doge.needsyourhelp.org?" + btoa(keywords);
         };
 
+        // function to get run the keyword extractor on a url from the url input, and generate a url to redirect to.
         function dogeFromUrlForm() {
+            // get rid of warnings from other forms
             $('#urlform').tooltip('destroy');
             $('#textform').tooltip('destroy');
+            // get form value
             var url = $("#urlform").val();
+            // if there's text use it
             if (url.length > 0) {
+                // validate url
                 if (Doger.check_for_url(url) == false) {
+                    // show error if url is invalid
                     $('.url-panel').addClass('has-error');
                     $('#urlform').tooltip({title: "not a url"});
                     $('#urlform').tooltip('show');
                     return null;
                 } else {
+                    // run extractor
                     var keywords = Doger.keywords_from_url(url);
+                    // check for keywords
                     if (keywords.length > 0) {
+                        // if so, go!
                         $('.url-panel').addClass('has-success');                        
+                        // b64 + redirect!
                         window.location = "http://doge.needsyourhelp.org?" + btoa(keywords);
                     } else {
+                        // if not, show warnings.
                         $('.url-panel').addClass('has-warning');
                         $('#urlform').tooltip({title: "no keywords found"});
                         $('#urlform').tooltip('show');
                     }
                 }
+            // if there's no text, run the placeholder text
             } else {
+                // these are the keywords the placeholder text would generate
                 var keywords = ["Dante Pilkington", "realtime video", "music video", "Andrew Monks", "responsive design", "Andrew Zarins", "Facebook", "Oblique Strategies", "Concord Carlisle Regional High School", "Belgian Man Records", "Belgian Man Records"];
+                // b64 + redirect!
                 window.location = "http://doge.needsyourhelp.org?" + btoa(keywords);
             }
         };
 
+        // function to select the contents of an html element from a jquery query. 
+        // used in embed code modal
         function selectText(query) {
             $(query).select();
         }
