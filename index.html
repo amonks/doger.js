@@ -204,13 +204,34 @@
 
         // function to get a list of terms from the keyword input, and generate a url to redirect to.
         function dogeFromKeywordForm() {
+            // get rid of warnings from other forms
+            $('#urlform').tooltip('destroy');
+            $('#textform').tooltip('destroy');
             // get form value
             var text = $("#keywordform").val();
-            // keywordtize it
-            var keywords = text.replace(', ', ',').split(',');
-            // if there's no keywords, we don't need to supply a placeholder because the placeholder text generates the default page
-            // b64 + redirect!
-            window.location = "http://doge.needsyourhelp.org?" + btoa(keywords);
+            // if there's text use it
+            if (url.length > 0) {
+                // keywordtize it
+                var keywords = text.replace(', ', ',').split(',');
+                        // check for keywords
+                        if (keywords.length > 0) {
+                            // if so, go!
+                            $('.url-panel').addClass('has-success');                        
+                            // b64 + redirect!
+                            window.location = "http://doge.needsyourhelp.org?" + btoa(keywords);
+                        } else {
+                            // if not, show warnings.
+                            $('.url-panel').addClass('has-warning');
+                            $('#urlform').tooltip({title: "no keywords found"});
+                            $('#urlform').tooltip('show');
+                        }
+                // b64 + redirect!
+            // if there's no text, run the placeholder text
+            } else {
+                // if there's no keywords, we don't need to supply a placeholder because the placeholder text generates the default page
+                // b64 + redirect!
+                window.location = "http://doge.needsyourhelp.org?"
+            }
         };
 
         // respond to enter key
