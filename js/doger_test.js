@@ -243,6 +243,46 @@ describe("doger.js", function() {
 		});
 
 
+		describe("Shuffle an array", function() {
+			var array = [6,7,8,9,10];
+			var out = Doger.shuffle_array(array);
+			// function to compare two arrays
+			// attach the .compare method to Array's prototype to call it on any array
+			Array.prototype.compare = function (array) {
+			    // if the other array is a falsy value, return
+			    if (!array)
+			        return false;
+
+			    // compare lengths - can save a lot of time
+			    if (this.length != array.length)
+			        return false;
+
+			    for (var i = 0, l=this.length; i < l; i++) {
+			        // Check if we have nested arrays
+			        if (this[i] instanceof Array && array[i] instanceof Array) {
+			            // recurse into the nested arrays
+			            if (!this[i].compare(array[i]))
+			                return false;
+			        }
+			        else if (this[i] != array[i]) {
+			            // Warning - two different object instances will never be equal: {x:20} != {x:20}
+			            return false;
+			        }
+			    }
+			    return true;
+			}
+			it("should return an array of the same length", function() {
+				expect(out.length).to.equal(5);
+			});
+			it("should contain all of the original items", function() {
+				expect(out.length).to.equal(5);
+			});
+			it("should not return the original array", function() {
+				expect(out.compare(array)).to.be.false;
+			});
+		});
+
+
 		describe("Generate a random color", function() {
 			var out = Doger.random_color();
 			it("should return a 7 character string starting with '#'", function() {
