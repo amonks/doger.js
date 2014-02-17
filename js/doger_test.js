@@ -306,12 +306,16 @@ describe("doger.js", function() {
 				height: 352
 			};
 			var doge_text = [ "much test", "very units", "much behavioral", "amaze"];
-			var dataURI = Doger.make_doge_image(image, doge_text).dataURI;
-
-			var out = Doger.make_blob(dataURI);
-			it("should return a blobURI", function() {
-				expect(out).to.contain("blob:");
+			Doger.load_image(image.url, function() {
+				var dataURI = Doger.make_doge_image(image, doge_text).dataURI;
+				var out = Doger.make_blob(dataURI);
+				it("should return a blobURI", function() {
+					expect(out).to.contain("blob:");
+				});
 			});
+
+
+
 		});
 
 
