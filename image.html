@@ -25,12 +25,10 @@
             var keywords = Doger.get_keywords_from_query_string(["doge", "term extraction", "memetics", "javascript", "shiba inu", "artificial intelligence", "client-side"]);
             // generate text
             var doge_text = Doger.keywords_to_doge_text(keywords);
-            // generate base64-uri-encoded image
+            // generate image datablob
             var outputImage = Doger.make_doge_image(image, doge_text)
-            // get a shorter temporary alias url
-            var tempUrl = Doger.make_url_from_data(outputImage);
-            // redirect to it
-            window.location = tempUrl;
+            // redirect to image datablob
+            window.location = outputImage.blobURI;
         });
 
         (function(i, s, o, g, r, a, m) {
