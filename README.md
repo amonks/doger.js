@@ -49,40 +49,6 @@ There are three endpoints available:
 
 [`'http://doge.needsyourhelp.org/embed.html?' + encoded`](http://doge.needsyourhelp.org/embed.html?QVBJLGVuZHBvaW50cyxxdWVyeSxiYXNlNjQsamF2YXNjcmlwdA==)
 
-### test coverage
-
-`t` indicates that a test exists
-
-`r` indicates that a function is documented in `README.md`
-
-#### doge generator functions:
-		r	"doger"
-	t	r	"keywords_to_doge_text"
-	t	r	"make_doge_html"
-	t		"make_doge_image"
-	t	r	"doge_image"
-		r	"get_keywords_from_query_string"
-
-#### keyword extractor functions:
-	t	r	"keywords_from_url"
-	t	r	"keywords_from_text"
-
-#### bookmarklet:
-		r	"bookmarklet"
-
-#### utility functions:
-		r	"get_selected_text"
-	t	r	"get_query_string"
-	t	r	"check_for_url"
-	t	r	"random_from_array"
-	t	r	"shuffle_array"
-	t	r	"random_color"
-	t	r	"http_get"
-		r	"download_data_uri"
-			"load_image"
-			"load_script"
-			"make_blob"
-
 ## Example
 
 	<div id="dogebox"></div>
