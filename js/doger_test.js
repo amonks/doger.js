@@ -78,9 +78,14 @@ describe("doger.js", function() {
 			var doge_text = [ "much test", "very units", "much behavioral", "amaze"];
 			var output = Doger.make_doge_image(image, doge_text);
 
-			it("should return a base64 encoded png datauri", function() {
-				expect(output).to.be.a('string');	
-				expect(output).to.contain("data:image/png;base64,")
+			it("should return an object", function() {
+				expect(output).to.be.a('object');	
+			});
+			it("should contain a dataURI", function() {
+				expect(output.dataURI).to.contain("data:image/png;base64,");
+			});
+			it("should contain a blobURI", function() {
+				expect(output.blobURI).to.contain("blob:");
 			});
 		});
 
