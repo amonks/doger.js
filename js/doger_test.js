@@ -299,24 +299,21 @@ describe("doger.js", function() {
 		});
 
 
-		describe("Turn a datauri into a temporary bloburi", function() {
-			var image = {
-				url: "http://static.ddmcdn.com/en-us/apl/breedselector/images/breed-selector/dogs/breeds/shiba-inu_01_lg.jpg",
-				width: 622,
-				height: 352
-			};
-			var doge_text = [ "much test", "very units", "much behavioral", "amaze"];
-			Doger.load_image(image.url, function() {
-				var dataURI = Doger.make_doge_image(image, doge_text).dataURI;
-				var out = Doger.make_blob(dataURI);
-				it("should return a blobURI", function() {
-					expect(out).to.contain("blob:");
-				});
-			});
-
-
-
-		});
+		// describe("Turn a datauri into a temporary bloburi", function() {
+		// 	var image = {
+		// 		url: "http://static.ddmcdn.com/en-us/apl/breedselector/images/breed-selector/dogs/breeds/shiba-inu_01_lg.jpg",
+		// 		width: 622,
+		// 		height: 352
+		// 	};
+		// 	var doge_text = [ "much test", "very units", "much behavioral", "amaze"];
+		// 	Doger.load_image(image.url, function() {
+		// 		var dataURI = Doger.make_doge_image(image, doge_text).dataURI;
+		// 		var out = Doger.make_blob(dataURI);
+		// 		it("should return a blobURI", function() {
+		// 			expect(out).to.contain("blob:");
+		// 		});
+		// 	});
+		// });
 
 
 

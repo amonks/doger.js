@@ -22,6 +22,33 @@ Released under the [MIT License](http://github.com/amonks/doger.js/blob/gh-pages
 
 [Run the tests!](http://doge.needsyourhelp.org/test.html)
 
+## API
+
+### encoding
+
+The [http://doge.needsyourhelp.org/](website/api) looks at the query string for a base64 encoded array of keywords to generate an image from. Generate a proper query string using `btoa('["keyword1", "keyword2", "keyword3"]');`
+
+### endpoints
+
+There are three endpoints available:
+
+*	`http://doge.needsyourhelp.org/?`: standard generator page with info
+
+*	`http://doge.needsyourhelp.org/image.html?`: redirects to generated png image
+
+*	`http://doge.needsyourhelp.org/embed.html?`: full-width scalable embed
+
+### example
+
+	var keywords = ["API", "endpoints", "query", "base64", "javascript"];
+	var encoded = btoa(keywords);
+
+[`'http://doge.needsyourhelp.org/?' + encoded`](http://doge.needsyourhelp.org/?QVBJLGVuZHBvaW50cyxxdWVyeSxiYXNlNjQsamF2YXNjcmlwdA==)
+
+[`'http://doge.needsyourhelp.org/image.html?' + encoded`](http://doge.needsyourhelp.org/image.html?QVBJLGVuZHBvaW50cyxxdWVyeSxiYXNlNjQsamF2YXNjcmlwdA==)
+
+[`'http://doge.needsyourhelp.org/embed.html?' + encoded`](http://doge.needsyourhelp.org/embed.html?QVBJLGVuZHBvaW50cyxxdWVyeSxiYXNlNjQsamF2YXNjcmlwdA==)
+
 ### test coverage
 
 `t` indicates that a test exists
@@ -32,26 +59,26 @@ Released under the [MIT License](http://github.com/amonks/doger.js/blob/gh-pages
 		r	"doger"
 	t	r	"keywords_to_doge_text"
 	t	r	"make_doge_html"
-			"make_doge_image"
+	t		"make_doge_image"
 	t	r	"doge_image"
-			"get_keywords_from_query_string"
+		r	"get_keywords_from_query_string"
 
 #### keyword extractor functions:
 	t	r	"keywords_from_url"
 	t	r	"keywords_from_text"
 
 #### bookmarklet:
-			"bookmarklet"
+		r	"bookmarklet"
 
 #### utility functions:
-			"get_selected_text"
-	t		"get_query_string"
-	t		"check_for_url"
-	t		"random_from_array"
-			"shuffle_array"
-	t		"random_color"
-	t		"http_get"
-			"download_data_uri"
+		r	"get_selected_text"
+	t	r	"get_query_string"
+	t	r	"check_for_url"
+	t	r	"random_from_array"
+	t	r	"shuffle_array"
+	t	r	"random_color"
+	t	r	"http_get"
+		r	"download_data_uri"
 			"load_image"
 			"load_script"
 			"make_blob"
@@ -89,9 +116,19 @@ This function takes an array of keywords (`['Term extraction', 'Memetics', 'Java
 
 This function takes an image object (`{ url: "http://doge.needsyourhelp.org/images/shiba_inu.jpg", width: 460, height: 315 }`) and an array of doge text (`['much term extraction.', 'very memetics.', 'how javascript.', 'wow.']`) and it returns a `$('<div>')` with a scalable css-based doger meme image in it.
 
+#### `make_doge_image(image, doge_text)`
+
+This function takes an image object (`{ url: "http://doge.needsyourhelp.org/images/shiba_inu.jpg", width: 460, height: 315 }`) and an array of doge text (`['much term extraction.', 'very memetics.', 'how javascript.', 'wow.']`) and it returns an object with a `dataURI` and a `blobURI` for a PNG image.
+
 #### `doge_image()`
 
 This function chooses one of a pre-populated array of Shiba Inu image objects (`{ url: "http://doge.needsyourhelp.org/images/shiba_inu.jpg", width: 460, height: 315 }`)
+
+#### `get_keywords_from_query_string( [optional, backup, array] )`
+
+This function decodes a base-64 encoded array of keywords in the current query string (everything after a `?` in the URL bar)
+
+It accepts an optional backup argument to return if there are no keywords, otherwise it returns `null`
 
 ### keyword extractors
 
@@ -105,32 +142,67 @@ This function finds keywords on a webpage based on a url string.
 
 This function finds keywords in a text string.
 
-## API
+### bookmarklet
 
-### encoding
+#### `bookmarklet()`
 
-The [http://doge.needsyourhelp.org/](website/api) looks at the query string for a base64 encoded array of keywords to generate an image from. Generate a proper query string using `btoa('["keyword1", "keyword2", "keyword3"]');`
+This is the function called by the bookmarklet. It does a few things:
 
-### endpoints
+1. loads jquery
 
-There are three endpoints available:
+2. gets the selected text on a page
 
-*	`http://doge.needsyourhelp.org/?`: standard generator page with info
+3. extracts the keywords from that text
 
-*	`http://doge.needsyourhelp.org/image.html?`: redirects to generated png image
+if there are keywords, it redirects to the api url for those keywords (`"http://doge.needsyourhelp.org" + "?" + btoa(keywords)`).
 
-*	`http://doge.needsyourhelp.org/embed.html?`: full-width scalable embed
+If there are no keywords, it pops an alert.
 
-### example
+### Utility functions
 
-	var keywords = ["API", "endpoints", "query", "base64", "javascript"];
-	var encoded = btoa(keywords);
+#### `get_selected_text()`
 
-[`'http://doge.needsyourhelp.org/?' + encoded`](http://doge.needsyourhelp.org/?QVBJLGVuZHBvaW50cyxxdWVyeSxiYXNlNjQsamF2YXNjcmlwdA==)
+This function returns whatever text is selected in the browser.
 
-[`'http://doge.needsyourhelp.org/image.html?' + encoded`](http://doge.needsyourhelp.org/image.html?QVBJLGVuZHBvaW50cyxxdWVyeSxiYXNlNjQsamF2YXNjcmlwdA==)
+#### `get_query_string()`
 
-[`'http://doge.needsyourhelp.org/embed.html?' + encoded`](http://doge.needsyourhelp.org/embed.html?QVBJLGVuZHBvaW50cyxxdWVyeSxiYXNlNjQsamF2YXNjcmlwdA==)
+This function returns the current query string (anything after a `?` in the url bar) or null if there is none.
+
+#### `check_for_url(string)`
+
+This function returns true if a given string looks like a URL, or false if it doesn't.
+
+#### `random_from_array(array)`
+
+This function returns a random item from a passed array.
+
+#### `shuffle_array(array)`
+
+This function shuffles the order of items in a passed array.
+
+#### `random_color()`
+
+This function returns a randomly-selected hex color (eg `"#0ab94f"`).
+
+#### `http_get(url)`
+
+This function sends a `GET` request to the passed URL and returns the results. Note that very few servers are configured to accept these requests, see [wikipedia](http://en.wikipedia.org/wiki/Same-origin_policy).
+
+#### `download_data_uri(dataUri)`
+
+This function takes a dataURI, and forces it to donwload. It gets around Chrome's uri-length-limit by generating a blob.
+
+#### `load_image(imageURI, callback())`
+
+This function loads an image, and hits a callback once the script has loaded.
+
+#### `load_script(scriptURI, callback())`
+
+This function loads an image, and hits a callback once the script has loaded.
+
+#### `make_blob(dataURI)`
+
+This function takes a dataURI, converts it to a blob and returns that blob.
 
 ## original pseudocode #nostalgia
 
