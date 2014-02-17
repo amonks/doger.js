@@ -149,6 +149,7 @@
         <script>
         // populate randomly-generated page header tagline
         $("#tagline").text(Doger.random_from_array(Doger.doge_words) + " doge. " + Doger.random_from_array(Doger.doge_end_words) + ".");
+        $("title").text(Doger.random_from_array(Doger.doge_words) + " doge. " + Doger.random_from_array(Doger.doge_end_words) + ".");
 
         // get keywords from url if there are any, specify fallbacks if not.
         var keywords = Doger.get_keywords_from_query_string(["doge", "term extraction", "memetics", "javascript", "shiba inu", "artificial intelligence", "client-side"]);
