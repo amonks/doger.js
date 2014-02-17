@@ -161,7 +161,8 @@
                 // generate text
                 var doge_text = Doger.keywords_to_doge_text(keywords);
                 // generate base64-uri-encoded image
-                var dataURI = Doger.make_doge_image(image, doge_text).dataURI;
+                var imageOutput = Doger.make_doge_image(image, doge_text);
+                var dataURI = imageOutput.dataURI;
 
                 // generate filename
                 var fileName = '' + Doger.random_from_array(Doger.doge_words) + ' ' + Doger.random_from_array(keywords) + ' ' + Doger.random_from_array(Doger.doge_end_words) +'.png'
