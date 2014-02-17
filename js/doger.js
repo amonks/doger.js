@@ -129,8 +129,8 @@ Doger = {
                 var dataURI = canvas.toDataURL("image/png");
                 var blobURI = Doger.make_url_from_data(dataURI);
                 return {
-                    dataURI = dataURI;
-                    blobURI = blobURI;
+                    dataURI = dataURI,
+                    blobURI = blobURI
                 };
             },
 
