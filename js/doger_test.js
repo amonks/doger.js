@@ -40,7 +40,7 @@ describe("doger.js", function() {
 			});
 		});
 
-		describe("Overlay doge keywords onto image", function() {
+		describe("Overlay doge keywords onto image, generating html", function() {
 			var image = {
 				url: "http://static.ddmcdn.com/en-us/apl/breedselector/images/breed-selector/dogs/breeds/shiba-inu_01_lg.jpg",
 				width: 622,
@@ -66,6 +66,21 @@ describe("doger.js", function() {
 				for (var i = doge_text.length - 1; i >= 0; i--) {
 					expect(output.html()).to.have.string(doge_text[i]);	
 				};
+			});
+		});
+
+		describe("Overlay doge keywords onto image, generating a .png", function() {
+			var image = {
+				url: "http://static.ddmcdn.com/en-us/apl/breedselector/images/breed-selector/dogs/breeds/shiba-inu_01_lg.jpg",
+				width: 622,
+				height: 352
+			};
+			var doge_text = [ "much test", "very units", "much behavioral", "amaze"];
+			var output = Doger.make_doge_image(image, doge_text);
+
+			it("should return a url", function() {
+				expect(output).to.be.a('string');	
+				expect(Doger.check_for_url(output) ).to.be.true;	
 			});
 		});
 

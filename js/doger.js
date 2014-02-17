@@ -21,9 +21,9 @@ Doger = {
                 // check for optional embed code argument
                 if (arguments.length >= 3) {
                     // generate an embed code
-                    var embed = $('<div>').append(output.clone()).html()
+                    var embed = $('<div>').append(output.clone()).html();
                     arguments[2].text(embed);
-                };
+                }
                 // return the image and the doge_text (since they're unique to this doge)
                 return {image: image, doge_text: doge_text};
             },
