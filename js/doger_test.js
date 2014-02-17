@@ -278,7 +278,7 @@ describe("doger.js", function() {
 				expect(out.length).to.equal(5);
 			});
 			it("should not return the original array", function() {
-				expect(out.compare(array)).to.be.false;
+				expect(out.compare([6,7,8,9,10])).to.be.false;
 			});
 		});
 
