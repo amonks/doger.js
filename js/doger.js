@@ -439,7 +439,7 @@ Doger = {
         // function to force-download from a data uri as a filename
         // nb the download="filename" attribute isn't yet supported by safari
             download_data_uri: function(dataURI, fileName) {
-                var tempUrl = Doger.make_url_from_data;
+                var tempUrl = Doger.make_url_from_data(dataURI);
                 var link = $('<a href="' + tempUrl +'" id="download" download="' + fileName + '" target="_blank"> </a>' );
                 $("body").append(link);
                 $("#download").get(0).click();
