@@ -15,6 +15,9 @@
     .panel, #dogebox {
         margin-bottom: 35px;
     }
+    h1 {
+        margin-left: 5px;
+    }
     </style>
 </head>
 
@@ -25,11 +28,9 @@
         <script src="http://doge.needsyourhelp.org/js/doger.min.js"></script>
         <div class="row">
             <div class="page-header">
-                <p>
-                    <h1>doge meme generator
-                        <small id="tagline">such doge.</small>
-                    </h1>
-                </p>
+                <h1>doge meme generator
+                    <small id="tagline">such doge.</small>
+                </h1>
             </div>
         </div>
         <div class="row">
@@ -38,7 +39,7 @@
                 <div id="dogebox" style="position: relative"></div>
             </div>
             <div class="col-md-4">
-                <div id="dogeformContainer" style="position: relative;">
+                <div id="dogeformContainer">
                     <div class="embed panel btn-group btn-group-justified">
                         <div class="btn-group"><button class="btn btn-info" data-toggle="modal" data-target=".embed-modal"><span class="glyphicon glyphicon-share-alt"></span> Embed Code</button></div>
                         <div class="btn-group"><button class="btn btn-info" id="saveImage" onclick="saveImageButton()"><span class="glyphicon glyphicon-download-alt"></span> Save an Image</button></div>
