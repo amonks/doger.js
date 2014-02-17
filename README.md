@@ -20,7 +20,8 @@ Released under the [MIT License](http://github.com/amonks/doger.js/blob/gh-pages
 
 ## Tests
 
-[Run the tests!](http://doge.needsyourhelp.org/test.html)
+[Run the tests!](http://doge.needsyourhelp.org/test.html) Also see [test_coverage.md](https://github.com/amonks/doger.js/blob/gh-pages/test_coverage.md)
+
 
 ## API
 
