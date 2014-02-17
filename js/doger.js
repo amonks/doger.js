@@ -126,7 +126,12 @@ Doger = {
                     context.fillStyle = Doger.random_color();
                     context.fillText(doge_text[i], x, y)
                 };
-                return canvas.toDataURL("image/png");
+                var dataURI = canvas.toDataURL("image/png");
+                var blobURI = Doger.make_url_from_data(dataURI);
+                return {
+                    dataURI = dataURI;
+                    blobURI = blobURI;
+                };
             },
 
         // function to return an object with a doge image url, a height, and a width
