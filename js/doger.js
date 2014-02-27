@@ -415,8 +415,8 @@ Doger = {
 
         // classic fisher-yates shuffle
         // from stackoverflow
-            remove_stop_words_from_array: function(array) {
-                array.concat(Doger.stop_words)
+            remove_stopwords_from_array: function(array) {
+                array.concat(Doger.stopwords)
                    .filter(function (item, index, array) {
                        return array.indexOf(item) == array.lastIndexOf(item);
                    })
@@ -513,5 +513,5 @@ Doger = {
         // doge 
             doge_words: ["such", "much", "very", "many", "so", "how"],
             doge_end_words: ["wow", "amaze", "excite"],
-            stop_words: ["he", "she", "a", "the", "and", "if", "or", "not"],
+            stopwords: ["he", "she", "a", "the", "and", "if", "or", "not"],
 }
