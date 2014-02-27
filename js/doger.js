@@ -416,12 +416,10 @@ Doger = {
         // classic fisher-yates shuffle
         // from stackoverflow
             remove_stopwords_from_array: function(array) {
-                array.concat(Doger.stopwords)
+                return array.concat(Doger.stopwords)
                    .filter(function (item, index, array) {
                        return array.indexOf(item) == array.lastIndexOf(item);
-                   })
-
-                return array;
+                   });
             },
 
         // function to return a random hex color, needed by make_doge_html()
