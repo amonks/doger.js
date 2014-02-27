@@ -21,6 +21,7 @@
 		"get_selected_text"
 	t	"get_query_string"
 	t	"check_for_url"
+		"sort_array_by_frequency"
 	t	"random_from_array"
 	t	"shuffle_array"
 	t	"random_color"

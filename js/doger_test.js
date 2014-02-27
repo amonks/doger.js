@@ -233,6 +233,21 @@ describe("doger.js", function() {
 		});
 
 
+		describe("Sort an array by the frequency of its contents", function() {
+			it("should return the sorted array", function() {
+				var array = [1,2,2,2,3,3,3,3,3,4,4,4,4,5,5];
+				var expectedOut = [3,4,2,5,1];
+				var out = Doger.sort_array_by_frequency(array);
+				expect(out).to.be.a("array");
+				expect(out.length).to.equal(5);
+				for (var i = out.length - 1; i >= 0; i--) {
+					expect(out[i]).to.equal(expectedOut[i]);
+				};
+			});
+		});
+
+
+
 		describe("Choose a random thing from an array", function() {
 			it("should return a thing from the array", function() {
 				var array = [6,7,8,9,10];

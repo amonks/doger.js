@@ -234,7 +234,12 @@ Doger = {
                 for (var i = keywords.length - 1; i >= 0; i--) {
                     output.push($(keywords[i]).find('text').text());
                 };
-                return output
+                if (output.length == 0) {
+
+                    var allWords = text.replace(/[^a-zA-Z\d\s:]/, '' ).split(" ");
+                    allWords.
+                };
+                return output;
             },
 
         // // function to return identifying keywords from a given twitter feed
@@ -367,6 +372,21 @@ Doger = {
                 xmlHttp.send(null);
                 return xmlHttp.responseText;
             },
+
+        // function to sort an array by frequency of its elements
+            sort_array_by_frequency: function(array) {
+                var frequency = {};
+
+                array.forEach(function(value) { frequency[value] = 0; });
+
+                var uniques = array.filter(function(value) {
+                    return ++frequency[value] == 1;
+                });
+
+                return uniques.sort(function(a, b) {
+                    return frequency[b] - frequency[a];
+                });
+            }
 
         // function to return a random member of a given array
             random_from_array: function(array) {
