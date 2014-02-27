@@ -416,13 +416,42 @@ Doger = {
         // classic fisher-yates shuffle
         // from stackoverflow
             remove_stopwords_from_array: function(array) {
-                out = []
-                array.concat(Doger.stopwords)
-                   .filter(function (item, index, array) {
-                       out.push(array.indexOf(item) == array.lastIndexOf(item));
-                   })
+                var all = Doger.union_arrays(array, Doger.stopwords);
+                var common = Doger.intersection_arrays(array, Doger.stopwords);
+
+                var out = difference_arrays(all, common);
 
                 return out;
+            },
+
+        // compute union of two arrays
+        // from http://stackoverflow.com/questions/3629817/getting-a-union-of-two-arrays-in-javascript
+            union_arrays: function(x, y) {
+                var obj = {};
+                for (var i = x.length-1; i >= 0; -- i)
+                    obj[x[i]] = x[i];
+                for (var i = y.length-1; i >= 0; -- i)
+                    obj[y[i]] = y[i];
+                var res = []
+                for (var k in obj) {
+                if (obj.hasOwnProperty(k))  // <-- optional
+                    res.push(obj[k]);
+                }
+                return res;
+            },
+
+        // compute intersection of two arrays
+        // from http://stackoverflow.com/questions/1885557/simplest-code-for-array-intersection-in-javascript
+            intersection_arrays: function(array1, array2) {
+                array1.filter(function(n) {
+                    return array2.indexOf(n) != -1
+                });
+            },
+
+        // compute difference of two arrays
+        // from http://stackoverflow.com/questions/1187518/javascript-array-difference
+            difference_arrays: function(array1, array2) {
+                return array1.filter(function(i) {return !(array2.indexOf(i) > -1);});
             },
 
         // function to return a random hex color, needed by make_doge_html()
