@@ -419,7 +419,7 @@ Doger = {
                 var all = Doger.union_arrays(array, Doger.stopwords);
                 var common = Doger.intersection_arrays(array, Doger.stopwords);
 
-                var out = difference_arrays(all, common);
+                var out = Doger.difference_arrays(all, common);
 
                 return out;
             },
