@@ -413,6 +413,17 @@ Doger = {
                 return array;
             },
 
+        // classic fisher-yates shuffle
+        // from stackoverflow
+            remove_stop_words_from_array: function(array) {
+                array.concat(Doger.stop_words)
+                   .filter(function (item, index, array) {
+                       return array.indexOf(item) == array.lastIndexOf(item);
+                   })
+
+                return array;
+            },
+
         // function to return a random hex color, needed by make_doge_html()
         // classic elegant solution from http://paulirish.com/2009/random-hex-color-code-snippets/
             random_color: function() {
@@ -502,4 +513,5 @@ Doger = {
         // doge 
             doge_words: ["such", "much", "very", "many", "so", "how"],
             doge_end_words: ["wow", "amaze", "excite"],
+            stop_words: ["he", "she", "a", "the", "and", "if", "or", "not"],
 }
