@@ -235,9 +235,8 @@ Doger = {
                     output.push($(keywords[i]).find('text').text());
                 };
                 if (output.length == 0) {
-
                     var allWords = text.replace(/[^a-zA-Z\d\s:]/, '' ).split(" ");
-                    allWords.
+                    output = Doger.sort_array_by_frequency(allWords).slice(0,4);
                 };
                 return output;
             },
