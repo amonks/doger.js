@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="UTF-8" />
+    <title>doger tests</title>
+    <link rel="stylesheet" media="all" href="/vendor/mocha.css" </head>
+
+    <body>
+        <div id="mocha">
+                <p>see <a href="https://github.com/amonks/doger.js/blob/gh-pages/test_coverage.md">test_coverage.md</a></p>
+        </div>
+        <div id="messages"></div>
+        <div id="fixtures"></div>
+
+        <script src="/vendor/mocha.js"></script>
+        <script src="/vendor/chai.js"></script>
+
+        <script src="/vendor/jquery.min.js"></script>
+
+
+        <script src="/js/doger.js"></script>
+        <script>mocha.setup('bdd')</script>
+        <script src="/js/doger_test.js"></script>
+        <script>mocha.run();</script>
+        <script>
+            doger("http://monks.co");
+        </script>
+        <script>
+            (function(i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function() {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-22952798-12', 'amonks.github.io');
+            ga('send', 'pageview');
+        </script>
+    </body>
+
+</html>

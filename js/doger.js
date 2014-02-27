@@ -386,7 +386,7 @@ Doger = {
                 return uniques.sort(function(a, b) {
                     return frequency[b] - frequency[a];
                 });
-            }
+            },
 
         // function to return a random member of a given array
             random_from_array: function(array) {
