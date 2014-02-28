@@ -544,7 +544,9 @@ Doger = {
     // doge 
     doge_words: ["such", "much", "very", "many", "so", "how"],
     doge_end_words: ["wow", "amaze", "excite"],
-    stopwords: ["of", "he", "she", "him", "her", "it", "this",
+    stopwords: [ "of", "he", "she", "him", "her", "it", "this",
          "is", "its", "a", "the", "and", "if", "or", 
-         "not", "me", "i"],
+         "not", "me", "i", "and", "an", "are", "as", "at",
+         "be", "by", "for", "from", "has", "in", "of",
+         "on", "that", "to", "was", "were", "with"],
 }
