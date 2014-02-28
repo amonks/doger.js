@@ -234,11 +234,11 @@ Doger = {
                 for (var i = keywords.length - 1; i >= 0; i--) {
                     output.push($(keywords[i]).find('text').text());
                 };
-                // if (output.length == 0) {
-                //     var allWords = text.replace(/[^a-zA-Z\d\s:]/, '' ).split(" ");
-                //     output = Doger.sort_array_by_frequency(allWords).slice(0,4);
-                // };
-                return output;
+                if (output.length <= 2) {
+                    var allWords = text.replace(/[^a-zA-Z\d\s:]/, '' ).split(" ");
+                    var popular = Doger.sort_array_by_frequency(allWords).slice(0,4);
+                };
+                return output.concat(popular);
             },
 
         // // function to return identifying keywords from a given twitter feed
