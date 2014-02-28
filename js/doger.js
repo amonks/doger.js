@@ -548,5 +548,5 @@ Doger = {
          "is", "its", "a", "the", "and", "if", "or", 
          "not", "me", "i", "and", "an", "are", "as", "at",
          "be", "by", "for", "from", "has", "in", "of",
-         "on", "that", "to", "was", "were", "with"],
+         "on", "that", "to", "was", "were", "with", "would"],
 }
