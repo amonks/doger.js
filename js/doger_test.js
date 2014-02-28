@@ -332,7 +332,7 @@ describe("doger.js", function() {
 			it("should return the union of two arrays", function() {
 				var array1 = [1, 2, 3];
 				var array2 = [101, 2, 1, 10];
-				var expectedOut = [1, 2, 3, 102, 10];
+				var expectedOut = [1, 2, 3, 101, 10];
 				var out = Doger.union_arrays(array1, array2);
 				expect(out.length).to.equal(5);
 				for (var i = expectedOut.length - 1; i >= 0; i--) {
