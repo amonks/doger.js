@@ -334,7 +334,7 @@ describe("doger.js", function() {
 				var array2 = [101, 2, 1, 10];
 				var expectedOut = [1, 2, 3, 102, 10];
 				var out = Doger.union_arrays(array1, array2);
-				expect(out.length).to.equal(expectedOut.length);
+				expect(out.length).to.equal(5);
 				for (var i = expectedOut.length - 1; i >= 0; i--) {
 					expect(out.indexOf(expectedOut[i])).to.be.above(-1);
 				};
