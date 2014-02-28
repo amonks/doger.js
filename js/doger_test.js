@@ -322,7 +322,7 @@ describe("doger.js", function() {
 				expect(out).to.be.a("array");
 				expect(out.length).to.equal(2);
 				for (var i = out.length - 1; i >= 0; i--) {
-					expect(out[i]).to.equal(expectedOut[i]);
+					expect(out.indexOf(expectedOut[i])).to.be.above(-1);
 				};
 			});
 		});
