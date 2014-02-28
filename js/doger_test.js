@@ -328,6 +328,34 @@ describe("doger.js", function() {
 		});
 
 
+		describe("Find the union of two arrays", function() {
+			var array1 = [1, 2, 3];
+			var array2 = [101, 2, 1, 10];
+			var expectedOut = [1, 2, 3, 102, 10];
+			var out = Doger.difference_arrays(array1, array2);
+			it("should return the union of two arrays", function() {
+				for (var i = expectedOut.length - 1; i >= 0; i--) {
+					expect(out.indexOf(expectedOut[i])).to.be.above(-1);
+				};
+			});
+			expect(out.length).to.equal(expectedOut.length);
+		});
+
+
+		describe("Find the intersection of two arrays", function() {
+			var array1 = [1, 2, 3];
+			var array2 = [101, 2, 1, 10];
+			var expectedOut = [1, 2];
+			var out = Doger.difference_arrays(array1, array2);
+			it("should return the intersection of two arrays", function() {
+				for (var i = expectedOut.length - 1; i >= 0; i--) {
+					expect(out.indexOf(expectedOut[i])).to.be.above(-1);
+				};
+			});
+			expect(out.length).to.equal(expectedOut.length);
+		});
+
+
 		describe("Find the difference of two arrays", function() {
 			var array1 = [1, 2, 3, 4, 5];
 			var array2 = [5, 2, 10];
@@ -338,6 +366,7 @@ describe("doger.js", function() {
 					expect(out.indexOf(expectedOut[i])).to.be.above(-1);
 				};
 			});
+			expect(out.length).to.equal(expectedOut.length);
 		});
 
 
