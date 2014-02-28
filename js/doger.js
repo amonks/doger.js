@@ -416,6 +416,9 @@ Doger = {
         // classic fisher-yates shuffle
         // from stackoverflow
             remove_stopwords_from_array: function(array) {
+                for (var i = array.length - 1; i >= 0; i--) {
+                    array[i] = array[i].toLowerCase();
+                };
                 var all = Doger.union_arrays(array, Doger.stopwords);
                 var common = Doger.intersection_arrays(array, Doger.stopwords);
 
