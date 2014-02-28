@@ -244,7 +244,7 @@ describe("doger.js", function() {
 					expect(out[i]).to.equal(expectedOut[i]);
 				};
 			});
-		});
+		});()
 
 
 
@@ -301,8 +301,8 @@ describe("doger.js", function() {
 
 		describe("Filter stopwords from an array of words", function() {
 			it("should return the same array but with stopwords removed.", function() {
-				var array = ["He", "pushed", "me", "and", "I", "fell"];
-				var expectedOut = ["pushed", "fell"];
+				var array = ["He", "pushed", "me", "and", "I", "pushed", "him"];
+				var expectedOut = ["pushed", "pushed"];
 				var out = Doger.remove_stopwords_from_array(array);
 				expect(out).to.be.a("array");
 				expect(out.length).to.equal(2);

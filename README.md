@@ -147,6 +147,8 @@ This function returns a random item from a passed array.
 
 This function shuffles the order of items in a passed array.
 
+#### `remove_stopwords_from_array(array, stopwords)`
+
 #### `random_color()`
 
 This function returns a randomly-selected hex color (eg `"#0ab94f"`).

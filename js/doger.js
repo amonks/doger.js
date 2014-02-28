@@ -413,14 +413,13 @@ Doger = {
                 return array;
             },
 
-        // classic fisher-yates shuffle
-        // from stackoverflow
-            remove_stopwords_from_array: function(array) {
+        // remove stopwords from array
+            remove_stopwords_from_array: function(array, stopwords) {
                 for (var i = array.length - 1; i >= 0; i--) {
                     array[i] = array[i].toLowerCase();
                 };
-                var all = Doger.union_arrays(array, Doger.stopwords);
-                var common = Doger.intersection_arrays(array, Doger.stopwords);
+                var all = Doger.union_arrays(array, stopwords);
+                var common = Doger.intersection_arrays(array, stopwords);
 
                 var out = Doger.difference_arrays(array, common);
 
@@ -546,5 +545,5 @@ Doger = {
         // doge 
             doge_words: ["such", "much", "very", "many", "so", "how"],
             doge_end_words: ["wow", "amaze", "excite"],
-            stopwords: ["he", "she", "a", "the", "and", "if", "or", "not", "me", "i"],
+            stopwords: ["he", "she", "him", "her", "it", "its", "a", "the", "and", "if", "or", "not", "me", "i"],
 }
