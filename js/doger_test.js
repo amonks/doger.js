@@ -335,7 +335,7 @@ describe("doger.js", function() {
 			var out = Doger.difference_arrays(array1, array2);
 			it("should return the difference of two arrays", function() {
 				for (var i = expectedOut.length - 1; i >= 0; i--) {
-					expect(out.indexOf(expectedOut[i])).to.be.above(1);
+					expect(out.indexOf(expectedOut[i])).to.be.above(0);
 				};
 			});
 		});
