@@ -443,7 +443,7 @@ Doger = {
         // compute intersection of two arrays
         // from http://stackoverflow.com/questions/1885557/simplest-code-for-array-intersection-in-javascript
             intersection_arrays: function(array1, array2) {
-                array1.filter(function(n) {
+                return array1.filter(function(n) {
                     return array2.indexOf(n) != -1;
                 });
             },
