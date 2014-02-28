@@ -348,7 +348,7 @@ describe("doger.js", function() {
 				var array2 = [101, 2, 1, 10];
 				var expectedOut = [1, 2];
 				var out = Doger.intersection_arrays(array1, array2);
-				expect(out.length).to.equal(expectedOut.length);
+				expect(out.length).to.equal(2);
 				for (var i = expectedOut.length - 1; i >= 0; i--) {
 					expect(out.indexOf(expectedOut[i])).to.be.above(-1);
 				};
