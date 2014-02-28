@@ -303,7 +303,7 @@ describe("doger.js", function() {
 			it("should return the same array but with stopwords removed.", function() {
 				var array = ["He", "pushed", "me", "and", "I", "pushed", "him"];
 				var expectedOut = ["pushed", "pushed"];
-				var out = Doger.remove_stopwords_from_array(array);
+				var out = Doger.remove_stopwords_from_array(array, Doger.stopwords);
 				expect(out).to.be.a("array");
 				expect(out.length).to.equal(2);
 				for (var i = out.length - 1; i >= 0; i--) {
