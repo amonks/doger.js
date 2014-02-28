@@ -244,7 +244,7 @@ describe("doger.js", function() {
 					expect(out[i]).to.equal(expectedOut[i]);
 				};
 			});
-		});()
+		});
 
 
 
