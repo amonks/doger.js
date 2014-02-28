@@ -247,21 +247,6 @@ describe("doger.js", function() {
 		});
 
 
-		describe("Find the union of two arrays", function() {
-			it("should return the union", function() {
-				var arrayOne = [34, 35, 45, 48, 49];
-				var arrayTwo = [48, 55];
-				var expectedOut = [34, 35, 45, 48, 49, 55];
-				var out = Doger.sort_array_by_frequency(array);
-				expect(out).to.be.a("array");
-				expect(out.length).to.equal(6);
-				// for (var i = out.length - 1; i >= 0; i--) {
-				// 	expect(out[i]).to.equal(expectedOut[i]);
-				// };
-			});
-		});
-
-
 
 		describe("Choose a random thing from an array", function() {
 			it("should return a thing from the array", function() {
