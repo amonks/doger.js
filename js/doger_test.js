@@ -328,6 +328,19 @@ describe("doger.js", function() {
 		});
 
 
+		describe("Find the difference of two arrays", function() {
+			var array1 = [1, 2, 3, 4, 5];
+			var array2 = [5, 2, 10];
+			var expectedOut = [1, 3, 4];
+			var out = Doger.difference_arrays(array1, array2);
+			it("should return the difference of two arrays", function() {
+				for (var i = expectedOut.length - 1; i >= 0; i--) {
+					expect(out.indexOf(expectedOut[i]))to.be.at.least(1);
+				};
+			});
+		});
+
+
 		describe("Generate a random color", function() {
 			var out = Doger.random_color();
 			it("should return a 7 character string starting with '#'", function() {
