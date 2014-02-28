@@ -273,21 +273,6 @@ describe("doger.js", function() {
 		});
 
 
-
-		describe("Filter stopwords from an array of words", function() {
-			it("should return the same array but with stopwords removed.", function() {
-				var array = ["He", "pushed", "me", "and", "I", "fell"];
-				var expectedOut = ["pushed", "fell"];
-				var out = Doger.remove_stopwords_from_array(array);
-				expect(out).to.be.a("array");
-				expect(out.length).to.equal(2);
-				for (var i = out.length - 1; i >= 0; i--) {
-					expect(out[i]).to.equal(expectedOut[i]);
-				};
-			});
-		});
-
-
 		describe("Shuffle an array", function() {
 			var array = [6,7,8,9,10];
 			var out = Doger.shuffle_array(array);
@@ -328,11 +313,26 @@ describe("doger.js", function() {
 		});
 
 
+
+		describe("Filter stopwords from an array of words", function() {
+			it("should return the same array but with stopwords removed.", function() {
+				var array = ["He", "pushed", "me", "and", "I", "fell"];
+				var expectedOut = ["pushed", "fell"];
+				var out = Doger.remove_stopwords_from_array(array);
+				expect(out).to.be.a("array");
+				expect(out.length).to.equal(2);
+				for (var i = out.length - 1; i >= 0; i--) {
+					expect(out[i]).to.equal(expectedOut[i]);
+				};
+			});
+		});
+
+
 		describe("Find the union of two arrays", function() {
 			var array1 = [1, 2, 3];
 			var array2 = [101, 2, 1, 10];
 			var expectedOut = [1, 2, 3, 102, 10];
-			var out = Doger.difference_arrays(array1, array2);
+			var out = Doger.union_arrays(array1, array2);
 			it("should return the union of two arrays", function() {
 				for (var i = expectedOut.length - 1; i >= 0; i--) {
 					expect(out.indexOf(expectedOut[i])).to.be.above(-1);
@@ -346,7 +346,7 @@ describe("doger.js", function() {
 			var array1 = [1, 2, 3];
 			var array2 = [101, 2, 1, 10];
 			var expectedOut = [1, 2];
-			var out = Doger.difference_arrays(array1, array2);
+			var out = Doger.intersection_arrays(array1, array2);
 			it("should return the intersection of two arrays", function() {
 				for (var i = expectedOut.length - 1; i >= 0; i--) {
 					expect(out.indexOf(expectedOut[i])).to.be.above(-1);
