@@ -233,7 +233,8 @@ Doger = {
             var notStopWords = Doger.remove_stopwords_from_array( text.replace(/[^a-zA-Z\d\s:]/, '').split(" ") );
             var popular = Doger.sort_array_by_frequency(notStopWords).slice(0, 4);
             output = output.concat(popular)
-        } else {
+        };
+        if (output !== undefined) {
             if (output.length <= 2) {
                 var notStopWords = Doger.remove_stopwords_from_array( text.replace(/[^a-zA-Z\d\s:]/, '').split(" ") );
                 var popular = Doger.sort_array_by_frequency(notStopWords).slice(0, 4);
