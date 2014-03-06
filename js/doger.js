@@ -230,14 +230,14 @@ Doger = {
             output.push($(keywords[i]).find('text').text());
         };
         if (output == undefined ) {
-            var notStopWords = Doger.remove_stopwords_from_array( text.replace(/[^a-zA-Z\d\s:]/, '').split(" ") );
+            var notStopWords = Doger.remove_stopwords_from_array( text.replace(/[^a-zA-Z\d\s:]/, '').split(" "), Doger.stopwords );
             var popular = Doger.sort_array_by_frequency(notStopWords).slice(0, 4);
             output = output.concat(popular)
             output = Doger.remove_stopwords_from_array(output, Doger.stopwords);
         };
         if (output !== undefined) {
             if (output.length <= 2) {
-                var notStopWords = Doger.remove_stopwords_from_array( text.replace(/[^a-zA-Z\d\s:]/, '').split(" ") );
+                var notStopWords = Doger.remove_stopwords_from_array( text.replace(/[^a-zA-Z\d\s:]/, '').split(" "), Doger.stopwords );
                 var popular = Doger.sort_array_by_frequency(notStopWords).slice(0, 4);
                 output = output.concat(popular)
                 output = Doger.remove_stopwords_from_array(output, Doger.stopwords);
