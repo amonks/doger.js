@@ -229,7 +229,7 @@ Doger = {
         for (var i = keywords.length - 1; i >= 0; i--) {
             output.push($(keywords[i]).find('text').text());
         };
-        if (!output) {
+        if (output == undefined ) {
             var notStopWords = Doger.remove_stopwords_from_array( text.replace(/[^a-zA-Z\d\s:]/, '').split(" ") );
             var popular = Doger.sort_array_by_frequency(notStopWords).slice(0, 4);
             output = output.concat(popular)
