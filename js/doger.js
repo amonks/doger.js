@@ -558,6 +558,6 @@ Doger = {
          "not", "me", "i", "and", "an", "are", "as", "at",
          "be", "by", "for", "from", "has", "in", "of",
          "on", "that", "to", "was", "were", "with", "would",
-        "we", "them", "who", "whom"    
+        "we", "them", "who", "whom", "also", "you"
      ],
 }
